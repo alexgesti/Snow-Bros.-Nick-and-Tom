@@ -25,7 +25,7 @@
 #### Portfolio:
 + Github: https://github.com/laurenmjx
 
-### Alex Gesti:
+### Pau Motta:
 #### Email: 
 + Gmail:    paumottar@gmail.com
 + Outlook:  paumottar@hotmail.com
