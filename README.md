@@ -21,8 +21,7 @@
 ### Lauren Montenegro:
 #### Email:
 + Gmail: laurenmj187@gmail.com
-+ Outlook:
 
 #### Portfolio:
 + Github: https://github.com/laurenmjx
-+ -PAGINA WEB PROPIA-:
+
