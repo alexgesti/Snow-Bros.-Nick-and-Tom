@@ -18,9 +18,9 @@
 + Artstation: https://www.artstation.com/pixelcuak
 + Sketchfab:  https://sketchfab.com/PixelCuak
 
-### -NAME-:
+### Lauren Montenegro:
 #### Email:
-+ Gmail:
++ Gmail: laurenmj187@gmail.com
 + Outlook:
 
 #### Portfolio:
