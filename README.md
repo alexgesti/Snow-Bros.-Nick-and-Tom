@@ -25,3 +25,12 @@
 #### Portfolio:
 + Github: https://github.com/laurenmjx
 
+
+### Alex Gesti:
+#### Email: 
++ Gmail:    paumottar@gmail.com
++ Outlook:  paumottar@hotmail.com
+
+#### Portfolio:
++ Github: https://github.com/paumotta
+
