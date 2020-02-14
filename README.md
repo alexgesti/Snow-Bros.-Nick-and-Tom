@@ -24,5 +24,5 @@
 + Outlook:
 
 #### Portfolio:
-+ Github:
++ Github: https://github.com/laurenmjx
 + -PAGINA WEB PROPIA-:
