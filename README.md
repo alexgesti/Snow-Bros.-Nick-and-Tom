@@ -25,7 +25,6 @@
 #### Portfolio:
 + Github: https://github.com/laurenmjx
 
-
 ### Alex Gesti:
 #### Email: 
 + Gmail:    paumottar@gmail.com
@@ -34,3 +33,10 @@
 #### Portfolio:
 + Github: https://github.com/paumotta
 
+### Raul Cano
+####Email:
++ Gmail: raulcano5.rc@gmail.com
++ Hotmail: raulcano5.rc@hotmail.com
+
+####Github:
++ Github: https://github.com/ercanon
