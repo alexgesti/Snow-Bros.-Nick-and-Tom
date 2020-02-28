@@ -1,6 +1,8 @@
 #include "SDL2/include/SDL.h"
+#include "SDL2_image/include/SDL_image.h"
 #pragma comment ( lib, "SDL2/lib/x86/SDL2.lib")
 #pragma comment ( lib, "SDL2/lib/x86/SDL2main.lib")
+#pragma comment ( lib, "SDL2_image/lib/x86/SDL2_image.lib")
 //Para poner sprites, mirara en la pagina de citm
 
 int main(int argc, char** argv) 
