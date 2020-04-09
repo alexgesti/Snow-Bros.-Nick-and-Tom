@@ -43,8 +43,12 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/ship.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/laser.wav");
+	laserFx = App->audio->LoadFx("Assets/shot.wav"); // laser.wav por shot.wav
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
+	// añadí sonidos del salto y muerte
+	jumpFx = App->audio->LoadFx("Assets/jump.wav");
+	deathFx = App->audio->LoadFx("Assets/death.wav");
+
 
 	position.x = 150;
 	position.y = 120;
@@ -90,6 +94,12 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
 	}
+	//  para asignar W al sonido del jump
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+	{
+		App->audio->PlayFx(jumpFx);
+	}
+
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE

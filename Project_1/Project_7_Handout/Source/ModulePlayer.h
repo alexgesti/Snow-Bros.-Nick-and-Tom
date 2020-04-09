@@ -63,7 +63,9 @@ public:
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
-
+	// añadí estas dos variables para el sonido
+	uint jumpFx = 0;
+	uint deathFx = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__
