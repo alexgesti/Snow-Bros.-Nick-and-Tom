@@ -60,13 +60,19 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+
 	// Moving the player with the camera scroll
 	App->player->position.x += 1;
 
 	//Gravedad
-	if (position.y < 120 && App->input->keys[SDL_SCANCODE_W] != KEY_STATE::KEY_REPEAT)
+	if (position.y < 120)
 	{
 		position.y += speed;
+	/*	if (currentAnimation != &downAnim)
+		{
+			downAnim.Reset();
+			currentAnimation = &downAnim;
+		}*/
 	}
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
@@ -79,14 +85,14 @@ update_status ModulePlayer::Update()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > 100)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= speed;
-		if (currentAnimation != &upAnim)
+		position.y -= speed * 2;
+		/*if (currentAnimation != &upAnim)
 		{
 			upAnim.Reset();
 			currentAnimation = &upAnim;
-		}
+		}*/
 	}
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
