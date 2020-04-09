@@ -1,4 +1,0 @@
-﻿  Main.cpp
-C:\Users\alexgf3\Documents\PROJECT_1\PROTOTIPO_1\Main.cpp(97,20): warning C4244:  '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\alexgf3\Documents\PROJECT_1\PROTOTIPO_1\Main.cpp(129,21): warning C4244:  '*=': conversion from 'float' to 'int', possible loss of data
-  PROTOTIPO_1.vcxproj -> C:\Users\alexgf3\Documents\PROJECT_1\PROTOTIPO_1\Debug\PROTOTIPO_1.exe
