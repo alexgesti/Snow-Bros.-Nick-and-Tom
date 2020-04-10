@@ -79,7 +79,7 @@ bool ModulePlayer::Start()
 
 
 	position.x = 150;
-	position.y = 120;
+	position.y = 220;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
 
@@ -88,10 +88,9 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-	position.x += speed;
 	if (death == false) {
 		//Gravedad
-		if (position.y < 120 && jump == false)//cambiarlo por colisiones
+		if (position.y < 220 && jump == false)//cambiarlo por colisiones
 		{
 			position.y += speed * 1.5;
 			if (vista ==  1) {
@@ -193,13 +192,13 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE 
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& position.y >= 120  //mas colisiones
+		&& position.y >= 220  //mas colisiones
 		&& vista == 0)
 		currentAnimation = &idleRAnim;
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& position.y >= 120  //mas colisiones
+		&& position.y >= 220  //mas colisiones
 		&& vista == 1)
 		currentAnimation = &idleLAnim;
 	
@@ -232,12 +231,12 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && destroyed == false)
+	/*if (c1 == collider && destroyed == false)
 	{
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
 
 		destroyed = true;
-	}
+	}*/
 }

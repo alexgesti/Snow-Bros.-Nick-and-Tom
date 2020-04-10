@@ -24,15 +24,27 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/background.png");
+	bgTexture = App->textures->Load("Assets/lvl1.png");
 	App->audio->PlayMusic("Assets/(Stage 1, 3).ogg", 1.0f);
 
-	//Bottomside collider
-	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
+	//collider suelo
+	App->collisions->AddCollider({ 0, 249, 352, 18 }, Collider::Type::FLOOR);			//EL SUELO
+	App->collisions->AddCollider({ 0, 211, 85, 5 }, Collider::Type::FLOOR);				//PLAT1 B. IZQ
+	App->collisions->AddCollider({ 133, 211, 85, 5 }, Collider::Type::FLOOR);			//PLAT2 B. MED
+	App->collisions->AddCollider({ 266, 211, 85, 5 }, Collider::Type::FLOOR);			//PLAT3 B. DER
+	App->collisions->AddCollider({ 67, 173, 217, 5 }, Collider::Type::FLOOR);			//PALT4 M. MED GRAND
+	App->collisions->AddCollider({ 0, 135, 152, 5 }, Collider::Type::FLOOR);			//PLAT5 ARR. IZQ
+	App->collisions->AddCollider({ 200, 135, 152, 5 }, Collider::Type::FLOOR);			//PLAT6 ARR. DER
+	App->collisions->AddCollider({ 45, 98, 42, 5 }, Collider::Type::FLOOR);				//PLAT7 GRAND. IZQ
+	App->collisions->AddCollider({ 88, 79, 4, 18 }, Collider::Type::FLOOR);				//PALT8 GRAND. MURO IZQ
+	App->collisions->AddCollider({ 92, 79, 173, 5 }, Collider::Type::FLOOR);			//PLAT9 GRAND. MEDIO
+	App->collisions->AddCollider({ 261, 79, 4, 18 }, Collider::Type::FLOOR);			//PLAT10 GRAND. MURO DER
+	App->collisions->AddCollider({ 265, 98, 42, 5 }, Collider::Type::FLOOR);			//PALT11 GRAND. DER
 
-	//First two columns colliders
-	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
+
+	//collider de los lados
+	App->collisions->AddCollider({ 0, 19, 3, 245 }, Collider::Type::WALL);            //MURO IZQ
+	App->collisions->AddCollider({ 352, 19, 3, 245 }, Collider::Type::WALL);        //MURO DER
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 600, 80);
@@ -40,19 +52,12 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 640, 80);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 665, 80);
 
-	// TODO 1: Add a new wave of red birds
-
-	// TODO 2: Add a new wave of brown cookies
-
-	// TODO 4: Create a new enemy type: The Mech
-
-
+	
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
-	App->render->camera.x += 3;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -61,7 +66,9 @@ update_status ModuleScene::Update()
 update_status ModuleScene::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	SDL_Rect bgrect;
+	bgrect.w = SCREEN_SIZE;
+	App->render->Blit(bgTexture,0,0, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }
