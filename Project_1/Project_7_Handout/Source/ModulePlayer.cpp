@@ -60,15 +60,14 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-
 	// Moving the player with the camera scroll
 	App->player->position.x += 1;
 
 	//Gravedad
-	if (position.y < 120)
+	if (position.y < 120 && jump == false)
 	{
-		position.y += speed;
-	/*	if (currentAnimation != &downAnim)
+		position.y += speed * 1.5;
+		/*if (currentAnimation != &downAnim)
 		{
 			downAnim.Reset();
 			currentAnimation = &downAnim;
@@ -85,27 +84,36 @@ update_status ModulePlayer::Update()
 		position.x += speed;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 	{
-		position.y -= speed * 2;
+		high = position.y;
+		jump = true;
 		/*if (currentAnimation != &upAnim)
 		{
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}*/
+		//  para asignar W al sonido del jump
+		App->audio->PlayFx(jumpFx);
 	}
+	if (jump == true && position.y > high - 30) 
+	{
+		position.y -= speed;
+		if (position.y <= high - 30) 
+		{
+			jump = false;
+		}
+	 }
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
 		App->audio->PlayFx(laserFx);
 	}
-	//  para asignar W al sonido del jump
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
-	{
-		App->audio->PlayFx(jumpFx);
-	}
 
+	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) {
+		return update_status::UPDATE_STOP;
+	}
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
