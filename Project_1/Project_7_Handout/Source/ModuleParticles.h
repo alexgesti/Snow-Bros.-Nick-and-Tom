@@ -60,7 +60,8 @@ public:
 	Particle explosion;
 
 	//Template particle for a laser
-	Particle laser;
+	Particle laserx;
+	Particle lasery;
 };
 
 #endif // !__MODULEPARTICLES_H__

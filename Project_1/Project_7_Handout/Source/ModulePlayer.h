@@ -54,8 +54,10 @@ public:
 	Animation LAnim;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
+	bool death = false;
 	bool jump = false;
 	float high = 0;
+	float large = 0;
 
 	// The player's collider
 	Collider* collider = nullptr;
