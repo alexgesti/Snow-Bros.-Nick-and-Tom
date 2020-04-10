@@ -103,22 +103,37 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &LAnim)
+		{
+			LAnim.Reset();
+			currentAnimation = &LAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &RAnim)
+		{
+			RAnim.Reset();
+			currentAnimation = &RAnim;
+		}
 	}
 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 	{
 		high = position.y;
 		jump = true;
-		/*if (currentAnimation != &upAnim)
+		if (currentAnimation != &upRAnim)
 		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
-		}*/
+			upRAnim.Reset();
+			currentAnimation = &upRAnim;
+		}
+		if (currentAnimation != &upLAnim)
+		{
+			upRAnim.Reset();
+			currentAnimation = &upLAnim;
+		}
 		//  para asignar W al sonido del jump
 		App->audio->PlayFx(jumpFx);
 	}
@@ -145,6 +160,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		currentAnimation = &idleAnim;
+	
 
 	collider->SetPos(position.x, position.y);
 
