@@ -22,20 +22,30 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/particles.png");
+	texture = App->textures->Load("Assets/Nick&Tom.png");
 
-	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	// muerte
+	explosion.anim.PushBack({16, 531, 30, 29});
+	explosion.anim.PushBack({54, 528, 29, 32});
+	explosion.anim.PushBack({91, 531, 30, 29});
+	explosion.anim.PushBack({ 54, 528, 29, 32 });
+	explosion.anim.PushBack({ 91, 531, 30, 29 });
+	explosion.anim.PushBack({ 54, 528, 29, 32 });
+	explosion.anim.PushBack({ 91, 531, 30, 29 });
+	explosion.anim.PushBack({ 54, 528, 29, 32 });
+	explosion.anim.PushBack({ 91, 531, 30, 29 });
+	explosion.anim.PushBack({ 54, 528, 29, 32 });
+	explosion.anim.PushBack({ 91, 531, 30, 29 });
+	explosion.anim.PushBack({ 129, 535, 28, 25 });
+	explosion.anim.PushBack({ 165, 539, 30, 22 });
+	explosion.anim.PushBack({ 203, 544, 32, 16 });
+	explosion.anim.PushBack({ 243, 547, 32, 13 });
+	explosion.anim.PushBack({ 283, 552, 32, 8 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
+	laser.anim.PushBack({ 16, 141, 7, 11 });
+	laser.anim.PushBack({ 31, 141, 7, 11 });
 	laser.speed.x = 5;
 	laser.lifetime = 180;
 	laser.anim.speed = 0.2f;

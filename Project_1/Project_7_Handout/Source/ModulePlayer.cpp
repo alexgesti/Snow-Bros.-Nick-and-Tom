@@ -14,19 +14,45 @@
 ModulePlayer::ModulePlayer()
 {
 	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	idleAnim.PushBack({ 16, 16, 21, 27 });
 
 	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
-	upAnim.speed = 0.1f;
+	upRAnim.PushBack({ 16, 305, 20, 29 });
+	upRAnim.PushBack({ 44, 307, 22, 27 });
+	upRAnim.PushBack({ 74, 311, 20, 23 });
+	upRAnim.PushBack({ 102, 312, 20, 22 });
+	upRAnim.PushBack({ 130, 307 , 20, 27 });
+	upRAnim.PushBack({ 159, 311, 20, 24 });
+	upRAnim.PushBack({ 186, 311, 23, 23 });
+	upRAnim.PushBack({ 217, 305, 20, 29 });
+	upRAnim.loop = false;
+	upRAnim.speed = 0.1f;
 
-	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
-	downAnim.speed = 0.1f;
+	upLAnim.PushBack({ 546, 132, 20, 29 });
+	upLAnim.PushBack({ 516, 134, 22, 27 });
+	upLAnim.PushBack({ 488, 138, 20, 23 });
+	upLAnim.PushBack({ 460, 139, 20, 22 });
+	upLAnim.PushBack({ 432, 134, 20, 27 });
+	upLAnim.PushBack({ 404, 137, 20, 24 });
+	upLAnim.PushBack({ 137, 138, 23, 23 });
+	upLAnim.PushBack({ 345, 132, 20, 29 });
+	upLAnim.loop = false;
+	upLAnim.speed = 0.1f;
+
+	RAnim.PushBack({ 16, 76, 18, 28});
+	RAnim.PushBack({ 42, 77, 16, 27 });
+	RAnim.PushBack({ 66, 76, 19, 28 });
+	RAnim.PushBack({ 93, 77, 16, 27 });
+	RAnim.loop = false;
+	RAnim.speed = 0.1f;
+
+	LAnim.PushBack({ 548, 79, 18, 28 });
+	LAnim.PushBack({ 524, 80, 16, 27 });
+	LAnim.PushBack({ 497, 79, 19, 28 });
+	LAnim.PushBack({ 473, 80, 16, 27 });
+	LAnim.loop = false;
+	LAnim.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -40,7 +66,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/ship.png");
+	texture = App->textures->Load("Assets/Nick&Tom.png");
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/shot.wav"); // laser.wav por shot.wav

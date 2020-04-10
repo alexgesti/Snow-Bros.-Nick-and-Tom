@@ -48,8 +48,10 @@ public:
 
 	// A set of animations
 	Animation idleAnim;
-	Animation upAnim;
-	Animation downAnim;
+	Animation upRAnim;
+	Animation upLAnim;
+	Animation RAnim;
+	Animation LAnim;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool jump = false;
