@@ -15,44 +15,45 @@ ModulePlayer::ModulePlayer()
 {
 	// idle animation - just one sprite
 	idleRAnim.PushBack({ 16, 16, 21, 27 });
-	idleLAnim.PushBack({ 283, 75, 21, 27 });
-	fallRAnim.PushBack({ 16, 305, 20, 29 });
-	fallLAnim.PushBack({ 546, 132, 20, 29 });
+	idleLAnim.PushBack({ 283, 75, 21, 27 });  
+	fallRAnim.PushBack({ 16, 304, 20, 30 });
+	fallLAnim.PushBack({ 345 , 131, 20, 30 });
 
-	// move upwards
-	upRAnim.PushBack({ 16, 305, 20, 29 });
+	// Move vertical
+	upRAnim.PushBack({ 16, 304, 20, 30 });
 	upRAnim.PushBack({ 44, 307, 22, 27 });
 	upRAnim.PushBack({ 74, 311, 20, 23 });
 	upRAnim.PushBack({ 102, 312, 20, 22 });
-	upRAnim.PushBack({ 130, 307 , 20, 27 });
-	upRAnim.PushBack({ 159, 311, 20, 24 });
-	upRAnim.PushBack({ 186, 311, 23, 23 });
-	upRAnim.PushBack({ 217, 305, 20, 29 });
+	upRAnim.PushBack({ 130, 307, 20, 27 });
+	upRAnim.PushBack({ 158, 310, 20, 24 });
+	upRAnim.PushBack({ 186, 311, 23, 23 }); 
+	upRAnim.PushBack({ 217, 304, 20, 30 });
 	upRAnim.loop = false;
 	upRAnim.speed = 0.15f;
 
-	upLAnim.PushBack({ 546, 132, 20, 29 });
+	upLAnim.PushBack({ 546, 131, 20, 30 });
 	upLAnim.PushBack({ 516, 134, 22, 27 });
 	upLAnim.PushBack({ 488, 138, 20, 23 });
 	upLAnim.PushBack({ 460, 139, 20, 22 });
 	upLAnim.PushBack({ 432, 134, 20, 27 });
 	upLAnim.PushBack({ 404, 137, 20, 24 });
-	upLAnim.PushBack({ 137, 138, 23, 23 });
-	upLAnim.PushBack({ 345, 132, 20, 29 });
+	upLAnim.PushBack({ 373, 138, 23, 23 });  
+	upLAnim.PushBack({ 345, 131, 20, 30 });
 	upLAnim.loop = false;
 	upLAnim.speed = 0.15f;
 
-	RAnim.PushBack({ 16, 76, 18, 28});
-	RAnim.PushBack({ 42, 77, 16, 27 });
-	RAnim.PushBack({ 66, 76, 19, 28 });
-	RAnim.PushBack({ 93, 77, 16, 27 });
-	RAnim.loop = true;
-	RAnim.speed = 0.1f;
+	// Move Horizontal
+	RAnim.PushBack({ 16, 52, 18, 28 });
+	RAnim.PushBack({ 48, 53, 16, 27 });
+	RAnim.PushBack({ 80, 52 , 19, 28 });
+	RAnim.PushBack({ 112, 53, 16, 27 });
+	RAnim.loop = true; 
+	RAnim.speed = 0.1f; 
 
-	LAnim.PushBack({ 548, 79, 18, 28 });
-	LAnim.PushBack({ 524, 80, 16, 27 });
-	LAnim.PushBack({ 497, 79, 19, 28 });
-	LAnim.PushBack({ 473, 80, 16, 27 });
+	LAnim.PushBack({ 16, 100, 19, 28 });
+	LAnim.PushBack({ 45, 101, 19, 27 });
+	LAnim.PushBack({ 79, 100, 20, 28 });
+	LAnim.PushBack({ 109 , 101, 19, 27 });
 	LAnim.loop = true;
 	LAnim.speed = 0.1f;
 
@@ -77,11 +78,10 @@ bool ModulePlayer::Start()
 	jumpFx = App->audio->LoadFx("Assets/jump.wav");
 	deathFx = App->audio->LoadFx("Assets/death.wav");
 
-
 	position.x = 150;
 	position.y = 220;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -109,7 +109,9 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT 
+			&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		{
 			position.x -= speed;
 			vista = 1;
@@ -120,7 +122,9 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT 
+			&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		{
 			position.x += speed;
 			vista = 0;
@@ -138,7 +142,7 @@ update_status ModulePlayer::Update()
 				high = position.y;
 				jump = true;
 
-				//  para asignar W al sonido del jump
+				//  Asignar W al sonido del jump
 				App->audio->PlayFx(jumpFx);
 			}
 		}
@@ -151,7 +155,7 @@ update_status ModulePlayer::Update()
 				if (vista == 1) {
 					if (currentAnimation != &upLAnim)
 					{
-						upRAnim.Reset();
+						upLAnim.Reset();
 						currentAnimation = &upLAnim;
 					}
 				}
@@ -178,7 +182,7 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(laserFx);
 			}
 			else {
-				App->particles->AddParticle(App->particles->laserx, position.x + 20, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 		}
@@ -193,11 +197,22 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
+		&& vista == 0 ||
+		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+		&& position.y >= 220  //mas colisiones
 		&& vista == 0)
 		currentAnimation = &idleRAnim;
+
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& position.y >= 220  //mas colisiones
+		&& vista == 1 ||
+		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
 		&& position.y >= 220  //mas colisiones
 		&& vista == 1)
 		currentAnimation = &idleLAnim;
@@ -239,4 +254,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		destroyed = true;
 	}*/
+	
+	 
+	/*if ()
+	{
+		LOG("Destroyed");
+	}*/
+
 }
