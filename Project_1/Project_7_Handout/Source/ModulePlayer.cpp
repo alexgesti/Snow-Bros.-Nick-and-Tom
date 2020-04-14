@@ -62,14 +62,14 @@ ModulePlayer::ModulePlayer()
 	shotLAnim.PushBack({ 357, 80, 27, 27 });
 	shotLAnim.PushBack({ 322, 80, 27, 27 });
 	shotLAnim.loop = false;
-	shotLAnim.speed = 0.05f;
+	shotLAnim.speed = 0.2f;
 
 	shotRAnim.PushBack({ 141, 78, 21, 26 });
 	shotRAnim.PushBack({ 170, 75, 20, 29 });
 	shotRAnim.PushBack({ 198, 77, 27, 27 });
 	shotRAnim.PushBack({ 233, 77, 27, 27});
 	shotRAnim.loop = false;
-	shotRAnim.speed = 0.05f;
+	shotRAnim.speed = 0.2f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -127,11 +127,13 @@ update_status ModulePlayer::Update()
 		{
 			position.x -= speed;
 			vista = 1;
+			if (shot== false){
 			if (currentAnimation != &LAnim && timer >= 75)//coli-
 			{
 				LAnim.Reset();
 				currentAnimation = &LAnim;
 			}
+		}
 		}
 
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT 
@@ -139,11 +141,13 @@ update_status ModulePlayer::Update()
 		{
 			position.x += speed;
 			vista = 0;
+			if (shot == false){
 			if (currentAnimation != &RAnim && timer >= 75)// -siones
 			{
 				RAnim.Reset();
 				currentAnimation = &RAnim;
 			}
+		}
 		}
 
 		if (timer >= 75) { //bye bye timer, hola colisiones
@@ -188,6 +192,7 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
+			shot = true;
 			if (vista == 1) {
 				App->particles->AddParticle(App->particles->lasery, position.x - 9, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
@@ -208,6 +213,23 @@ update_status ModulePlayer::Update()
 				}
 			}
 			
+		}
+		if (shot == true) {
+			if (vista == 1) {
+			if (currentAnimation != &shotLAnim)
+			{
+				shotLAnim.Reset();
+				currentAnimation = &shotLAnim;
+			}
+			}
+			else {
+				if (currentAnimation != &shotRAnim)
+				{
+					shotRAnim.Reset();
+					currentAnimation = &shotRAnim;
+				}
+			}
+			shot = false;
 		}
 	}  
 

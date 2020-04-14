@@ -6,9 +6,9 @@ C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlaye
 C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:         [
 C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:             TYPE=int
 C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:         ]
-C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
-C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         with
-C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         [
-C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:             TYPE=int
-C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         ]
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244:         with
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244:         [
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244:             TYPE=int
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244:         ]
   Project_7_Handout.vcxproj -> C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Debug\Project_7_Handout.exe

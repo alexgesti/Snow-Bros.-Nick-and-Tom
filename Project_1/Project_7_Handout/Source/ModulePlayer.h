@@ -61,6 +61,7 @@ public:
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool death = false;
 	bool jump = false;
+	bool shot = false;
 	int vista = 0;
 	float timer = 75;
 	float high = 0;
