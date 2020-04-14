@@ -1,4 +1,14 @@
-﻿  Enemy_RedDemon.cpp
+﻿  ModulePlayer.cpp
 C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244: '+=': conversion from 'double' to 'TYPE', possible loss of data
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:         with
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:         [
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:             TYPE=int
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(108,29): warning C4244:         ]
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         with
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         [
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:             TYPE=int
+C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(153,20): warning C4244:         ]
   Project_7_Handout.vcxproj -> C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Debug\Project_7_Handout.exe

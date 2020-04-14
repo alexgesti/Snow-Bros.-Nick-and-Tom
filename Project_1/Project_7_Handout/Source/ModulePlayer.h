@@ -55,6 +55,8 @@ public:
 	Animation LAnim;
 	Animation fallRAnim;
 	Animation fallLAnim;
+	Animation shotRAnim;
+	Animation shotLAnim;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool death = false;
