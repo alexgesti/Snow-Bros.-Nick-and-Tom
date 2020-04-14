@@ -62,14 +62,14 @@ ModulePlayer::ModulePlayer()
 	shotLAnim.PushBack({ 357, 80, 27, 27 });
 	shotLAnim.PushBack({ 322, 80, 27, 27 });
 	shotLAnim.loop = false;
-	shotLAnim.speed = 0.2f;
+	shotLAnim.speed = 0.25f;
 
 	shotRAnim.PushBack({ 141, 78, 21, 26 });
 	shotRAnim.PushBack({ 170, 75, 20, 29 });
 	shotRAnim.PushBack({ 198, 77, 27, 27 });
 	shotRAnim.PushBack({ 233, 77, 27, 27});
 	shotRAnim.loop = false;
-	shotRAnim.speed = 0.2f;
+	shotRAnim.speed = 0.25f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -127,7 +127,7 @@ update_status ModulePlayer::Update()
 		{
 			position.x -= speed;
 			vista = true;
-			if (currentAnimation != &LAnim && timer >= 75)//coli-
+			if (currentAnimation != &LAnim && shot == false && timerj >= 75)//coli-
 			{
 				LAnim.Reset();
 				currentAnimation = &LAnim;
@@ -139,17 +139,17 @@ update_status ModulePlayer::Update()
 		{
 			position.x += speed;
 			vista = false;
-			if (currentAnimation != &RAnim && timer >= 75)// -siones
+			if (currentAnimation != &RAnim && shot == false && timerj >= 75)// -siones
 			{
 				RAnim.Reset();
 				currentAnimation = &RAnim;
 			}
 		}
 
-		if (timer >= 75) { //bye bye timer, hola colisiones
+		if (timerj >= 75) { //bye bye timer, hola colisiones
 			if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 			{
-				timer = 0;
+				timerj = 0;
 				high = position.y;
 				jump = true;
 
@@ -157,7 +157,7 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(jumpFx);
 			}
 		}
-		timer += 1;
+		timerj += 1;
 		if (jump == true)
 		{
 			if (position.y > high - 40)
@@ -189,43 +189,41 @@ update_status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			shot = true;
-			if (vista == true) {
+			timers = 0;
+			if (vista == true) 
+			{
 				App->particles->AddParticle(App->particles->lasery, position.x - 9, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
+			}
+			else 
+			{
+				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+			}
+		}
+		timers += 1;
+		if (shot == true) 
+		{
+			if (vista == true) 
+			{
 				if (currentAnimation != &shotLAnim)
 				{
 					shotLAnim.Reset();
 					currentAnimation = &shotLAnim;
 				}
 			}
-
-			else {
-				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(laserFx);
-				if (currentAnimation != &shotRAnim)
-				{
-					shotRAnim.Reset();
-					currentAnimation = &shotRAnim;
-				}
-			}
-			
-		}
-		if (shot == true) {
-			if (vista == true) {
-			if (currentAnimation != &shotLAnim)
+			else 
 			{
-				shotLAnim.Reset();
-				currentAnimation = &shotLAnim;
-			}
-			}
-			else {
 				if (currentAnimation != &shotRAnim)
 				{
 					shotRAnim.Reset();
 					currentAnimation = &shotRAnim;
 				}
 			}
-			shot = false;
+			if (timers >= 10) 
+			{
+				shot = false;
+			}
 		}
 	}  
 
@@ -240,13 +238,15 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
-		&& vista == false ||
-		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& vista == false 
+		&& shot == false
+		|| App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
-		&& vista == false)
+		&& vista == false
+		&& shot == false)
 		currentAnimation = &idleRAnim;
 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -254,13 +254,15 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
-		&& vista == true ||
-		App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& vista == true
+		&& shot == false
+		|| App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
-		&& vista == true)
+		&& vista == true
+		&& shot == false)
 		currentAnimation = &idleLAnim;
 	
 

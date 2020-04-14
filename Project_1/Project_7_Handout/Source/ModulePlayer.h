@@ -63,7 +63,8 @@ public:
 	bool jump = false;
 	bool shot = false;
 	bool vista = false;
-	float timer = 75;
+	float timerj = 75;
+	float timers = 10;
 	float high = 0;
 
 	// The player's collider
