@@ -8,7 +8,7 @@
 
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
-#include "Enemy_BrownShip.h"
+#include "Enemy_RedDemon.h"
 
 #define SPAWN_MARGIN 50
 
