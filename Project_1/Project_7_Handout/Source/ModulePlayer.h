@@ -62,7 +62,7 @@ public:
 	bool death = false;
 	bool jump = false;
 	bool shot = false;
-	int vista = 0;
+	bool vista = false;
 	float timer = 75;
 	float high = 0;
 

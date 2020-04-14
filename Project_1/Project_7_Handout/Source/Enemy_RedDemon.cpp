@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 
-Enemy_BrownShip::Enemy_BrownShip(int x, int y) : Enemy(x, y)
+Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 {
 	
 
@@ -18,11 +18,11 @@ Enemy_BrownShip::Enemy_BrownShip(int x, int y) : Enemy(x, y)
 	walkLAnim.speed = 0.1f;
 
 	downRAnim.PushBack({ 139, 68, 27, 25 });
-	downRAnim.PushBack({ 172, 164, 26 ,32 });
+	downRAnim.PushBack({ 172, 64, 26 ,32 });
 	downRAnim.speed = 0.1f;
 
 	downLAnim.PushBack({ 104, 68, 27 , 25 });
-	downLAnim.PushBack({ 62, 64, 26 , 32 });
+	downLAnim.PushBack({ 72, 64, 26 , 32 });
 	downLAnim.speed = 0.1f;
 
 	turnRAnim.PushBack({ 236, 2, 27, 27 });
@@ -37,7 +37,7 @@ Enemy_BrownShip::Enemy_BrownShip(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
-void Enemy_BrownShip::Update()
+void Enemy_RedDemon::Update()
 {
 	path.Update();
 	path.PushBack({ 1.0f, 0.0f }, twalk, &walkRAnim);

@@ -144,8 +144,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case ENEMY_TYPE::REDBIRD:
 					enemies[i] = new Enemy_RedBird(info.x, info.y);
 					break;
-				case ENEMY_TYPE::BROWNSHIP:
-					enemies[i] = new Enemy_BrownShip(info.x, info.y);
+				case ENEMY_TYPE::REDDEMON:
+					enemies[i] = new Enemy_RedDemon(info.x, info.y);
 					break;
 			}
 			enemies[i]->texture = texture;

@@ -11,7 +11,7 @@ enum class ENEMY_TYPE
 {
 	NO_TYPE,
 	REDBIRD,
-	BROWNSHIP,
+	REDDEMON,
 };
 
 struct EnemySpawnpoint
