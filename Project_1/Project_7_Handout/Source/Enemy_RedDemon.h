@@ -15,6 +15,7 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	int twalk = (rand() % 10 + 5) * 1000;
 private:
 	// A set of steps that define the position in the screen
 	// And an animation for each step
@@ -22,7 +23,12 @@ private:
 
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
-	Animation fly;
+	Animation walkRAnim;
+	Animation walkLAnim;
+	Animation downRAnim;
+	Animation downLAnim;
+	Animation turnRAnim;
+	Animation turnLAnim;
 };
 
 #endif // __ENEMY_BROWNSHIP_H__
