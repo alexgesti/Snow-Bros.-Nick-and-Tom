@@ -6,7 +6,7 @@ D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlay
           [
               TYPE=int
           ]
-D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(142,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(140,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
           with
           [
               TYPE=int
