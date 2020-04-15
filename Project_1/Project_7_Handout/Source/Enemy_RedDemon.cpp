@@ -28,7 +28,6 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 	turnLAnim.speed = 0.1f;
-	// TODO 3: Have the Brown Cookies describe a path in the screen
 	
 	currentAnim = &walkRAnim;
 
@@ -37,12 +36,19 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	path.Update();
+	
+	if (timerw <= 0) {
+		twalk = (rand() % 10 + 5) * 100;
+		LOG("Enemy walk %d", twalk);
 
-	twalk = (rand() % 10 + 5) * 1000;
+		timerw = twalk;
+	}
+	timerw -= 1;
 
 	path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
 	path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
+
+	path.Update();
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
