@@ -5,8 +5,6 @@
 
 Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 {
-	
-
 	walkRAnim.PushBack({ 139, 1, 29, 28 });
 	walkRAnim.PushBack({ 170, 1, 30, 28 });
 	walkRAnim.PushBack({ 203, 2, 29, 27 });
