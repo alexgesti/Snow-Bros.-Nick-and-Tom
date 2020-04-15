@@ -37,8 +37,11 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	//path.Update();
-	path.PushBack({ 1.0f, 0.0f }, twalk, &walkRAnim);
+	path.Update();
+
+	twalk = (rand() % 10 + 5) * 1000;
+
+	path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
 	path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
 
 	// Call to the base class. It must be called at the end

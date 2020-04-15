@@ -15,7 +15,9 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
-	int twalk = (rand() % 10 + 5) * 1000;
+	int twalk;
+	int speed = 1;
+
 private:
 	// A set of steps that define the position in the screen
 	// And an animation for each step
