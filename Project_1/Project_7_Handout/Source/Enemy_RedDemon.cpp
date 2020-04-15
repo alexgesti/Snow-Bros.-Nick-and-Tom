@@ -39,12 +39,9 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	path.Update();
+	//path.Update();
 	path.PushBack({ 1.0f, 0.0f }, twalk, &walkRAnim);
 	path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
-
-	position.x = 10;
-	position.y = 220;
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
