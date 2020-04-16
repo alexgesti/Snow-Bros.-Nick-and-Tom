@@ -158,19 +158,19 @@ update_status ModulePlayer::Update()
 			}
 		}
 		timerj += 1;
-		if (jump == true)
+		if (jump == true && shot == false)
 		{
 			if (position.y > high - 40)
 			{
 				position.y -= speed;
-				if (vista == true) {
+				if (vista == true && currentAnimation != &upRAnim) {
 					if (currentAnimation != &upLAnim)
 					{
 						upLAnim.Reset();
 						currentAnimation = &upLAnim;
 					}
 				}
-				else {
+				else if (currentAnimation != &upLAnim) {
 					if (currentAnimation != &upRAnim)
 					{
 						upRAnim.Reset();
@@ -192,7 +192,7 @@ update_status ModulePlayer::Update()
 			timers = 0;
 			if (vista == true) 
 			{
-				App->particles->AddParticle(App->particles->lasery, position.x - 9, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 			else 
@@ -233,33 +233,25 @@ update_status ModulePlayer::Update()
 	
 
 	// If no  movement detected or default floor, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE 
-		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
 		&& vista == false 
 		&& shot == false
-		|| App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
+		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
 		&& vista == false
 		&& shot == false)
 		currentAnimation = &idleRAnim;
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
 		&& vista == true
 		&& shot == false
-		|| App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
+		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE
 		&& position.y >= 220  //mas colisiones
 		&& vista == true
 		&& shot == false)

@@ -47,7 +47,7 @@ bool ModuleScene::Start()
 	App->collisions->AddCollider({ 350, 19, 3, 245 }, Collider::Type::WALL);			//MURO DER
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 30, 220);
+//	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 30, 220);
 	
 	return ret;
 }
