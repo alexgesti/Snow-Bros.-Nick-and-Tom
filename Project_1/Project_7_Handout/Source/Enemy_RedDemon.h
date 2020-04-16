@@ -15,6 +15,7 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	bool vistard = true;
 	float timerw = 0;
 	int twalk = 0;
 	int speed = 1;

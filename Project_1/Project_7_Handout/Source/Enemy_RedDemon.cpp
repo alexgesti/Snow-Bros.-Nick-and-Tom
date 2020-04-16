@@ -36,17 +36,35 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	
+
 	if (timerw <= 0) {
 		twalk = (rand() % 10 + 5) * 100;
 		LOG("Enemy walk %d", twalk);
+
+		if (vistard == false) {
+			vistard = true;
+		}
+		else if (vistard == true) {
+			vistard = false;
+		}
 
 		timerw = twalk;
 	}
 	timerw -= 1;
 
-	path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
-	path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
+
+	if (timerw == 0) {
+		if (vistard == true) {
+				currentAnim = &turnLAnim;
+		}
+		else {
+			currentAnim = &turnRAnim;
+		}
+	}
+	else {
+		path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
+		path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
+	}
 
 	path.Update();
 
