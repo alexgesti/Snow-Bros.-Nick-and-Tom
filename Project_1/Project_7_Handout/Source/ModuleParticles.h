@@ -57,7 +57,12 @@ private:
 
 public:
 	//Template particle for an explosion
-	Particle explosion;
+	Particle playerdeath;
+	Particle snowball1;
+	Particle snowball2;
+	Particle snowball3;
+	Particle snowball4;
+	
 
 	//Template particle for a laser
 	Particle laserx;

@@ -29,6 +29,14 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 	turnLAnim.speed = 0.1f;
 
+	deathLAnim.PushBack({7, 36, 28, 26});
+	deathLAnim.PushBack({39, 34, 28, 30});
+	deathLAnim.speed = 0.1f;
+
+	deathRAnim.PushBack({171, 35, 28, 26});
+	deathRAnim.PushBack({139, 33, 28, 30});
+	deathRAnim.speed = 0.1f;
+
 	path.PushBack({ 0.25f, 0.0f }, 200, &walkRAnim);
 	path.PushBack({ -0.25f, 0.0f }, 200, &walkLAnim);
 

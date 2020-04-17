@@ -26,7 +26,7 @@ ModuleCollisions::ModuleCollisions()
 	matrix[Collider::Type::PLAYER][Collider::Type::FLOOR] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_SHOT] = false;
@@ -92,13 +92,22 @@ update_status ModuleCollisions::PreUpdate()
 
 			c2 = colliders[k];
 
-			if(c1->Intersects(c2->rect))
+			if (c1->Intersects(c2->rect))
 			{
-				if(matrix[c1->type][c2->type] && c1->listener) 
+				if (matrix[c1->type][c2->type] && c1->listener)
 					c1->listener->OnCollision(c1, c2);
-				
-				if(matrix[c2->type][c1->type] && c2->listener) 
+
+				if (matrix[c2->type][c1->type] && c2->listener)
+				{
+					shoot= shoot+1;
+					LOG("COLLISION %d", shoot);
 					c2->listener->OnCollision(c2, c1);
+				}
+				shoot -= 0.5;
+				
+				if (shoot >= 8) { 
+				
+			}
 			}
 		}
 	}

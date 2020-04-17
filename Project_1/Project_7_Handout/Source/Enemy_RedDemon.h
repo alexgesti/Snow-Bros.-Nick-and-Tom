@@ -34,6 +34,8 @@ private:
 	Animation downLAnim;
 	Animation turnRAnim;
 	Animation turnLAnim;
+	Animation deathLAnim;
+	Animation deathRAnim;
 };
 
 #endif // __ENEMY_RedDemon_H__
