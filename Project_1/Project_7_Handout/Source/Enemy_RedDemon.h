@@ -16,10 +16,6 @@ public:
 	void Update() override;
 
 	bool vistard = true;
-	float dead = 0;
-	float timerw = 0;
-	int twalk = 0;
-	int speed = 1;
 
 private:
 	// A set of steps that define the position in the screen
@@ -34,8 +30,6 @@ private:
 	Animation downLAnim;
 	Animation turnRAnim;
 	Animation turnLAnim;
-	Animation deathLAnim;
-	Animation deathRAnim;
 };
 
 #endif // __ENEMY_RedDemon_H__

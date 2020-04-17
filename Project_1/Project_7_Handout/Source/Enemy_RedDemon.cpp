@@ -29,16 +29,8 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 	turnLAnim.speed = 0.1f;
 
-	deathLAnim.PushBack({7, 36, 28, 26});
-	deathLAnim.PushBack({39, 34, 28, 30});
-	deathLAnim.speed = 0.1f;
-
-	deathRAnim.PushBack({171, 35, 28, 26});
-	deathRAnim.PushBack({139, 33, 28, 30});
-	deathRAnim.speed = 0.1f;
-
-	path.PushBack({ 0.25f, 0.0f }, 200, &walkRAnim);
-	path.PushBack({ -0.25f, 0.0f }, 200, &walkLAnim);
+	path.PushBack({ 0.5f, 0.0f }, (rand() % 4 + 1) * 100, &walkRAnim);
+	path.PushBack({ -0.5f, 0.0f }, (rand() % 4 + 1) * 100, &walkLAnim);
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
@@ -50,19 +42,12 @@ void Enemy_RedDemon::Update()
 	position = spawnPos + path.GetRelativePosition();
 	currentAnim = path.GetCurrentAnimation();
 
-	if (timerw <= 0) {
-		twalk = (rand() % 10 + 5) * 100;
-		timerw = twalk;
-		LOG("Enemy walk %d, timer %.2f", twalk, timerw);
-
-		if (vistard == false) {
-			vistard = true;
-		}
-		else if (vistard == true) {
-			vistard = false;
-		}
+	if (currentAnim == &walkLAnim) {
+		vistard = true;
 	}
-	timerw -= 1;
+	else {
+		vistard = false;
+	}
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

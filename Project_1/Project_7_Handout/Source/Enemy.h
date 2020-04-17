@@ -29,7 +29,7 @@ public:
 
 	// Collision response
 	// Triggers an animation and a sound fx
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* c1, Collider* c2);
 
 public:
 	// The current position in the world
@@ -40,6 +40,8 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
+
+	bool candelete = false;
 
 protected:
 	// A ptr to the current animation

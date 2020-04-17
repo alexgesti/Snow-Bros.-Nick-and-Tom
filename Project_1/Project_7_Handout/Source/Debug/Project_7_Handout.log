@@ -1,2 +1,4 @@
-﻿  ModuleCollisions.cpp
-  Project_7_Handout.vcxproj -> C:\Users\Lauren\Desktop\PROJECT_1\Project_1\Debug\Project_7_Handout.exe
+﻿  Enemy_RedDemon.cpp
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Project_7_Handout.vcxproj -> C:\Users\raulc\Desktop\Project_1\Debug\Project_7_Handout.exe
