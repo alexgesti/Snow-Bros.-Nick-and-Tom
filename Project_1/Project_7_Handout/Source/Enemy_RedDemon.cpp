@@ -36,6 +36,22 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
+	if (timerw == 0) { // mirar esto
+		if (vistard == 1) {
+			if (currentAnim != &downLAnim)
+			{
+				downLAnim.Reset();
+				currentAnim = &downLAnim;
+			}
+		}
+		else {
+			if (currentAnim != &downRAnim)
+			{
+				downRAnim.Reset();
+				currentAnim = &downRAnim;
+			}
+		}
+	}
 
 	if (timerw <= 0) {
 		twalk = (rand() % 10 + 5) * 100;
@@ -52,18 +68,35 @@ void Enemy_RedDemon::Update()
 	}
 	timerw -= 1;
 
+	/*if () {
+	dead++;
+	 }*/
 
-	if (timerw == 0) {
-		if (vistard == true) {
+	if (dead > 0) {
+		dead -= 1;
+	}
+	if (dead >= 0) {
+		if (timerw == 0) {
+			if (vistard == true) {
 				currentAnim = &turnLAnim;
+			}
+			else {
+				currentAnim = &turnRAnim;
+			}
 		}
 		else {
-			currentAnim = &turnRAnim;
+			/*path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
+			path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);*/
 		}
 	}
-	else {
-		path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
-		path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);
+	if (dead > 0 && dead <= 4) {
+
+	}
+	else if (dead > 4 && dead <= 6) {
+
+	}
+	else if (dead > 6 && dead <= 8) {
+
 	}
 
 	path.Update();

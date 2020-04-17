@@ -54,7 +54,6 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
-
 	return update_status::UPDATE_CONTINUE;
 }
 

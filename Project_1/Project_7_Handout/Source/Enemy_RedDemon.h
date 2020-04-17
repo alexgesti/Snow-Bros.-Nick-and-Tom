@@ -16,6 +16,7 @@ public:
 	void Update() override;
 
 	bool vistard = true;
+	float dead = 0;
 	float timerw = 0;
 	int twalk = 0;
 	int speed = 1;

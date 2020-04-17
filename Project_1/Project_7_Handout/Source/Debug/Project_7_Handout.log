@@ -1,9 +1,5 @@
 ﻿  Enemy_RedDemon.cpp
 C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Enemy_RedDemon.cpp(51,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  ModuleEnemies.cpp
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Enemy_RedDemon.cpp(67,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Project_7_Handout.vcxproj -> C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Debug\Project_7_Handout.exe

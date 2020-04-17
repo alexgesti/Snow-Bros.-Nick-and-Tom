@@ -15,7 +15,7 @@ ModulePlayer::ModulePlayer()
 {
 	// idle animation - just one sprite
 	idleRAnim.PushBack({ 16, 16, 21, 27 });
-	idleLAnim.PushBack({ 283, 75, 21, 27 });  
+	idleLAnim.PushBack({ 283, 75, 21, 27 });
 	fallRAnim.PushBack({ 16, 304, 20, 30 });
 	fallLAnim.PushBack({ 345 , 131, 20, 30 });
 
