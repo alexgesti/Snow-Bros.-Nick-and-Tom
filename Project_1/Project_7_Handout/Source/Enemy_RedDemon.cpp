@@ -28,34 +28,21 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 	turnLAnim.speed = 0.1f;
-	
-	currentAnim = &walkRAnim;
 
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
-	if (timerw == 0) { // mirar esto
-		if (vistard == 1) {
-			if (currentAnim != &downLAnim)
-			{
-				downLAnim.Reset();
-				currentAnim = &downLAnim;
-			}
-		}
-		else {
-			if (currentAnim != &downRAnim)
-			{
-				downRAnim.Reset();
-				currentAnim = &downRAnim;
-			}
-		}
-	}
+	path.Update();
+
+	position = spawnPos + path.GetRelativePosition();
+	currentAnim = path.GetCurrentAnimation();
 
 	if (timerw <= 0) {
 		twalk = (rand() % 10 + 5) * 100;
-		LOG("Enemy walk %d", twalk);
+		timerw = twalk;
+		LOG("Enemy walk %d, timer %.2f", twalk, timerw);
 
 		if (vistard == false) {
 			vistard = true;
@@ -63,43 +50,8 @@ void Enemy_RedDemon::Update()
 		else if (vistard == true) {
 			vistard = false;
 		}
-
-		timerw = twalk;
 	}
 	timerw -= 1;
-
-	/*if () {
-	dead++;
-	 }*/
-
-	if (dead > 0) {
-		dead -= 1;
-	}
-	if (dead >= 0) {
-		if (timerw == 0) {
-			if (vistard == true) {
-				currentAnim = &turnLAnim;
-			}
-			else {
-				currentAnim = &turnRAnim;
-			}
-		}
-		else {
-			/*path.PushBack({ 1.0, 0.0f }, twalk, &walkRAnim);
-			path.PushBack({ -1.0f, 0.0f }, twalk, &walkLAnim);*/
-		}
-	}
-	if (dead > 0 && dead <= 4) {
-
-	}
-	else if (dead > 4 && dead <= 6) {
-
-	}
-	else if (dead > 6 && dead <= 8) {
-
-	}
-
-	path.Update();
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
