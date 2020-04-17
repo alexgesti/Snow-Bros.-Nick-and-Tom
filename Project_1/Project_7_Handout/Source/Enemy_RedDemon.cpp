@@ -29,6 +29,9 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 	turnLAnim.speed = 0.1f;
 
+	path.PushBack({ 0.25f, 0.0f }, 200, &walkRAnim);
+	path.PushBack({ -0.25f, 0.0f }, 200, &walkLAnim);
+
 	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
