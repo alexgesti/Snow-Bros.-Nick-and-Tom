@@ -66,6 +66,7 @@ public:
 	float timerj = 75;
 	float timers = 10;
 	float high = 0;
+	float count = 0;
 
 	// The player's collider
 	Collider* collider = nullptr;

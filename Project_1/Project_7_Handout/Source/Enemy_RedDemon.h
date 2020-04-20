@@ -17,6 +17,10 @@ public:
 
 	bool vistard = true;
 
+	float timere = 0;
+	float mover = 0;
+	float speed = 0.05f;
+
 private:
 	// A set of steps that define the position in the screen
 	// And an animation for each step
@@ -30,6 +34,8 @@ private:
 	Animation downLAnim;
 	Animation turnRAnim;
 	Animation turnLAnim;
+	Animation Ldead;
+	Animation Rdead;
 };
 
 #endif // __ENEMY_RedDemon_H__

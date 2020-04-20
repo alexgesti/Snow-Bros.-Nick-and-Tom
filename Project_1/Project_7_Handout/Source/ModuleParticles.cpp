@@ -25,24 +25,29 @@ bool ModuleParticles::Start()
 	texture = App->textures->Load("Assets/Nick&Tom.png");
 
 	// muerte
-	explosion.anim.PushBack({16, 531, 30, 29});
-	explosion.anim.PushBack({54, 528, 29, 32});
-	explosion.anim.PushBack({91, 531, 30, 29});
-	explosion.anim.PushBack({ 54, 528, 29, 32 });
-	explosion.anim.PushBack({ 91, 531, 30, 29 });
-	explosion.anim.PushBack({ 54, 528, 29, 32 });
-	explosion.anim.PushBack({ 91, 531, 30, 29 });
-	explosion.anim.PushBack({ 54, 528, 29, 32 });
-	explosion.anim.PushBack({ 91, 531, 30, 29 });
-	explosion.anim.PushBack({ 54, 528, 29, 32 });
-	explosion.anim.PushBack({ 91, 531, 30, 29 });
-	explosion.anim.PushBack({ 129, 535, 28, 25 });
-	explosion.anim.PushBack({ 165, 539, 30, 22 });
-	explosion.anim.PushBack({ 203, 544, 32, 16 });
-	explosion.anim.PushBack({ 243, 547, 32, 13 });
-	explosion.anim.PushBack({ 283, 552, 32, 8 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	pdead.anim.PushBack({16, 531, 30, 29});
+	pdead.anim.PushBack({54, 528, 29, 32});
+	pdead.anim.PushBack({91, 531, 30, 29});
+	pdead.anim.PushBack({ 54, 528, 29, 32 });
+	pdead.anim.PushBack({ 91, 531, 30, 29 });
+	pdead.anim.PushBack({ 54, 528, 29, 32 });
+	pdead.anim.PushBack({ 91, 531, 30, 29 });
+	pdead.anim.PushBack({ 54, 528, 29, 32 });
+	pdead.anim.PushBack({ 91, 531, 30, 29 });
+	pdead.anim.PushBack({ 54, 528, 29, 32 });
+	pdead.anim.PushBack({ 91, 531, 30, 29 });
+	pdead.anim.PushBack({ 129, 535, 28, 25 });
+	pdead.anim.PushBack({ 165, 539, 30, 22 });
+	pdead.anim.PushBack({ 203, 544, 32, 16 });
+	pdead.anim.PushBack({ 243, 547, 32, 13 });
+	pdead.anim.PushBack({ 283, 552, 32, 8 });
+	pdead.anim.loop = false;
+	pdead.anim.speed = 0.3f;
+
+	snow1.anim.PushBack({ 16, 717, 20, 17 });
+	snow2.anim.PushBack({ 44, 710, 23, 24 });
+	snow3.anim.PushBack({ 75, 708, 25, 26 });
+	snow4.anim.PushBack({ 108, 704, 26, 30 });
 
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });

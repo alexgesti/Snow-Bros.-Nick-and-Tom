@@ -288,17 +288,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	 if (c1 == collider && destroyed == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
 
 		destroyed = true;
 	}
-	
-	 
-	/*if ()
-	{
-		LOG("Destroyed");
-	}*/
-
 }

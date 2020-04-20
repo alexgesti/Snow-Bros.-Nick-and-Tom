@@ -29,6 +29,11 @@ void Enemy::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+
+	if (count > 0) {
+		count = count - 0.02f;
+		//LOG("Hits: %.0f", count);
+	}
 }
 
 void Enemy::Draw()
@@ -39,8 +44,32 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::Type::PLAYER_SHOT)
+	if (c1 == collider && c2->type == Collider::Type::PLAYER_SHOT){
+		count++;
+	}
+
+	if (count <= 0) {
+		App->particles->CleanUp();
+	}
+	else if (count > 0 && count <= 4) {
+		App->particles->CleanUp();
+		App->particles->AddParticle(App->particles->snow1, position.x, position.y);
+	}
+	else if (count > 4 && count <= 6){
+		App->particles->CleanUp();
+		App->particles->AddParticle(App->particles->snow2, position.x, position.y);
+	}
+	else if (count >  6 && count <= 8){
+		App->particles->CleanUp();
+		App->particles->AddParticle(App->particles->snow3, position.x, position.y);
+	}
+	else if (count > 8){
+		App->particles->CleanUp();
+		App->particles->AddParticle(App->particles->snow4, position.x, position.y);
+	}
+
+	if (c1 == collider && c2->type == Collider::Type::PLAYER && count > 8) {
 		candelete = true;
-	/*App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->audio->PlayFx(destroyedFx);*/
+		App->audio->PlayFx(destroyedFx);
+	}
 }
