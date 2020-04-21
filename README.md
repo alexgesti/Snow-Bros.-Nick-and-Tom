@@ -8,15 +8,15 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 
 ## GETTING STARTED
 
-### PREREQUISITES
+#### PREREQUISITES
 
-### INSTALLING
+#### INSTALLING
 
 ## RUNNING THE TESTS
 
-### BREAK DOWN INTO END TO AND TESTS
+#### BREAK DOWN INTO END TO AND TESTS
 
-### AND CODING STYLE TESTS
+#### AND CODING STYLE TESTS
 
 ## DEPLOYMENT
 
