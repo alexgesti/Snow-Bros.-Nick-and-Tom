@@ -222,7 +222,7 @@ update_status ModulePlayer::Update()
 					currentAnimation = &shotRAnim;
 				}
 			}
-			if (timers >= 8) 
+			if (timers >= 10) 
 			{
 				shot = false;
 			}
@@ -233,7 +233,7 @@ update_status ModulePlayer::Update()
 		return update_status::UPDATE_STOP;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_BACKSPACE] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_BACKSPACE] == KEY_STATE::KEY_REPEAT) {
 		if (godmode == false) {
 			godmode = true;
 			death = true;
@@ -323,6 +323,7 @@ update_status ModulePlayer::Update()
 
 	if (destroyed)
 	{
+		colliderp->SetPos(600,600);
 		death = true;
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0 && lives > 0) {
