@@ -3,6 +3,8 @@
 # PROJECT_1
 
 ## ABOUT THE GAME
+The game is about knock out some enemies off the screen, throwing snow to them until they turn into a snowball and pushing it to kill the enemies. The game allows up to two players.
+The story is about saving the land from King Scorch, that cursed the protagonists and turn them into snowmen, and captured the princess twins Teri and Tina.
 
 ## GETTING STARTED
 
@@ -54,5 +56,5 @@
 + Gmail: raulcano5.rc@gmail.com
 + Hotmail: raulcano5.rc@hotmail.com
 
-#### Github:
+#### Portfolio:
 + Github: https://github.com/ercanon
