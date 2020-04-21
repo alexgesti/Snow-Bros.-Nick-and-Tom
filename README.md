@@ -1,6 +1,4 @@
-![Photo]()
-
-# PROJECT_1
+# Snow Bros: Nick & Tom
 
 ## ABOUT THE GAME
 The game is about knock out some enemies off the screen, throwing snow to them until they turn into a snowball and pushing it to kill the enemies. The game allows up to two players.
