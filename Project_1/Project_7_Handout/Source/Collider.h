@@ -14,6 +14,7 @@ struct Collider
 		WALL2,
 		FLOOR,
 		PLAYER,
+		FEET,
 		ENEMY,
 		PLAYER_SHOT,
 		AIR,

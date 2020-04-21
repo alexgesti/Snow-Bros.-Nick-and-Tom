@@ -94,7 +94,8 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 220;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 15, 3 }, Collider::Type::PLAYER, this);
+	colliderf = App->collisions->AddCollider({ position.x, position.y, 15, 3 }, Collider::Type::FEET, this);
+	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -277,7 +278,8 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		collider->SetPos(600, 600);
+		colliderf->SetPos(600, 600);
+		colliderp->SetPos(600, 600);
 	}
 	
 
@@ -311,7 +313,8 @@ update_status ModulePlayer::Update()
 		currentAnimation = &idleLAnim;
 	
 	if (godmode == false) {
-		collider->SetPos(position.x+3, position.y+24);
+		colliderf->SetPos(position.x + 3, position.y + 24);
+		colliderp->SetPos(position.x, position.y);
 	}
 
 	currentAnimation->Update();
@@ -320,16 +323,17 @@ update_status ModulePlayer::Update()
 
 	if (destroyed)
 	{
-		collider->SetPos(600, 600);
+		death = true;
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0 && lives > 0) {
 			position.x = 150;
 			position.y = 220;
 			destroyed = false;
+			death = false;
+			jump = false;
 			destroyedCountdown = 120;
 		}
 		else if (destroyedCountdown <= 0 && lives <= 0) {
-			death = true;
 			return update_status::UPDATE_STOP;
 		}
 	}
@@ -350,7 +354,7 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	 if (c1 == collider && destroyed == false && c2->type == Collider::Type::ENEMY)
+	 if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY)
 	{
 		App->particles->AddParticle(App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
@@ -364,12 +368,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
-	 if (c1 == collider && c2->type == Collider::Type::FLOOR && jump == false)
+	 if (c1 == colliderf && c2->type == Collider::Type::FLOOR && jump == false)
 	 {
 		gravity = false;
 
 	 }
-	 if (c1 == collider && c2->type == Collider::Type::AIR)
+	 if (c1 == colliderf && c2->type == Collider::Type::AIR)
 	 {
 		 if (jump == false) {
 			 gravity = true;
@@ -377,13 +381,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		 speedx = 1;
 
 	 }
-	 if (c1 == collider && c2->type == Collider::Type::WALL)
+	 if (c1 == colliderf && c2->type == Collider::Type::WALL)
 	 {
 		 speedx = 0;
 		 position.x -= 1;
 
 	 }
-	 if (c1 == collider && c2->type == Collider::Type::WALL2)
+	 if (c1 == colliderf && c2->type == Collider::Type::WALL2)
 	 {
 		 speedx = 0;
 		 position.x += 1;
