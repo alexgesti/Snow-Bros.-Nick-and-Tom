@@ -376,22 +376,22 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	 }
 	 if (c1 == colliderf && c2->type == Collider::Type::AIR)
 	 {
-		 if (jump == false) {
+		if (jump == false) {
 			 gravity = true;
-		 }
-		 speedx = 1;
+		}
+		speedx = 1;
 
 	 }
 	 if (c1 == colliderf && c2->type == Collider::Type::WALL)
 	 {
-		 speedx = 0;
-		 position.x -= 1;
+		speedx = 0;
+		position.x -= 1;
 
 	 }
 	 if (c1 == colliderf && c2->type == Collider::Type::WALL2)
 	 {
-		 speedx = 0;
-		 position.x += 1;
+		speedx = 0;
+		position.x += 1;
 
 	 }
 }

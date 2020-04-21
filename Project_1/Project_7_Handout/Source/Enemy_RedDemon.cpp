@@ -54,11 +54,11 @@ void Enemy_RedDemon::Update()
 		vistard = false;
 	}
 
-	if (count <= 0) {
+	if (cout <= 0){
 		position = spawnPos + path.GetRelativePosition();
 		currentAnim = path.GetCurrentAnimation();
 	}
-	else if (count > 0) {
+	else if (cout > 0) {
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
