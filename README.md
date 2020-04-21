@@ -10,19 +10,15 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 
 #### PREREQUISITES
 
+#### CONTROLS
++ A:  Left Movement
++ D:  Right Movement
++ W:  Jump
++ SPACE:  Shoot
+
 #### INSTALLING
 
-## RUNNING THE TESTS
-
-#### BREAK DOWN INTO END TO AND TESTS
-
-#### AND CODING STYLE TESTS
-
-## DEPLOYMENT
-
 ## BUILT WITH
-
-## VERSIONING
 
 ## AUTORS
 
