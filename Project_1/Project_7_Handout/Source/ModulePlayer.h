@@ -37,7 +37,8 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	int speedx = 1;
+	int speedy = 1;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -63,10 +64,16 @@ public:
 	bool jump = false;
 	bool shot = false;
 	bool vista = false;
-	float timerj = 75;
+	bool godmode = false;
+	bool gravity = true;
+	bool idle = false;
+	float timerj = 45;
 	float timers = 10;
 	float high = 0;
 	float count = 0;
+	float capabledeath = 0;
+
+	int lives = 3;
 
 	// The player's collider
 	Collider* collider = nullptr;

@@ -11,11 +11,12 @@ struct Collider
 	{
 		NONE = -1,
 		WALL,
+		WALL2,
 		FLOOR,
 		PLAYER,
 		ENEMY,
 		PLAYER_SHOT,
-		ENEMY_SHOT,	//SE BORRARA
+		AIR,
 
 		MAX
 	};

@@ -40,7 +40,7 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-	float count;
+	float count = 0;
 
 	bool candelete = false;
 

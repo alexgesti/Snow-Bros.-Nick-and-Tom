@@ -94,7 +94,7 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 220;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 15, 3 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -103,9 +103,9 @@ update_status ModulePlayer::Update()
 {
 	if (death == false) {
 		//Gravedad
-		if (position.y < 220 && jump == false)//cambiarlo por colisiones
+		if (gravity == true && jump == false)
 		{
-			position.y += speed * 1.5;
+			position.y += speedy;
 			if (vista ==  1) {
 				if (currentAnimation != &fallLAnim)
 				{
@@ -125,9 +125,9 @@ update_status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT 
 			&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
-			position.x -= speed;
+			position.x -= speedx;
 			vista = true;
-			if (currentAnimation != &LAnim && shot == false && timerj >= 75)//coli-
+			if (currentAnimation != &LAnim && shot == false && timerj >= 45 && gravity == false)
 			{
 				LAnim.Reset();
 				currentAnimation = &LAnim;
@@ -137,16 +137,16 @@ update_status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT 
 			&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
 		{
-			position.x += speed;
+			position.x += speedx;
 			vista = false;
-			if (currentAnimation != &RAnim && shot == false && timerj >= 75)// -siones
+			if (currentAnimation != &RAnim && shot == false && timerj >= 45 && gravity == false)
 			{
 				RAnim.Reset();
 				currentAnimation = &RAnim;
 			}
 		}
 
-		if (timerj >= 75) { //bye bye timer, hola colisiones
+		if (timerj >= 45 && gravity == false) {
 			if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 			{
 				timerj = 0;
@@ -162,7 +162,7 @@ update_status ModulePlayer::Update()
 		{
 			if (position.y > high - 40)
 			{
-				position.y -= speed;
+				position.y -= speedy;
 				if (vista == true && currentAnimation != &upRAnim) {
 					if (currentAnimation != &upLAnim)
 					{
@@ -181,6 +181,7 @@ update_status ModulePlayer::Update()
 				if (position.y <= high - 40)
 				{
 					jump = false;
+					gravity = true;
 					high = 0;
 				}
 			}
@@ -220,7 +221,7 @@ update_status ModulePlayer::Update()
 					currentAnimation = &shotRAnim;
 				}
 			}
-			if (timers >= 10) 
+			if (timers >= 8) 
 			{
 				shot = false;
 			}
@@ -230,44 +231,107 @@ update_status ModulePlayer::Update()
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) {
 		return update_status::UPDATE_STOP;
 	}
+
+	if (App->input->keys[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_BACKSPACE] == KEY_STATE::KEY_DOWN) {
+		if (godmode == false) {
+			godmode = true;
+			death = true;
+		}
+		else if (godmode == true) {
+			godmode = false;
+			death = false;
+		}
+	}
+
+	if(godmode == true){
+		currentAnimation = &idleRAnim;
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			position.x -= speedx;
+			vista = true;
+		}
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			position.x += speedx;
+			vista = false;
+		}
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y -= speedy;
+		}
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y += speedy;
+		}
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			if (vista == true)
+			{
+				App->particles->AddParticle(App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+			}
+			else
+			{
+				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->audio->PlayFx(laserFx);
+			}
+		}
+
+		collider->SetPos(600, 600);
+	}
 	
 
 	// If no  movement detected or default floor, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& position.y >= 220  //mas colisiones
 		&& vista == false 
 		&& shot == false
+		&& jump == false
+		&& gravity == false
 		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-		&& position.y >= 220  //mas colisiones
 		&& vista == false
-		&& shot == false)
+		&& shot == false
+		&& jump == false
+		&& gravity == false)
 		currentAnimation = &idleRAnim;
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& position.y >= 220  //mas colisiones
 		&& vista == true
 		&& shot == false
+		&& jump == false
+		&& gravity == false
 		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-		&& position.y >= 220  //mas colisiones
 		&& vista == true
-		&& shot == false)
+		&& shot == false
+		&& jump == false
+		&& gravity == false)
 		currentAnimation = &idleLAnim;
 	
-
-	collider->SetPos(position.x, position.y);
+	if (godmode == false) {
+		collider->SetPos(position.x+3, position.y+24);
+	}
 
 	currentAnimation->Update();
 
+	capabledeath--;
+
 	if (destroyed)
 	{
-		death = true;
+		collider->SetPos(600, 600);
 		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
+		if (destroyedCountdown <= 0 && lives > 0) {
+			position.x = 150;
+			position.y = 220;
+			destroyed = false;
+			destroyedCountdown = 120;
+		}
+		else if (destroyedCountdown <= 0 && lives <= 0) {
+			death = true;
 			return update_status::UPDATE_STOP;
+		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -286,12 +350,43 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	 if (c1 == collider && destroyed == false)
+	 if (c1 == collider && destroyed == false && c2->type == Collider::Type::ENEMY)
 	{
 		App->particles->AddParticle(App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
 
 		destroyed = true;
+		if (capabledeath <=0) {
+			lives--;
+			capabledeath = 120;
+			LOG("Lives")
+		}
 	}
+
+	 if (c1 == collider && c2->type == Collider::Type::FLOOR && jump == false)
+	 {
+		gravity = false;
+
+	 }
+	 if (c1 == collider && c2->type == Collider::Type::AIR)
+	 {
+		 if (jump == false) {
+			 gravity = true;
+		 }
+		 speedx = 1;
+
+	 }
+	 if (c1 == collider && c2->type == Collider::Type::WALL)
+	 {
+		 speedx = 0;
+		 position.x -= 1;
+
+	 }
+	 if (c1 == collider && c2->type == Collider::Type::WALL2)
+	 {
+		 speedx = 0;
+		 position.x += 1;
+
+	 }
 }

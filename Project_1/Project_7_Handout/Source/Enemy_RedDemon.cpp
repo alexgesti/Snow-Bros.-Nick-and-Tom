@@ -40,21 +40,39 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.5f, 0.0f }, (rand() % 4 + 1) * 100, &walkRAnim);
 	path.PushBack({ -0.5f, 0.0f }, (rand() % 4 + 1) * 100, &walkLAnim);
 
-	collider = App->collisions->AddCollider({0, 0, 24, 24}, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({0, 0, 24, 27}, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
 	path.Update();
 
-	position = spawnPos + path.GetRelativePosition();
-	currentAnim = path.GetCurrentAnimation();
-
 	if (currentAnim == &walkLAnim) {
 		vistard = true;
 	}
 	else {
 		vistard = false;
+	}
+
+	if (count <= 0) {
+		position = spawnPos + path.GetRelativePosition();
+		currentAnim = path.GetCurrentAnimation();
+	}
+	else if (count > 0) {
+		if (vistard == true) {
+			if (currentAnim != &Ldead)
+			{
+				Ldead.Reset();
+				currentAnim = &Ldead;
+			}
+		}
+		else {
+			if (currentAnim != &Rdead)
+			{
+				Rdead.Reset();
+				currentAnim = &Rdead;
+			}
+		}
 	}
 
 	// Call to the base class. It must be called at the end
