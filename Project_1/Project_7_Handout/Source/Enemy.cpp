@@ -30,7 +30,8 @@ void Enemy::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	LOG("%d", cout);
+	if (enemies >= 5) {
+	}
 }
 
 void Enemy::Draw()
@@ -56,6 +57,22 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		else if (cout > 8) {
 			App->particles->AddParticle(App->particles->snow4, position.x, position.y);
 			candelete = true;
+			enemies++;
 		}
+	}
+
+	if (c1 == collider && c2->type == Collider::Type::FLOOR) {
+		gravity = false;
+	}
+	if (c1 == collider && c2->type == Collider::Type::AIR) {
+		gravity = true;
+		hitwallL = false;
+		hitwallR = false;
+	}
+	if (c1 == collider && c2->type == Collider::Type::WALL) {
+		hitwallR = true;
+	}
+	if (c1 == collider && c2->type == Collider::Type::WALL2) {
+		hitwallL = true;
 	}
 }

@@ -16,10 +16,9 @@ public:
 	void Update() override;
 
 	bool vistard = true;
+	int random = rand() % 2;
 
-	float timere = 0;
-	float mover = 0;
-	float speed = 0.05f;
+	iPoint movement = { 0, 0 };
 
 private:
 	// A set of steps that define the position in the screen

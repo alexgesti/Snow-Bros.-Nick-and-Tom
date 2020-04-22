@@ -324,7 +324,6 @@ update_status ModulePlayer::Update()
 	if (destroyed)
 	{
 		colliderp->SetPos(600,600);
-		death = true;
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0 && lives > 0) {
 			position.x = 150;
@@ -332,7 +331,7 @@ update_status ModulePlayer::Update()
 			destroyed = false;
 			death = false;
 			jump = false;
-			destroyedCountdown = 120;
+			destroyedCountdown = 100;
 		}
 		else if (destroyedCountdown <= 0 && lives <= 0) {
 			return update_status::UPDATE_STOP;
@@ -355,13 +354,14 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	 if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY)
+	if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY)
 	{
 		App->particles->AddParticle(App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
 
 		destroyed = true;
+		death = true;
 		if (capabledeath <=0) {
 			lives--;
 			capabledeath = 120;
