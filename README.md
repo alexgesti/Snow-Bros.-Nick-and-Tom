@@ -6,19 +6,21 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 
 ## CONTROLS
 
++ ESCAPE: Exit
+
 ### MENU
 + C: Insert Coin
 + SPACE: Start
-+ ESCAPE: Exit
 
 ### GAMEPLAY
 + A:  Left Movement
 + D:  Right Movement
 + W:  Jump
 + SPACE:  Shoot
-+ ESCAPE: Exit
 
 #### DEBUG MODE
++ F1:  Show Collision
++ F2:  God Mode
 
 ## AUTORS
 
@@ -54,3 +56,6 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 
 #### Portfolio:
 + Github: https://github.com/ercanon
+
+## GITHUB
++ https://github.com/alexgesti/PROJECT_1
