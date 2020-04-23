@@ -11,6 +11,12 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 #### INSTALLING
 
 #### CONTROLS
+
+##### MENU
++ C: Insert Coin
++ SPACE: Start
+
+##### GAMEPLAY
 + A:  Left Movement
 + D:  Right Movement
 + W:  Jump
