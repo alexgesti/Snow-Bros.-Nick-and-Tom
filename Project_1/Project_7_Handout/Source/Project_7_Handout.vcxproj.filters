@@ -97,6 +97,9 @@
     <ClInclude Include="ModuleChangeScene.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneWin.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -161,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="ModuleChangeScene.cpp">
       <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneWin.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

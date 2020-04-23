@@ -13,6 +13,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
 #include "ModuleChangeScene.h"
+#include "ModuleSceneWin.h"
 
 Application::Application()
 {
@@ -24,16 +25,17 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] = sceneIntro = new ModuleSceneIntro(true);	//Intro Starts Enabled
+	modules[4] = sceneIntro = new ModuleSceneIntro(false);	//Intro Starts Enabled
 	modules[5] = sceneLevel_1 = new ModuleScene(false);		//Gameplay scene starts disabled
-	modules[6] = player = new ModulePlayer(false);	//Player starts disabled
-	modules[7] = particles = new ModuleParticles(false);	//Particles stars disables
-	modules[8] = enemies = new ModuleEnemies(false);	//Enemies start disabled
+	modules[6] = sceneWin = new ModuleSceneWin(true);
+	modules[7] = player = new ModulePlayer(false);	//Player starts disabled
+	modules[8] = particles = new ModuleParticles(false);	//Particles stars disables
+	modules[9] = enemies = new ModuleEnemies(false);	//Enemies start disabled
 
-	modules[9] = collisions = new ModuleCollisions(true);
+	modules[10] = collisions = new ModuleCollisions(true);
 
-	modules[10] = render = new ModuleRender(true);
-	modules[11] = change = new ModuleChangeScene(true);
+	modules[11] = render = new ModuleRender(true);
+	modules[12] = change = new ModuleChangeScene(true);
 }
 
 Application::~Application()
