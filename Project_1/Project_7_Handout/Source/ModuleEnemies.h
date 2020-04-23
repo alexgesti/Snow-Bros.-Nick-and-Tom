@@ -10,7 +10,6 @@
 enum class ENEMY_TYPE
 {
 	NO_TYPE,
-	REDBIRD,
 	REDDEMON,
 };
 

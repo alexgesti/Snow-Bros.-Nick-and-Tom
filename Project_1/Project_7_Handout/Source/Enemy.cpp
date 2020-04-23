@@ -30,7 +30,12 @@ void Enemy::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	if (enemies >= 5) {
+	if (candelete == true) {
+		enemy += 1;
+	}
+	LOG("%d", enemy)
+	if (enemy >= 5) {
+		LOG("the end");
 	}
 }
 
@@ -64,7 +69,6 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			App->particles->AddParticle(App->particles->snow4, position.x, position.y);
 			candelete = true;
 			App->audio->PlayFx(destroyedFx);
-			enemies++;
 		}
 	}
 

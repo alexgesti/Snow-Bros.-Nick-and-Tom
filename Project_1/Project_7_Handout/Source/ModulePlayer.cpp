@@ -233,7 +233,7 @@ update_status ModulePlayer::Update()
 		return update_status::UPDATE_STOP;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_F] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_BACKSPACE] == KEY_STATE::KEY_REPEAT) {
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 		if (godmode == false) {
 			godmode = true;
 			death = true;

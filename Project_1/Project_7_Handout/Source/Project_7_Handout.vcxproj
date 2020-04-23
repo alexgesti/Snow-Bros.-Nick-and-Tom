@@ -79,7 +79,6 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_RedDemon.h" />
-    <ClInclude Include="Enemy_RedBird.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleChangeScene.h" />
     <ClInclude Include="ModuleCollisions.h" />
@@ -104,7 +103,6 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_RedDemon.cpp" />
-    <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleChangeScene.cpp" />
