@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
@@ -59,6 +60,7 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+	App->particles->Enable();
 	
 	return ret;
 }
@@ -85,12 +87,14 @@ bool ModuleScene::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->collisions->Disable();
+	App->particles->Disable();
 
 	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(App->player->texture);
 	App->enemies->CleanUp();
 	App->collisions->CleanUp();
+	App->particles->CleanUp();
 	App->audio->PlayMusic(NULL); // Limpiar bien
 
 	return true;

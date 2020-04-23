@@ -44,10 +44,12 @@ bool ModuleParticles::Start()
 	pdead.anim.loop = false;
 	pdead.anim.speed = 0.3f;
 
-	snow1.anim.PushBack({ 16, 717, 20, 17 });
-	snow2.anim.PushBack({ 44, 710, 23, 24 });
-	snow3.anim.PushBack({ 75, 708, 25, 26 });
-	snow4.anim.PushBack({ 108, 704, 26, 30 });
+	snow.anim.PushBack({ 16, 717, 20, 17 });
+	snow.anim.PushBack({ 44, 710, 23, 24 });
+	snow.anim.PushBack({ 75, 708, 25, 26 });
+	snow.anim.PushBack({ 108, 704, 26, 30 });
+	snow.anim.loop = false;
+	snow.anim.speed = 0.0f;
 
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
@@ -126,7 +128,6 @@ update_status ModuleParticles::PostUpdate()
 		if (particle != nullptr && particle->isAlive)
 		{
 			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			//render = true;
 		}
 	}
 

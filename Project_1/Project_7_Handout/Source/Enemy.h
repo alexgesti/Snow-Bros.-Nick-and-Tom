@@ -41,7 +41,7 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 	float cout = 0;
-	int enemy = 0;
+	float kills = 0;
 
 	bool candelete = false;
 	bool hitwallL = false;
@@ -51,6 +51,8 @@ public:
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
+	Animation* snowAnim = nullptr;
+	Animation snow;
 
 	// The enemy's collider
 	Collider* collider = nullptr;

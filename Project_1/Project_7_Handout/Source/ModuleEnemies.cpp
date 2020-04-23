@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "Enemy.h"
 #include "Enemy_RedDemon.h"
@@ -122,7 +123,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 		if (enemies[i] != nullptr)
 		{
 			// Delete the enemy when it has reached the end of the screen
-			if (enemies[i]->candelete == true)
+			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 
@@ -162,7 +163,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c1, c2);//Notify the enemy of a collision
 
 			if (enemies[i]->candelete == true) {
-				delete enemies[i];
+				App->collisions->CleanUp();
 				enemies[i] = nullptr;
 				break;
 			}

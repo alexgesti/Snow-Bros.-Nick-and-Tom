@@ -9,6 +9,13 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	spawnPos = position;
+
+	snow.PushBack({ 16, 717, 20, 17 });
+	snow.PushBack({ 44, 710, 23, 24 });
+	snow.PushBack({ 75, 708, 25, 26 });
+	snow.PushBack({ 108, 704, 26, 30 });
+	snow.loop = false;
+	snow.speed = 0;
 }
 
 Enemy::~Enemy()
@@ -30,44 +37,47 @@ void Enemy::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	if (candelete == true) {
-		enemy += 1;
-	}
-	LOG("%d", enemy)
-	if (enemy >= 5) {
+	LOG("%d", kills)
+	if (kills >= 5) {
 		LOG("the end");
 	}
 }
 
 void Enemy::Draw()
 {
-	if (currentAnim != nullptr)
+	if (currentAnim != nullptr) {
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-
-	/*Particle* particle = particles[i];
-	if (App->particles->render == true) {
-		App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-		App->particles->render = false;
-	}*/
+		if (cout > 0) {
+			App->render->Blit(texture, position.x, position.y, &(snowAnim->GetCurrentFrame()));
+		}
+	}
 }
 
 void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == collider && c2->type == Collider::Type::PLAYER_SHOT) {
 		cout++;
+		snowAnim = &snow;
 
-		if (cout > 0 && cout <= 4) {
-			App->particles->AddParticle(App->particles->snow1, position.x + 3, position.y + 13);
+		if (cout > 0) {
+			snow.speed = 0.1f;
+			snow.speed = 0.0f;
 		}
-		else if (cout > 4 && cout <= 6) {
-			App->particles->AddParticle(App->particles->snow2, position.x + 2, position.y + 6);
+		else if (cout >= 4) {
+			snow.speed = 0.1f;
+			snow.speed = 0.0f;
 		}
-		else if (cout > 6 && cout <= 8) {
-			App->particles->AddParticle(App->particles->snow3, position.x + 1, position.y + 4);
+		else if (cout >= 6) {
+			snow.speed = 0.1f;
+			snow.speed = 0.0f;
 		}
-		else if (cout > 8) {
-			App->particles->AddParticle(App->particles->snow4, position.x, position.y);
+		else if (cout >= 8) {
+			snow.speed = 0.1f;
+			snow.speed = 0.0f;
 			candelete = true;
+			if (cout == 8) {
+				kills++;
+			}
 			App->audio->PlayFx(destroyedFx);
 		}
 	}

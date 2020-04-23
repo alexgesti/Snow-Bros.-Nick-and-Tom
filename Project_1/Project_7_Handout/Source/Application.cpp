@@ -24,10 +24,10 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] = sceneIntro = new ModuleSceneIntro(true);
+	modules[4] = sceneIntro = new ModuleSceneIntro(true);	//Intro Starts Enabled
 	modules[5] = sceneLevel_1 = new ModuleScene(false);		//Gameplay scene starts disabled
 	modules[6] = player = new ModulePlayer(false);	//Player starts disabled
-	modules[7] = particles = new ModuleParticles(true);
+	modules[7] = particles = new ModuleParticles(false);	//Particles stars disables
 	modules[8] = enemies = new ModuleEnemies(false);	//Enemies start disabled
 
 	modules[9] = collisions = new ModuleCollisions(true);
