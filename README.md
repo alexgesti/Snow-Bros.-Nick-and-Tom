@@ -22,6 +22,8 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 + W:  Jump
 + SPACE:  Shoot
 
+###### DEBUG MODE
+
 ## BUILT WITH
 
 ## AUTORS
