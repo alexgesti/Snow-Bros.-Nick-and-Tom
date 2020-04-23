@@ -50,23 +50,27 @@ void Enemy_RedDemon::Update()
 {
 	path.Update();
 
-	if (path.GetCurrentAnimation() == &walkLAnim) {
-		vistard = true;
-	}
-	else {
-		vistard = false;
+	if (cout <= 0 || gravity == true) {
+		if (path.GetCurrentAnimation() == &walkLAnim) {
+			vistard = true;
+		}
+		else {
+			vistard = false;
+		}
 	}
 
 	if (hitwallL == true) {
-		movement += { 1, 0 };
+		movement.x += 1;
 	}
 	else if (hitwallR == true) {
-		movement -= { 1, 0 };
+		movement.x -= 1;
 	}
 
+	LOG("x:%d	y:%d", position.x, position.y)
+
 	if (gravity == true) {
-		position += { 0, 1 };
-		movement += { 0, 1 };
+		position.y += 1;
+		movement.y += 1;
 		if (vistard == true) {
 			if (currentAnim != &downLAnim)
 			{

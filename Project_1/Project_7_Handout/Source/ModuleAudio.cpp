@@ -47,7 +47,7 @@ bool ModuleAudio::Init()
 	}
 
 	//Adjust Music Volume
-	if (Mix_VolumeMusic(30) < 0) {
+	if (Mix_VolumeMusic(25) < 0) {
 		LOG("Volume Error! Mix_Volume Error: %s\n", Mix_GetError());
 		ret = false;
 	}

@@ -159,19 +159,19 @@ update_status ModulePlayer::Update()
 			}
 		}
 		timerj += 1;
-		if (jump == true && shot == false)
+		if (jump == true)
 		{
 			if (position.y > high - 40)
 			{
 				position.y -= speedy;
-				if (vista == true && currentAnimation != &upRAnim) {
+				if (vista == true && currentAnimation != &upRAnim && shot == false) {
 					if (currentAnimation != &upLAnim)
 					{
 						upLAnim.Reset();
 						currentAnimation = &upLAnim;
 					}
 				}
-				else if (currentAnimation != &upLAnim) {
+				else if (currentAnimation != &upLAnim && shot == false) {
 					if (currentAnimation != &upRAnim)
 					{
 						upRAnim.Reset();
