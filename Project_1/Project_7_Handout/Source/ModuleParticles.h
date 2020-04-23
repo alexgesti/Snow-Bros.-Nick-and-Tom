@@ -67,6 +67,8 @@ public:
 	//Template particle for a laser
 	Particle laserx;
 	Particle lasery;
+
+	bool render = false;
 };
 
 #endif // !__MODULEPARTICLES_H__

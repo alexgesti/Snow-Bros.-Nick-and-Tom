@@ -39,7 +39,11 @@ void Enemy::Draw()
 	if (currentAnim != nullptr) {
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 	}
-
+	/*Particle* particle = particles[i];
+	if (App->particles->render == true) {
+		App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+		App->particles->render = false;
+	}*/
 }
 
 void Enemy::OnCollision(Collider* c1, Collider* c2)
