@@ -42,6 +42,10 @@ update_status ModuleEnemies::Update()
 			enemies[i]->Update();
 	}
 
+	if (kills >= 5){
+		LOG("You Win!")
+	}
+
 	HandleEnemiesDespawn();
 
 	return update_status::UPDATE_CONTINUE;
@@ -163,7 +167,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c1, c2);//Notify the enemy of a collision
 
 			if (enemies[i]->candelete == true) {
-				App->collisions->CleanUp();
+				delete enemies[i];
+				kills++;
 				enemies[i] = nullptr;
 				break;
 			}

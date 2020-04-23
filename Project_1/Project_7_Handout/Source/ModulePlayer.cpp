@@ -365,7 +365,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (capabledeath <= 0) {
 			lives--;
 			capabledeath = 120;
-			LOG("Lives")
 		}
 	}
 

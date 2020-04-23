@@ -51,7 +51,7 @@ public:
 
 	const SDL_Rect& GetCurrentFrame() const
 	{
-		int actualFrame = currentFrame;
+  		int actualFrame = currentFrame;
 		if (pingpongDirection == -1)
 			actualFrame = totalFrames - currentFrame;
 

@@ -76,6 +76,7 @@ private:
 
 	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;
+	int kills = 0;
 };
 
 #endif // __MODULE_ENEMIES_H__

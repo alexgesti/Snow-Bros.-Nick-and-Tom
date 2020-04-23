@@ -58,7 +58,6 @@ private:
 public:
 	//Template particle for an explosion
 	Particle pdead;
-	Particle snow;
 
 	//Template particle for a laser
 	Particle laserx;

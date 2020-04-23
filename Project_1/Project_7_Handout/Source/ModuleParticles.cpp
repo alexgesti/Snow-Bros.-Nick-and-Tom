@@ -44,13 +44,6 @@ bool ModuleParticles::Start()
 	pdead.anim.loop = false;
 	pdead.anim.speed = 0.3f;
 
-	snow.anim.PushBack({ 16, 717, 20, 17 });
-	snow.anim.PushBack({ 44, 710, 23, 24 });
-	snow.anim.PushBack({ 75, 708, 25, 26 });
-	snow.anim.PushBack({ 108, 704, 26, 30 });
-	snow.anim.loop = false;
-	snow.anim.speed = 0.0f;
-
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
 	laserx.speed.x = 5;
@@ -80,7 +73,7 @@ bool ModuleParticles::CleanUp()
 		}
 	}
 
-	App->textures->Unload(texture);
+	//App->textures->Unload(texture);
 
 	return true;
 }

@@ -40,13 +40,13 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-	float cout = 0;
-	float kills = 0;
+	int cout = 0;
 
 	bool candelete = false;
 	bool hitwallL = false;
 	bool hitwallR = false;
 	bool gravity = true;
+	bool hit = false;
 
 protected:
 	// A ptr to the current animation

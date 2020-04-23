@@ -66,7 +66,7 @@ void Enemy_RedDemon::Update()
 		movement.x -= 1;
 	}
 
-	LOG("x:%d	y:%d", position.x, position.y)
+	//LOG("x:%d	y:%d", position.x, position.y)
 
 		if (gravity == true) {
 			position.y += 1;

@@ -1,12 +1,17 @@
-﻿  Enemy.cpp
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  Application.cpp
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Enemy.cpp
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Enemy_RedDemon.cpp
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   ModuleEnemies.cpp
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleRender.cpp
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ModuleScene.cpp
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(54,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Desktop\Project_1\Project_7_Handout\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  Project_7_Handout.vcxproj -> C:\Users\raulc\Documents\GitHub\PROJECT_1\Project_1\Debug\Project_7_Handout.exe
+  Project_7_Handout.vcxproj -> C:\Users\raulc\Desktop\Project_1\Debug\Project_7_Handout.exe
