@@ -4,27 +4,21 @@
 The game is about knock out some enemies off the screen, throwing snow to them until they turn into a snowball and pushing it to kill the enemies. The game allows up to two players.
 The story is about saving the land from King Scorch, that cursed the protagonists and turn them into snowmen, and captured the princess twins Teri and Tina.
 
-## GETTING STARTED
+## CONTROLS
 
-#### PREREQUISITES
-
-#### INSTALLING
-
-#### CONTROLS
-
-##### MENU
+### MENU
 + C: Insert Coin
 + SPACE: Start
++ ESCAPE: Exit
 
-##### GAMEPLAY
+### GAMEPLAY
 + A:  Left Movement
 + D:  Right Movement
 + W:  Jump
 + SPACE:  Shoot
++ ESCAPE: Exit
 
-###### DEBUG MODE
-
-## BUILT WITH
+#### DEBUG MODE
 
 ## AUTORS
 
