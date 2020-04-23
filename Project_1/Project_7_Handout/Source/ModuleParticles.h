@@ -17,7 +17,7 @@ class ModuleParticles : public Module
 public:
 	// Constructor
 	// Initializes all the particles in the array to nullptr
-	ModuleParticles();
+	ModuleParticles(bool startEnabled);
 
 	//Destructor
 	~ModuleParticles();
@@ -67,8 +67,6 @@ public:
 	//Template particle for a laser
 	Particle laserx;
 	Particle lasery;
-
-	bool render = false;
 };
 
 #endif // !__MODULEPARTICLES_H__

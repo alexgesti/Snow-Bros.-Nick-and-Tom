@@ -36,9 +36,9 @@ void Enemy::Update()
 
 void Enemy::Draw()
 {
-	if (currentAnim != nullptr) {
+	if (currentAnim != nullptr)
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-	}
+
 	/*Particle* particle = particles[i];
 	if (App->particles->render == true) {
 		App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
@@ -63,6 +63,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		else if (cout > 8) {
 			App->particles->AddParticle(App->particles->snow4, position.x, position.y);
 			candelete = true;
+			App->audio->PlayFx(destroyedFx);
 			enemies++;
 		}
 	}

@@ -6,8 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
 
-ModuleScene::ModuleScene()
+ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
 
 }
@@ -30,7 +31,6 @@ bool ModuleScene::Start()
 	//collider del aire para los saltos
 	App->collisions->AddCollider({ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }, Collider::Type::AIR);	//EL SUELO
 
-	//collider suelo
 	App->collisions->AddCollider({ 0, 247, 352, 18 }, Collider::Type::FLOOR);			//EL SUELO
 	App->collisions->AddCollider({ 0, 209, 87, 5 }, Collider::Type::FLOOR);				//PLAT1 B. IZQ
 	App->collisions->AddCollider({ 134, 209, 85, 5 }, Collider::Type::FLOOR);			//PLAT2 B. MED
@@ -55,6 +55,10 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 70, 106);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 250, 106);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 90, 143);
+
+	App->player->Enable();
+	App->enemies->Enable();
+	App->collisions->Enable();
 	
 	return ret;
 }
@@ -73,4 +77,21 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(bgTexture,0,0, NULL);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool ModuleScene::CleanUp()
+{
+	// TODO 2: Enable (and properly disable) the player module
+	App->player->Disable();
+	App->enemies->Disable();
+	App->collisions->Disable();
+
+	// TODO 5: Remove All Memory Leaks - no solution here guys ;)
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(App->player->texture);
+	App->enemies->CleanUp();
+	App->collisions->CleanUp();
+	App->audio->PlayMusic(NULL); // Limpiar bien
+
+	return true;
 }

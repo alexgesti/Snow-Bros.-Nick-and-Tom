@@ -8,7 +8,7 @@
 
 #include "SDL/include/SDL_timer.h"
 
-ModuleParticles::ModuleParticles()
+ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		particles[i] = nullptr;
@@ -78,6 +78,8 @@ bool ModuleParticles::CleanUp()
 		}
 	}
 
+	App->textures->Unload(texture);
+
 	return true;
 }
 
@@ -123,7 +125,8 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			render = true;
+			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			//render = true;
 		}
 	}
 

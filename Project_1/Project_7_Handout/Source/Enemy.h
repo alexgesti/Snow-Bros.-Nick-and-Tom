@@ -40,7 +40,7 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
-	int cout = 0;
+	float cout = 0;
 	int enemies = 0;
 
 	bool candelete = false;

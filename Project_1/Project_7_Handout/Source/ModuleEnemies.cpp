@@ -13,7 +13,7 @@
 #define SPAWN_MARGIN 50
 
 
-ModuleEnemies::ModuleEnemies()
+ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
@@ -27,7 +27,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/demonio.png");
-	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
+	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 
 	return true;
 }
@@ -72,6 +72,8 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
+	App->textures->Unload(texture);
+
 	return true;
 }
 
@@ -102,9 +104,9 @@ void ModuleEnemies::HandleEnemiesSpawn()
 		if (spawnQueue[i].type != ENEMY_TYPE::NO_TYPE)
 		{
 			// Spawn a new enemy if the screen has reached a spawn position
-			if (spawnQueue[i].x)
+			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
-				LOG("Spawning enemy at %d", spawnQueue[i].x);
+				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
 
 				SpawnEnemy(spawnQueue[i]);
 				spawnQueue[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
@@ -121,7 +123,7 @@ void ModuleEnemies::HandleEnemiesDespawn()
 		if (enemies[i] != nullptr)
 		{
 			// Delete the enemy when it has reached the end of the screen
-			if (enemies[i]->candelete==true)
+			if (enemies[i]->candelete == true)
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 

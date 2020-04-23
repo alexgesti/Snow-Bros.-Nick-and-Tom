@@ -27,7 +27,7 @@ class ModuleEnemies : public Module
 {
 public:
 	// Constructor
-	ModuleEnemies();
+	ModuleEnemies(bool startEnabled);
 
 	// Destructor
 	~ModuleEnemies();
@@ -61,6 +61,9 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
+	// The enemies sprite sheet
+	SDL_Texture* texture = nullptr;
+
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
@@ -71,9 +74,6 @@ private:
 
 	// All spawned enemies in the scene
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
-
-	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
 
 	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;

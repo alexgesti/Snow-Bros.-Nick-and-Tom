@@ -40,7 +40,7 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	if (random == 1) {
 		path.PushBack({ -0.5f, 0 }, (rand() % 4 + 1) * 100, &walkLAnim);
 		path.PushBack({ 0.5f, 0 }, (rand() % 4 + 1) * 100, &walkRAnim);
-		
+
 	}
 
 	collider = App->collisions->AddCollider({0, 0, 24, 27}, Collider::Type::ENEMY, (Module*)App->enemies);
@@ -68,44 +68,44 @@ void Enemy_RedDemon::Update()
 
 	LOG("x:%d	y:%d", position.x, position.y)
 
-	if (gravity == true) {
-		position.y += 1;
-		movement.y += 1;
-		if (vistard == true) {
-			if (currentAnim != &downLAnim)
-			{
-				downLAnim.Reset();
-				currentAnim = &downLAnim;
+		if (gravity == true) {
+			position.y += 1;
+			movement.y += 1;
+			if (vistard == true) {
+				if (currentAnim != &downLAnim)
+				{
+					downLAnim.Reset();
+					currentAnim = &downLAnim;
+				}
+			}
+			else {
+				if (currentAnim != &downRAnim)
+				{
+					downRAnim.Reset();
+					currentAnim = &downRAnim;
+				}
 			}
 		}
-		else {
-			if (currentAnim != &downRAnim)
-			{
-				downRAnim.Reset();
-				currentAnim = &downRAnim;
+		else if (cout <= 0) {
+			position = path.GetRelativePosition() + movement + spawnPos;
+			currentAnim = path.GetCurrentAnimation();
+		}
+		else if (cout > 0) {
+			if (vistard == true) {
+				if (currentAnim != &Ldead)
+				{
+					Ldead.Reset();
+					currentAnim = &Ldead;
+				}
+			}
+			else {
+				if (currentAnim != &Rdead)
+				{
+					Rdead.Reset();
+					currentAnim = &Rdead;
+				}
 			}
 		}
-	}
-	else if (cout <= 0) {
-		position = path.GetRelativePosition() + movement + spawnPos;
-		currentAnim = path.GetCurrentAnimation();
-	}
-	else if (cout > 0) {
-		if (vistard == true) {
-			if (currentAnim != &Ldead)
-			{
-				Ldead.Reset();
-				currentAnim = &Ldead;
-			}
-		}
-		else {
-			if (currentAnim != &Rdead)
-			{
-				Rdead.Reset();
-				currentAnim = &Rdead;
-			}
-		}
-	}
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position

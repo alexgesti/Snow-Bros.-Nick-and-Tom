@@ -6,7 +6,7 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL_Scancode.h"
 
-ModuleCollisions::ModuleCollisions()
+ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
@@ -138,13 +138,13 @@ update_status ModuleCollisions::PostUpdate()
 
 void ModuleCollisions::DebugDraw()
 {
-	Uint8 alpha = 90;
+	Uint8 alpha = 80;
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if(colliders[i] == nullptr)
 			continue;
 		
-		switch (colliders[i]->type)
+		switch(colliders[i]->type)
 		{
 		case Collider::Type::NONE: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
