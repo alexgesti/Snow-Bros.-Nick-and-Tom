@@ -58,4 +58,4 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 + Github: https://github.com/ercanon
 
 ## GITHUB
-+ https://github.com/alexgesti/PROJECT_1
++ https://github.com/alexgesti/Snow-Bros.-Nick-and-Tom-
