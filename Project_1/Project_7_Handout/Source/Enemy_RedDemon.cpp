@@ -74,10 +74,10 @@ void Enemy_RedDemon::Update()
 		}
 	}
 
-	if (hitwallL == true) {
+	if (hitwallL == true && vistard == false) {
 		movement.x += 1;
 	}
-	else if (hitwallR == true) {
+	else if (hitwallR == true && vistard == true) {
 		movement.x -= 1;
 	}
 

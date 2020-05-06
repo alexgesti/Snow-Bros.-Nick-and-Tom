@@ -384,12 +384,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == colliderf && c2->type == Collider::Type::WALL)
 	{
-		speedx = 0;
-		position.x -= 1;
+		if (vista == false) {
+			speedx = 0;
+		}
 	}
 	if (c1 == colliderf && c2->type == Collider::Type::WALL2)
 	{
-		speedx = 0;
-		position.x += 1;
+		if (vista == true) {
+			speedx = 0;
+		}
 	}
 }
