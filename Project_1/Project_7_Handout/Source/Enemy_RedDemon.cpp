@@ -74,11 +74,13 @@ void Enemy_RedDemon::Update()
 		}
 	}
 
-	if (hitwallL == true && vistard == false) {
-		movement.x += 1;
+	if (hitwallL == true) {
+		position.x += 1;
+		hitwallL = false;
 	}
-	else if (hitwallR == true && vistard == true) {
-		movement.x -= 1;
+	else if (hitwallR == true) {
+		position.x -= 1;
+		hitwallR = false;
 	}
 
 	if (gravity == true) {
