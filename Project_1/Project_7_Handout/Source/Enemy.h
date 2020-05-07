@@ -41,6 +41,7 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 	float cout = 0;
+	bool clear = false;
 
 	bool candelete = false;
 	bool hitwallL = false;

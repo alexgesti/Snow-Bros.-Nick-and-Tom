@@ -63,7 +63,7 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	path.Update();
+	path.Update(clear);
 
 	if (cout <= 0 || gravity == true) {
 		if (path.GetCurrentAnimation() == &walkLAnim) {
@@ -74,13 +74,14 @@ void Enemy_RedDemon::Update()
 		}
 	}
 
-	if (hitwallL == true) {
-		position.x += 1;
-		hitwallL = false;
+	if (hitwallL == true && vistard == true) {
+		clear = true;
 	}
-	else if (hitwallR == true) {
-		position.x -= 1;
-		hitwallR = false;
+	else if (hitwallR == true && vistard == false) {
+		clear = true;
+	}
+	else {
+		clear = false;
 	}
 
 	if (gravity == true) {
@@ -102,7 +103,7 @@ void Enemy_RedDemon::Update()
 		}
 	}
 	else if (cout <= 0) {
-		position = path.GetRelativePosition() + movement + spawnPos;
+		position = path.GetRelativePosition() + spawnPos + movement;
 		currentAnim = path.GetCurrentAnimation();
 	}
 	else if (cout > 0) {

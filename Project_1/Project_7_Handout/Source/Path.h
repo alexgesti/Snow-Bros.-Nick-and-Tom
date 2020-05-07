@@ -21,7 +21,7 @@ public:
 
 	// Called from Enemy's Update
 	// Increases the frame count and, if necessary, increases step
-	void Update();
+	void Update(bool clear);
 
 	// Returns the position relative to the start of the path
 	iPoint GetRelativePosition() const;

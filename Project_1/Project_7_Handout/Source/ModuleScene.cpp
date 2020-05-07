@@ -61,10 +61,10 @@ bool ModuleScene::Start()
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 100, 50);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 230, 50);
+	/*App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 230, 50);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 70, 106);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 250, 106);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 90, 143);
+	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 90, 143);*/
 
 	App->player->Enable();
 	App->enemies->Enable();

@@ -10,7 +10,7 @@ void Path::PushBack(fPoint speed, uint frames, Animation* animation)
 	totalSteps++;
 }
 
-void Path::Update()
+void Path::Update(bool clear)
 {
 	currentStepFrame += 1;
 
@@ -27,7 +27,9 @@ void Path::Update()
 		currentStepFrame = 0;
 	}
 
-	relativePosition += steps[currentStep].speed;
+	if (clear == false) {
+		relativePosition += steps[currentStep].speed;
+	}
 }
 
 iPoint Path::GetRelativePosition() const
