@@ -5,10 +5,9 @@
 Particle::Particle()
 {
 	position.SetToZero();
-	speed.SetToZero();
 }
 
-Particle::Particle(const Particle& p) : anim(p.anim), position(p.position), speed(p.speed),
+Particle::Particle(const Particle& p) : anim(p.anim), position(p.position), speedx(p.speedx), speedy(p.speedy),
 										frameCount(p.frameCount), lifetime(p.lifetime)
 {
 
@@ -44,8 +43,30 @@ bool Particle::Update()
 			ret = false;
 
 		// Update the position in the screen
-		position.x += speed.x;
-		position.y += speed.y;
+		if (activate == 1) {
+			position.x += speedx;
+			countdown += 1;
+			if (countdown >= 10) {
+				position.y += speedy;
+				if (speedx > 0) {
+					speedx -= 0.5f;
+				}
+			}
+		}
+		if (activate == 2) {
+			position.x -= speedx;
+			countdown += 1;
+			if (countdown >= 10) {
+				position.y += speedy;
+				if (speedx > 0) {
+					speedx -= 0.5f;
+				}
+			}
+		}
+		if (activate == 0){
+			position.x += speedx;
+			position.y += speedy;
+		}
 
 		if (collider != nullptr)
 			collider->SetPos(position.x, position.y);

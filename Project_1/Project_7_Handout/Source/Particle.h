@@ -27,8 +27,12 @@ public:
 	// Defines the position in the screen
 	iPoint position;
 
+	int activate = 0;
+	int countdown = 0;
+
 	// Defines the speed at which the particle will move (pixels per second)
-	iPoint speed;
+	float speedx;
+	float speedy;
 
 	// A set of rectangle sprites
 	Animation anim;

@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
+#include "ModuleParticles.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -35,6 +36,8 @@ bool ModuleSceneWin::Start()
 	bool ret = true;
 
 	Texture = App->textures->Load("Assets/Inicio_Page.png");
+
+	App->particles->CleanUp();
 
 	return ret;
 }

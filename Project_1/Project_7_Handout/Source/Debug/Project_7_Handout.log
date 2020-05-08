@@ -1,22 +1,2 @@
-﻿  Enemy.cpp
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Enemy_RedDemon.cpp
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleEnemies.cpp
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModulePlayer.cpp
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(154,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-  Path.cpp
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  ModuleRender.cpp
   Project_7_Handout.vcxproj -> C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Debug\Project_7_Handout.exe

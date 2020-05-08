@@ -5,6 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+#include "Application.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -46,13 +48,15 @@ bool ModuleParticles::Start()
 
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
-	laserx.speed.x = 5;
+	laserx.speedx = 5;
+	laserx.speedy = 2;
 	laserx.lifetime = 180;
 	laserx.anim.speed = 0.2f;
 
 	lasery.anim.PushBack({ 588, 191, 7, 11 });
 	lasery.anim.PushBack({ 573, 191, 7, 11 });
-	lasery.speed.x = -5;
+	lasery.speedx = 5;
+	lasery.speedy = 2;
 	lasery.lifetime = 180;
 	lasery.anim.speed = 0.2f;
 
@@ -127,7 +131,7 @@ update_status ModuleParticles::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(int activate, const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -139,6 +143,9 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
 			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
 			p->position.y = y;
+			p->activate = activate;
+
+			LOG("%d", activate)
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)

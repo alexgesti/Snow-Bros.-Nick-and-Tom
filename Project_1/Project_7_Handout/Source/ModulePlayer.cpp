@@ -194,12 +194,12 @@ update_status ModulePlayer::Update()
 			timers = 0;
 			if (vista == true)
 			{
-				App->particles->AddParticle(App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 		}
@@ -264,12 +264,12 @@ update_status ModulePlayer::Update()
 		{
 			if (vista == true)
 			{
-				App->particles->AddParticle(App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(0, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 			else
 			{
-				App->particles->AddParticle(App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(0, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 		}
@@ -334,7 +334,6 @@ update_status ModulePlayer::Update()
 				App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->screenGameOver, 60);
 				lives = 3;
 				less = true;
-
 			}
 		}
 	}
@@ -357,7 +356,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY)
 	{
-		App->particles->AddParticle(App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(0, App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
 

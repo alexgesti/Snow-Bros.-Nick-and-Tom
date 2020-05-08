@@ -62,8 +62,8 @@ public:
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool death = false;
 	bool jump = false;
-	bool shot = false;
 	bool vista = false;
+	bool shot = false;
 	bool godmode = false;
 	bool gravity = true;
 	bool idle = false;
