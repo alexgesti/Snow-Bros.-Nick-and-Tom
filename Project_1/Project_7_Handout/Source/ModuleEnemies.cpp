@@ -28,7 +28,8 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/demonio.png");
+	Redemon = App->textures->Load("Assets/demonio.png");
+	SnowT = App->textures->Load("Assets/Nick&Tom.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 
 	kills = 0;
@@ -83,7 +84,7 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
-	App->textures->Unload(texture);
+	App->textures->Unload(Redemon);
 
 	return true;
 }
@@ -156,9 +157,10 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			{
 			case ENEMY_TYPE::REDDEMON:
 				enemies[i] = new Enemy_RedDemon(info.x, info.y);
+				enemies[i]->texture = Redemon;
 				break;
 			}
-			enemies[i]->texture = texture;
+			
 			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}

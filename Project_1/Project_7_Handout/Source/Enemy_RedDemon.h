@@ -33,13 +33,8 @@ private:
 	Animation downLAnim;
 	Animation turnRAnim;
 	Animation turnLAnim;
-	Animation Ldead1;
-	Animation Rdead1;
-	Animation Ldead2;
-	Animation Rdead2;
-	Animation Ldead3;
-	Animation Rdead3;
-	Animation snowball;
+	Animation Ldead;
+	Animation Rdead;
 };
 
 #endif // __ENEMY_RedDemon_H__

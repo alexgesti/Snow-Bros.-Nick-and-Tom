@@ -61,7 +61,8 @@ public:
 	void HandleEnemiesDespawn();
 
 	// The enemies sprite sheet
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* Redemon = nullptr;
+	SDL_Texture* SnowT = nullptr;
 
 private:
 	// Spawns a new enemy using the data from the queue

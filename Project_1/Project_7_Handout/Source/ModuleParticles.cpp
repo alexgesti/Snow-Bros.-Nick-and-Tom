@@ -48,14 +48,14 @@ bool ModuleParticles::Start()
 
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
-	laserx.speedx = 5;
+	laserx.speedx = 4;
 	laserx.speedy = 2;
 	laserx.lifetime = 180;
 	laserx.anim.speed = 0.2f;
 
 	lasery.anim.PushBack({ 588, 191, 7, 11 });
 	lasery.anim.PushBack({ 573, 191, 7, 11 });
-	lasery.speedx = 5;
+	lasery.speedx = 4;
 	lasery.speedy = 2;
 	lasery.lifetime = 180;
 	lasery.anim.speed = 0.2f;

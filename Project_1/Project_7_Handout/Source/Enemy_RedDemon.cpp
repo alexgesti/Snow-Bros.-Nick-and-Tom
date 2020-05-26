@@ -23,31 +23,13 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 
 	turnLAnim.PushBack({ 8, 2, 27 , 27 });
 
-	Ldead1.PushBack({ 46, 236, 28, 30 });
-	Ldead1.PushBack({ 78, 234, 28, 30 });
-	Ldead1.speed = 0.1f;
+	Ldead.PushBack({ 15, 41, 28, 26 });
+	Ldead.PushBack({ 47, 39, 28, 30 });
+	Ldead.speed = 0.1f;
 
-	Rdead1.PushBack({ 210, 235, 28, 31 });
-	Rdead1.PushBack({ 178, 233, 28, 31 });
-	Rdead1.speed = 0.1f;
-
-	Ldead2.PushBack({ 46, 274, 28, 30 });
-	Ldead2.PushBack({ 78, 272, 28, 30 });
-	Ldead2.speed = 0.1f;
-
-	Rdead2.PushBack({ 210, 273, 28, 31 });
-	Rdead2.PushBack({ 178, 271, 28, 31 });
-	Rdead2.speed = 0.1f;
-
-	Ldead3.PushBack({ 46, 315, 28, 30 });
-	Ldead3.PushBack({ 78, 313, 28, 30 });
-	Ldead3.speed = 0.1f;
-
-	Rdead3.PushBack({ 210, 314, 28, 31 });
-	Rdead3.PushBack({ 178, 312, 28, 31 });
-	Rdead3.speed = 0.1f;
-
-	snowball.PushBack({ 129, 275, 26, 30 });
+	Rdead.PushBack({ 179, 40, 28, 26 });
+	Rdead.PushBack({ 147, 38, 28, 30 });
+	Rdead.speed = 0.1f;
 
 	if (random == 0) {
 		path.PushBack({ 0.5f, 0 }, (rand() % 4 + 1) * 100, &walkRAnim);
@@ -108,63 +90,17 @@ void Enemy_RedDemon::Update()
 	}
 	else if (cout > 0) {
 		if (vistard == true) {
-			if (cout > 0 && cout < 4) {
-				if (currentAnim != &Ldead1)
-				{
-					Ldead1.Reset();
-					currentAnim = &Ldead1;
-				}
-			}
-			if (cout >= 4 && cout < 6) {
-				if (currentAnim != &Ldead2)
-				{
-					Ldead2.Reset();
-					currentAnim = &Ldead2;
-				}
-			}
-			if (cout >= 6 && cout < 8) {
-				if (currentAnim != &Ldead3)
-				{
-					Ldead3.Reset();
-					currentAnim = &Ldead3;
-				}
-			}
-			if (cout >= 8) {
-				if (currentAnim != &snowball)
-				{
-					snowball.Reset();
-					currentAnim = &snowball;
-				}
+			if (currentAnim != &Ldead)
+			{
+				downLAnim.Reset();
+				currentAnim = &Ldead;
 			}
 		}
 		else {
-			if (cout > 0 && cout < 4) {
-				if (currentAnim != &Rdead1)
-				{
-					Rdead1.Reset();
-					currentAnim = &Rdead1;
-				}
-			}
-			if (cout >= 4 && cout < 6) {
-				if (currentAnim != &Rdead2)
-				{
-					Rdead2.Reset();
-					currentAnim = &Rdead2;
-				}
-			}
-			if (cout >= 6 && cout < 8) {
-				if (currentAnim != &Rdead3)
-				{
-					Rdead3.Reset();
-					currentAnim = &Rdead3;
-				}
-			}
-			if (cout >= 8) {
-				if (currentAnim != &snowball)
-				{
-					snowball.Reset();
-					currentAnim = &snowball;
-				}
+			if (currentAnim != &Rdead)
+			{
+				downLAnim.Reset();
+				currentAnim = &Rdead;
 			}
 		}
 	}

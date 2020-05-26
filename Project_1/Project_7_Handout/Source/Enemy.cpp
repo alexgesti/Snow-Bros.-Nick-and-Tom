@@ -6,9 +6,15 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleEnemies.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
+	snow1.PushBack({ 16, 717, 20, 17 });
+	snow2.PushBack({ 44, 710, 23, 24 });
+	snow3.PushBack({ 75, 708, 25, 26 });
+	snow4.PushBack({ 142, 703, 25, 31 });
+
 	spawnPos = position;
 }
 
@@ -33,12 +39,11 @@ void Enemy::Update()
 
 	if (hit == true) {
 		cout++;
-
-		if (cout == 8) {
-			candelete = true;
-			collider->SetPos(-600, -600);
-			App->audio->PlayFx(destroyedFx);
-		}
+		//collider->SetPos(-600, -600);
+			if (cout >= 8) {
+				candelete = true;
+				App->audio->PlayFx(destroyedFx);
+			}
 		hit = false;
 	}
 }
@@ -47,6 +52,18 @@ void Enemy::Draw()
 {
 	if (currentAnim != nullptr) {
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	}
+	if (cout >= 1 && cout < 4) {
+		App->render->Blit(App->enemies->SnowT, position.x, position.y, &(snow1.GetCurrentFrame()));
+	}
+	else if (cout >= 4 && cout < 6) {
+		App->render->Blit(App->enemies->SnowT, position.x, position.y, &(snow2.GetCurrentFrame()));
+	}
+	else if (cout >= 6 && cout < 8) {
+		App->render->Blit(App->enemies->SnowT, position.x, position.y, &(snow3.GetCurrentFrame()));
+	}
+	else if (cout >= 8) {
+		App->render->Blit(App->enemies->SnowT, position.x, position.y, &(snow4.GetCurrentFrame()));
 	}
 }
 

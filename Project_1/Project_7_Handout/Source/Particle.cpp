@@ -49,7 +49,7 @@ bool Particle::Update()
 			if (countdown >= 10) {
 				position.y += speedy;
 				if (speedx > 0) {
-					speedx -= 0.5f;
+					speedx -= 0.4f;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ bool Particle::Update()
 			if (countdown >= 10) {
 				position.y += speedy;
 				if (speedx > 0) {
-					speedx -= 0.5f;
+					speedx -= 0.4f;
 				}
 			}
 		}

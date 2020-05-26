@@ -54,6 +54,11 @@ protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
+	Animation snow1;
+	Animation snow2;
+	Animation snow3;
+	Animation snow4;
+
 	// The enemy's collider
 	Collider* collider = nullptr;
 
