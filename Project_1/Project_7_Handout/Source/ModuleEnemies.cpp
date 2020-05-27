@@ -50,8 +50,6 @@ update_status ModuleEnemies::Update()
 	if (kills >= 5)
 	{
 		App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->sceneWin, 60);
-		App->player->lives = 3;
-		App->player->less = true;
 	}
 
 	HandleEnemiesDespawn();

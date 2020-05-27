@@ -60,6 +60,11 @@ public:
 
 		return frames[actualFrame];
 	}
+
+	void GetSelectedFrame(int frame)
+	{
+		currentFrame = frame;
+	}
 };
 
 #endif

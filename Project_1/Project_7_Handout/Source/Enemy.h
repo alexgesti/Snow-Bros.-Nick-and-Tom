@@ -40,6 +40,7 @@ public:
 
 	// Sound fx when destroyed
 	int destroyedFx = 0;
+	int countdown = 0;
 	float cout = 0;
 	bool clear = false;
 
@@ -54,11 +55,7 @@ protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
 
-	Animation snow1;
-	Animation snow2;
-	Animation snow3;
-	Animation snow4;
-
+	Animation snow;
 	// The enemy's collider
 	Collider* collider = nullptr;
 

@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleChangeScene.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -92,10 +93,14 @@ bool ModulePlayer::Start()
 	deathFx = App->audio->LoadFx("Assets/death.wav");
 
 	position.x = 150;
-	position.y = 222;
+	position.y = 221;
 
 	colliderf = App->collisions->AddCollider({ position.x, position.y, 15, 3 }, Collider::Type::FEET, this);
 	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
+
+	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
+	
+	currentAnimation = &idleRAnim;
 
 	return ret;
 }
@@ -332,8 +337,6 @@ update_status ModulePlayer::Update()
 			}
 			else if (lives <= 0) {
 				App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->screenGameOver, 60);
-				lives = 3;
-				less = true;
 			}
 		}
 	}

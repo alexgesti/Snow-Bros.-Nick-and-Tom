@@ -18,7 +18,6 @@ ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 	alive.PushBack({ 25, 63, 8, 8 });
 	alive.PushBack({ 17, 63, 7, 8 });
 	alive.PushBack({ 11, 63, 5, 8 });
-	alive.loop = true;
 }
 
 ModuleScene::~ModuleScene()
@@ -69,6 +68,8 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->collisions->Enable();
+
+	alive.GetSelectedFrame(0);
 	
 	return ret;
 }
@@ -76,15 +77,15 @@ bool ModuleScene::Start()
 update_status ModuleScene::Update()
 {
 	if (App->player->lives == 3 && App->player->less == true) {
-		alive.Update();
+		alive.GetSelectedFrame(0);
 		App->player->less = false;
 	}
 	else if (App->player->lives == 2 && App->player->less == true) {
-		alive.Update();
+		alive.GetSelectedFrame(1);
 		App->player->less = false;
 	}
 	else if (App->player->lives == 1 && App->player->less == true) {
-		alive.Update();
+		alive.GetSelectedFrame(2);
 		App->player->less = false;
 	}
 
