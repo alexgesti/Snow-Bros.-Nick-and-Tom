@@ -18,7 +18,7 @@ struct Collider
 		ENEMY,
 		PLAYER_SHOT,
 		AIR,
-		SNOWBALL,
+		FISICSNOW,
 		DELSNOW,
 
 		MAX

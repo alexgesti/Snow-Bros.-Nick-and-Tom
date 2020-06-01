@@ -32,6 +32,8 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 	Rdead.PushBack({ 147, 38, 28, 30 });
 	Rdead.speed = 0.1f;
 
+	nothing.PushBack({ 0, 0, 0, 0 });
+
 	if (random == 0) {
 		vistard = true;
 	}
@@ -39,7 +41,7 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	collidersnow = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
+	cfs = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
@@ -123,6 +125,12 @@ void Enemy_RedDemon::Update()
 	}
 
 	else if (cout >= 8) {
+		if (currentAnim != &nothing)
+		{
+			nothing.Reset();
+			currentAnim = &nothing;
+		}
+
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + 2;
 		}

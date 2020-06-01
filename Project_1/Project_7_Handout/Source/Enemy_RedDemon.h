@@ -26,6 +26,7 @@ private:
 	Animation turnLAnim;
 	Animation Ldead;
 	Animation Rdead;
+	Animation nothing;
 };
 
 #endif // __ENEMY_RedDemon_H__

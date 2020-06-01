@@ -53,6 +53,7 @@ public:
 	bool hit = false;
 	bool once = true;
 	bool push = false;
+	bool rolling = false;
 	bool InitialD = false;
 
 protected:
@@ -62,7 +63,7 @@ protected:
 	Animation snow;
 	// The enemy's collider
 	Collider* collider = nullptr;
-	Collider* collidersnow = nullptr;
+	Collider* cfs = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;
