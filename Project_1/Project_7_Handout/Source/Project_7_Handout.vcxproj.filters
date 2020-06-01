@@ -85,9 +85,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Path.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_RedDemon.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
@@ -158,9 +155,6 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Path.cpp">
-      <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_RedDemon.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>

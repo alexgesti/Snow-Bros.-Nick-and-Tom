@@ -58,6 +58,7 @@ public:
 	Animation fallLAnim;
 	Animation shotRAnim;
 	Animation shotLAnim;
+	Animation pdead;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool death = false;
@@ -82,7 +83,7 @@ public:
 	bool destroyed = false;
 
 	// A countdown to when the player gets destroyed. After a while, the game exits
-	uint destroyedCountdown = 120;
+	int destroyedCountdown = 120;
 
 	// Sound effects indices
 	uint laserFx = 0;

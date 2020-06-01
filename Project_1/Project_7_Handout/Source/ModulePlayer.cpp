@@ -99,8 +99,6 @@ bool ModulePlayer::Start()
 	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
 
 	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
-	
-	currentAnimation = &idleRAnim;
 
 	return ret;
 }
@@ -323,10 +321,11 @@ update_status ModulePlayer::Update()
 	if (destroyed)
 	{
 		colliderp->SetPos(600, 600);
+		colliderf->SetPos(600, 600);
 		destroyedCountdown--;
 		if (destroyedCountdown <= 0) {
 			jump = false;
-			destroyedCountdown = 100;
+			destroyedCountdown = 120;
 			if (lives > 0) {
 				position.x = 150;
 				position.y = 221;
@@ -360,6 +359,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(0, App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
+
 
 		death = true;
 		destroyed = true;

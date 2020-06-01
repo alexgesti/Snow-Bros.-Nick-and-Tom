@@ -1,4 +1,4 @@
-﻿  Enemy_RedDemon.cpp
+﻿  ModuleParticles.cpp
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
