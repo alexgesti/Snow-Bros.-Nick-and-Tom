@@ -42,7 +42,7 @@ public:
 	int destroyedFx = 0;
 	int countdown = 0;
 	float cout = 0;
-	bool clear = false;
+	bool vistard = false;
 
 	bool candelete = false;
 	bool hitwallL = false;
@@ -58,6 +58,7 @@ protected:
 	Animation snow;
 	// The enemy's collider
 	Collider* collider = nullptr;
+	Collider* collidersnow = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	iPoint spawnPos;

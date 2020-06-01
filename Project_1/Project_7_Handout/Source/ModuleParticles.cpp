@@ -145,8 +145,6 @@ void ModuleParticles::AddParticle(int activate, const Particle& particle, int x,
 			p->position.y = y;
 			p->activate = activate;
 
-			LOG("%d", activate)
-
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
 				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);

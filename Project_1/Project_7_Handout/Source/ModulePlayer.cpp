@@ -320,8 +320,6 @@ update_status ModulePlayer::Update()
 
 	currentAnimation->Update();
 
-	capabledeath--;
-
 	if (destroyed)
 	{
 		colliderp->SetPos(600, 600);
@@ -331,7 +329,7 @@ update_status ModulePlayer::Update()
 			destroyedCountdown = 100;
 			if (lives > 0) {
 				position.x = 150;
-				position.y = 222;
+				position.y = 221;
 				destroyed = false;
 				death = false;
 			}
@@ -363,20 +361,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		App->audio->PlayFx(deathFx);
 
-		less = true;
-		destroyed = true;
 		death = true;
-		if (capabledeath <= 0) {
-			destroyed = true;
-			lives--;
-			capabledeath = 100;
-		}
+		destroyed = true;
+		lives--;
 	}
 
 	if (c1 == colliderf && c2->type == Collider::Type::FLOOR && jump == false)
 	{
 		gravity = false;
 	}
+
 	if (c1 == colliderf && c2->type == Collider::Type::AIR)
 	{
 		if (jump == false) {
@@ -384,12 +378,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		speedx = 1;
 	}
+
 	if (c1 == colliderf && c2->type == Collider::Type::WALL)
 	{
 		if (vista == false) {
 			speedx = 0;
 		}
 	}
+
 	if (c1 == colliderf && c2->type == Collider::Type::WALL2)
 	{
 		if (vista == true) {

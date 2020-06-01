@@ -7,6 +7,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
 {
@@ -14,7 +15,9 @@ Enemy::Enemy(int x, int y) : position(x, y)
 	snow.PushBack({ 16, 717, 20, 17 });
 	snow.PushBack({ 44, 710, 23, 24 });
 	snow.PushBack({ 75, 708, 25, 26 });
-	snow.PushBack({ 142, 703, 25, 31 });
+	snow.PushBack({ 141, 703, 26, 31 });
+
+	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
 
 	spawnPos = position;
 }
@@ -27,7 +30,7 @@ Enemy::~Enemy()
 
 const Collider* Enemy::GetCollider() const
 {
-	return collider;
+	return collidersnow;
 }
 
 void Enemy::Update()
@@ -35,12 +38,14 @@ void Enemy::Update()
 	if (currentAnim != nullptr)
 		currentAnim->Update();
 
-	if (collider != nullptr && candelete == false)
+	if (collidersnow != nullptr && candelete == false) {
+		collidersnow->SetPos(position.x, position.y);
 		collider->SetPos(position.x, position.y);
+	}
 
 	if (hit == true) {
 		cout++;
-			if (cout >= 8) {
+			if (cout == 8) {
 				candelete = true;
 				App->audio->PlayFx(destroyedFx);
 			}
@@ -54,6 +59,10 @@ void Enemy::Update()
 			cout--;
 		}
 	}*/
+
+	if (cout > 0) {
+		collider->SetPos(-600, -600);
+	}
 }
 
 void Enemy::Draw()
@@ -82,22 +91,31 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == collider && c2->type == Collider::Type::PLAYER_SHOT) {
+	if (c1 == collidersnow && c2->type == Collider::Type::PLAYER_SHOT) {
 		hit = true;
 	}
 
-	if (c1 == collider && c2->type == Collider::Type::FLOOR) {
+	if (c1 == collidersnow && c2->type == Collider::Type::FLOOR) {
 		gravity = false;
 	}
-	if (c1 == collider && c2->type == Collider::Type::AIR) {
+	if (c1 == collidersnow && c2->type == Collider::Type::AIR) {
 		gravity = true;
 		hitwallL = false;
 		hitwallR = false;
 	}
-	if (c1 == collider && c2->type == Collider::Type::WALL) {
+	if (c1 == collidersnow && c2->type == Collider::Type::WALL) {
 		hitwallR = true;
 	}
-	if (c1 == collider && c2->type == Collider::Type::WALL2) {
+	if (c1 == collidersnow && c2->type == Collider::Type::WALL2) {
 		hitwallL = true;
+	}  
+
+	if (c1 == collidersnow && cout >= 8 && vistard == true && c2->type == Collider::Type::PLAYER) {
+		position.x ++;
+		collidersnow->SetPos(position.x, position.y);
+	}
+	if (c1 == collidersnow && cout >= 8 && vistard == false && c2->type == Collider::Type::PLAYER) {
+		position.x--;
+		collidersnow->SetPos(position.x, position.y);
 	}
 }

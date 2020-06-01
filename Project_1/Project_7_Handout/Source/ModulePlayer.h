@@ -67,12 +67,10 @@ public:
 	bool godmode = false;
 	bool gravity = true;
 	bool idle = false;
-	bool less = false;
 	float timerj = 45;
 	float timers = 10;
 	float high = 0;
 	float count = 0;
-	float capabledeath = 0;
 
 	int lives = 3;
 

@@ -10,12 +10,29 @@ void Path::PushBack(fPoint speed, uint frames, Animation* animation)
 	totalSteps++;
 }
 
-void Path::Update(bool clear)
+void Path::Update(int ran, bool SL, bool SR, bool clear)
 {
 	currentStepFrame += 1;
 
 	if (currentStepFrame > steps[currentStep].framesDuration)
 	{
+		if (ran == 0) {
+			if (SR) {
+				currentStep = totalSteps;
+			}
+			if (SL) {
+				currentStep = 0;
+			}
+		}
+		if (ran == 1) {
+			if (SL) {
+				currentStep = totalSteps;
+			}
+			if (SR) {
+				currentStep = 0;
+			}
+		}
+
 		if (currentStep < totalSteps - 1) // If it is not the last step, advance
 		{
 			currentStep++;

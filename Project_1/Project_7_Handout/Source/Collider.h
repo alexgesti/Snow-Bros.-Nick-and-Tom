@@ -18,6 +18,7 @@ struct Collider
 		ENEMY,
 		PLAYER_SHOT,
 		AIR,
+		SNOWBALL,
 
 		MAX
 	};

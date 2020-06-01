@@ -32,43 +32,30 @@ Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
 	Rdead.speed = 0.1f;
 
 	if (random == 0) {
-		path.PushBack({ 0.5f, 0 }, (rand() % 4 + 1) * 100, &walkRAnim);
-		path.PushBack({ -0.5f, 0 }, (rand() % 4 + 1) * 100, &walkLAnim);
+		vistard = true;
 	}
-	if (random == 1) {
-		path.PushBack({ -0.5f, 0 }, (rand() % 4 + 1) * 100, &walkLAnim);
-		path.PushBack({ 0.5f, 0 }, (rand() % 4 + 1) * 100, &walkRAnim);
+	else if (random == 1) {
+		vistard = false;
 	}
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collidersnow = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
-	path.Update(clear);
-
-	if (cout <= 0 || gravity == true) {
-		if (path.GetCurrentAnimation() == &walkLAnim) {
+	random--;
+	if (random <= 0) {
+		if (vistard == false) {
 			vistard = true;
 		}
-		else {
+		else if (vistard == true) {
 			vistard = false;
 		}
-	}
-
-	if (hitwallL == true && vistard == true) {
-		clear = true;
-	}
-	else if (hitwallR == true && vistard == false) {
-		clear = true;
-	}
-	else {
-		clear = false;
+		random = (rand() % 4 + 1) * 100;
 	}
 
 	if (gravity == true) {
 		position.y += 1;
-		movement.y += 1;
 		if (vistard == true) {
 			if (currentAnim != &downLAnim)
 			{
@@ -84,25 +71,48 @@ void Enemy_RedDemon::Update()
 			}
 		}
 	}
-	else if (cout <= 0) {
-		position = path.GetRelativePosition() + spawnPos + movement;
-		currentAnim = path.GetCurrentAnimation();
-	}
-	else if (cout > 0) {
-		if (vistard == true) {
-			if (currentAnim != &Ldead)
+	else if (vistard == false) {
+		if (cout <= 0) {
+			position.x = position.x + 1; //less speed
+			if (currentAnim != &walkRAnim)
 			{
-				downLAnim.Reset();
-				currentAnim = &Ldead;
+				walkRAnim.Reset();
+				currentAnim = &walkRAnim;
 			}
 		}
-		else {
+		else if (cout > 0) {
 			if (currentAnim != &Rdead)
 			{
 				downLAnim.Reset();
 				currentAnim = &Rdead;
 			}
 		}
+	}
+	else if (vistard == true) {
+		if (cout <= 0) {
+			position.x = position.x - 1; //less speed
+			if (currentAnim != &walkLAnim)
+			{
+				walkLAnim.Reset();
+				currentAnim = &walkLAnim;
+			}
+		}
+		else if (cout > 0) {
+			if (currentAnim != &Ldead)
+			{
+				downLAnim.Reset();
+				currentAnim = &Ldead;
+			}
+		}
+	}
+
+	if (hitwallL == true) {
+		vistard = false;
+		random = (rand() % 4 + 1) * 100;
+	}
+	else if (hitwallR == true) {
+		vistard = true;
+		random = (rand() % 4 + 1) * 100;
 	}
 
 	// Call to the base class. It must be called at the end
