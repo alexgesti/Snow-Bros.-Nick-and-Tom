@@ -39,23 +39,22 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	collidersnow = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
+	collidersnow = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
-	random--;
-	if (random <= 0) {
-		if (vistard == false) {
-			vistard = true;
-		}
-		else if (vistard == true) {
-			vistard = false;
-		}
-		random = (rand() % 4 + 1) * 100;
-	}
-
 	if (cout <= 0) {
+		random--;
+		if (random <= 0) {
+			if (vistard == false) {
+				vistard = true;
+			}
+			else if (vistard == true) {
+				vistard = false;
+			}
+			random = (rand() % 4 + 1) * 100;
+		}
 		if (gravity == true) {
 			position.y += 1;
 			if (vistard == true) {
@@ -128,27 +127,43 @@ void Enemy_RedDemon::Update()
 			position.y = spawnPos.y + position.y + 2;
 		}
 
-		if ((hitwallL == true && App->player->vista == true) || (hitwallR == true && App->player->vista == false)) {
-		}
-		else {
-			if (push == true && App->player->vista == true) {
-				position.x = spawnPos.x + position.x - App->player->speedx;
+		if (InitialD == false) {
+			if ((hitwallL == true && App->player->vista == true) || (hitwallR == true && App->player->vista == false)) {
 			}
-			if (push == true && App->player->vista == false) {
-				position.x = spawnPos.x + position.x + App->player->speedx;
+			else {
+				if (push == true && App->player->vista == true) {
+					position.x = spawnPos.x + position.x - App->player->speedx;
+					vistard = true;
+				}
+				if (push == true && App->player->vista == false) {
+					position.x = spawnPos.x + position.x + App->player->speedx;
+					vistard = false;
+				}
+			}
+
+			if (push == true && App->player->shot == true && App->player->vista == false) {
+				InitialD = true;
+			}
+			else if (push == true && App->player->shot == true && App->player->vista == true) {
+				InitialD = true;
 			}
 		}
 
-		if (push == true && App->player->shot == true) {
-			InitialD = true;
-		}
-
-		if (InitialD == true) {
-			if (App->player->vista == false) {
+		else if (InitialD == true) {
+			if (vistard == false) {
 				position.x = spawnPos.x + position.x + (App->player->speedx * 2);
 			}
-			if (App->player->vista == true) {
+			if (vistard == true) {
 				position.x = spawnPos.x + position.x - (App->player->speedx * 2);
+			}
+
+			if (hitwallL == true) {
+				vistard = false;
+				hitwallL = false;
+			}
+			else if (hitwallR == true) {
+				vistard = true;
+				hitwallR = false;
 			}
 		}
 	}

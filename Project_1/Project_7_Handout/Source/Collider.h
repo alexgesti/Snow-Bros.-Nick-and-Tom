@@ -19,6 +19,7 @@ struct Collider
 		PLAYER_SHOT,
 		AIR,
 		SNOWBALL,
+		DELSNOW,
 
 		MAX
 	};

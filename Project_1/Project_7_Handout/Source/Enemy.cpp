@@ -37,29 +37,34 @@ void Enemy::Update()
 		currentAnim->Update();
 
 	if (collidersnow != nullptr && candelete == false) {
-		collidersnow->SetPos(position.x, position.y);
+		collidersnow->SetPos(position.x+3, position.y+1);
 		collider->SetPos(position.x, position.y);
 	}
 
 	if (hit == true) {
 		cout++;
-			if (cout == 8) {
-				//candelete = true;
-				App->audio->PlayFx(destroyedFx);
-			}
 		hit = false;
 	}
 	
-	/*countdown++;
-	if (countdown >= 75) {
-		countdown = 0;
-		if (cout > 0) {
-			cout--;
+	if (InitialD == false) {
+		countdown++;
+		if (countdown >= 75) {
+			countdown = 0;
+			if (cout > 0) {
+				cout--;
+			}
 		}
-	}*/
+	}
 
 	if (cout > 0) {
 		collider->SetPos(-600, -600);
+	}
+
+	if (dead == true) {
+		candelete = true;
+		App->audio->PlayFx(destroyedFx);
+		collidersnow->SetPos(-600, -600);
+		dead = false;
 	}
 }
 
@@ -84,6 +89,9 @@ void Enemy::Draw()
 	}
 	else if (cout >= 8) {
 		snow.GetSelectedFrame(4);
+	}
+	else if (InitialD == true) {
+		//snow.GetSelectedFrame(0);
 	}
 }
 
@@ -110,6 +118,9 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	if (cout >= 8) {
 		if (c1 == collidersnow && c2->type == Collider::Type::PLAYER) {
 			push = true;
+		}
+		if (c1 == collidersnow && InitialD == true && candelete == false && c2->type == Collider::Type::DELSNOW) {
+			dead = true;
 		}
 	}
 }

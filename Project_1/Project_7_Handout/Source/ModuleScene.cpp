@@ -58,6 +58,10 @@ bool ModuleScene::Start()
 	App->collisions->AddCollider({ 0, 19, 3, 245 }, Collider::Type::WALL2);				//MURO IZQ
 	App->collisions->AddCollider({ 350, 19, 3, 245 }, Collider::Type::WALL);			//MURO DER
 
+	//Deletear la SnowBall
+	App->collisions->AddCollider({ 0, 225, 5, 20 }, Collider::Type::DELSNOW);
+	App->collisions->AddCollider({ 348, 225, 5, 20 }, Collider::Type::DELSNOW);
+
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 100, 50);
 	App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 230, 50);

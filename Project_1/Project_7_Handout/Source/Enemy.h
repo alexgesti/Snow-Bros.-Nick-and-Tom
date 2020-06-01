@@ -46,6 +46,7 @@ public:
 	bool vistard = false;
 
 	bool candelete = false;
+	bool dead = false;
 	bool hitwallL = false;
 	bool hitwallR = false;
 	bool gravity = true;

@@ -1,14 +1,50 @@
-﻿  Enemy_RedDemon.cpp
+﻿  Enemy.cpp
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  ModuleEnemies.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(40,48): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(40,34): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(41,40): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(41,28): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(74,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(74,38): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(75,62): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(75,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+  Enemy_RedDemon.cpp
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(99,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(100,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(157,49): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(157,41): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
   Generating Code...
   Project_7_Handout.vcxproj -> C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Debug\Project_7_Handout.exe
