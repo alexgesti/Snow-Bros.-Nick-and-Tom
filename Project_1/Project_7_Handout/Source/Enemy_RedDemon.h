@@ -9,15 +9,11 @@ class Enemy_RedDemon : public Enemy
 public:
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
-	Enemy_RedDemon(int x, int y);
+	Enemy_RedDemon(float x, float y);
 
 	// The enemy is going to follow the different steps in the path
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
-
-	int random = rand() % 2;
-
-	iPoint movement = { 0, 0 };
 
 private:
 	// This enemy has one sprite and one frame

@@ -9,7 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 
-Enemy::Enemy(int x, int y) : position(x, y)
+Enemy::Enemy(float x, float y) : position(x, y)
 {
 	snow.PushBack({ 592, 816, 1, 1 });
 	snow.PushBack({ 16, 717, 20, 17 });
@@ -18,8 +18,6 @@ Enemy::Enemy(int x, int y) : position(x, y)
 	snow.PushBack({ 141, 703, 26, 31 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
-
-	spawnPos = position;
 }
 
 Enemy::~Enemy()
@@ -46,7 +44,7 @@ void Enemy::Update()
 	if (hit == true) {
 		cout++;
 			if (cout == 8) {
-				candelete = true;
+				//candelete = true;
 				App->audio->PlayFx(destroyedFx);
 			}
 		hit = false;
@@ -100,22 +98,18 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == collidersnow && c2->type == Collider::Type::AIR) {
 		gravity = true;
-		hitwallL = false;
-		hitwallR = false;
+		push = false;
 	}
 	if (c1 == collidersnow && c2->type == Collider::Type::WALL) {
 		hitwallR = true;
 	}
 	if (c1 == collidersnow && c2->type == Collider::Type::WALL2) {
 		hitwallL = true;
-	}  
-
-	if (c1 == collidersnow && cout >= 8 && vistard == true && c2->type == Collider::Type::PLAYER) {
-		position.x ++;
-		collidersnow->SetPos(position.x, position.y);
 	}
-	if (c1 == collidersnow && cout >= 8 && vistard == false && c2->type == Collider::Type::PLAYER) {
-		position.x--;
-		collidersnow->SetPos(position.x, position.y);
+
+	if (cout >= 8) {
+		if (c1 == collidersnow && c2->type == Collider::Type::PLAYER) {
+			push = true;
+		}
 	}
 }

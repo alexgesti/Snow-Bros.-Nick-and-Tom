@@ -2,8 +2,9 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
-Enemy_RedDemon::Enemy_RedDemon(int x, int y) : Enemy(x, y)
+Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 {
 	walkRAnim.PushBack({ 147, 6, 29, 28 });
 	walkRAnim.PushBack({ 178, 6, 30, 28 });
@@ -54,33 +55,66 @@ void Enemy_RedDemon::Update()
 		random = (rand() % 4 + 1) * 100;
 	}
 
-	if (gravity == true) {
-		position.y += 1;
-		if (vistard == true) {
-			if (currentAnim != &downLAnim)
-			{
-				downLAnim.Reset();
-				currentAnim = &downLAnim;
+	if (cout <= 0) {
+		if (gravity == true) {
+			position.y += 1;
+			if (vistard == true) {
+				if (currentAnim != &downLAnim)
+				{
+					downLAnim.Reset();
+					currentAnim = &downLAnim;
+				}
+			}
+			else {
+				if (currentAnim != &downRAnim)
+				{
+					downRAnim.Reset();
+					currentAnim = &downRAnim;
+				}
 			}
 		}
-		else {
-			if (currentAnim != &downRAnim)
+		else if (vistard == true) {
+			position.x = spawnPos.x + position.x - 0.5f;
+			if (currentAnim != &walkLAnim)
 			{
-				downRAnim.Reset();
-				currentAnim = &downRAnim;
+				walkLAnim.Reset();
+				currentAnim = &walkLAnim;
 			}
 		}
-	}
-	else if (vistard == false) {
-		if (cout <= 0) {
-			position.x = position.x + 1; //less speed
+		else if(vistard == false){
+			position.x = spawnPos.x + position.x + 0.5f;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();
 				currentAnim = &walkRAnim;
 			}
 		}
-		else if (cout > 0) {
+
+		if (hitwallL == true) {
+			vistard = false;
+			random = (rand() % 4 + 1) * 100;
+			hitwallL = false;
+		}
+		else if (hitwallR == true) {
+			vistard = true;
+			random = (rand() % 4 + 1) * 100;
+			hitwallR = false;
+		}
+	}
+
+	else if (cout > 0 && cout < 8) {
+		if (gravity == true) {
+			position.y = spawnPos.y + position.y + 1;
+		}
+		
+		if (vistard == true) {
+			if (currentAnim != &Ldead)
+			{
+				downLAnim.Reset();
+				currentAnim = &Ldead;
+			}
+		}
+		else {
 			if (currentAnim != &Rdead)
 			{
 				downLAnim.Reset();
@@ -88,31 +122,35 @@ void Enemy_RedDemon::Update()
 			}
 		}
 	}
-	else if (vistard == true) {
-		if (cout <= 0) {
-			position.x = position.x - 1; //less speed
-			if (currentAnim != &walkLAnim)
-			{
-				walkLAnim.Reset();
-				currentAnim = &walkLAnim;
-			}
-		}
-		else if (cout > 0) {
-			if (currentAnim != &Ldead)
-			{
-				downLAnim.Reset();
-				currentAnim = &Ldead;
-			}
-		}
-	}
 
-	if (hitwallL == true) {
-		vistard = false;
-		random = (rand() % 4 + 1) * 100;
-	}
-	else if (hitwallR == true) {
-		vistard = true;
-		random = (rand() % 4 + 1) * 100;
+	else if (cout >= 8) {
+		if (gravity == true) {
+			position.y = spawnPos.y + position.y + 2;
+		}
+
+		if ((hitwallL == true && App->player->vista == true) || (hitwallR == true && App->player->vista == false)) {
+		}
+		else {
+			if (push == true && App->player->vista == true) {
+				position.x = spawnPos.x + position.x - App->player->speedx;
+			}
+			if (push == true && App->player->vista == false) {
+				position.x = spawnPos.x + position.x + App->player->speedx;
+			}
+		}
+
+		if (push == true && App->player->shot == true) {
+			InitialD = true;
+		}
+
+		if (InitialD == true) {
+			if (App->player->vista == false) {
+				position.x = spawnPos.x + position.x + (App->player->speedx * 2);
+			}
+			if (App->player->vista == true) {
+				position.x = spawnPos.x + position.x - (App->player->speedx * 2);
+			}
+		}
 	}
 
 	// Call to the base class. It must be called at the end

@@ -12,7 +12,7 @@ class Enemy
 public:
 	// Constructor
 	// Saves the spawn position for later movement calculations
-	Enemy(int x, int y);
+	Enemy(float x, float y);
 
 	// Destructor
 	virtual ~Enemy();
@@ -33,7 +33,7 @@ public:
 
 public:
 	// The current position in the world
-	iPoint position;
+	fPoint position;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
@@ -41,6 +41,7 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 	int countdown = 0;
+	int random = rand() % 2;
 	float cout = 0;
 	bool vistard = false;
 
@@ -50,6 +51,8 @@ public:
 	bool gravity = true;
 	bool hit = false;
 	bool once = true;
+	bool push = false;
+	bool InitialD = false;
 
 protected:
 	// A ptr to the current animation
@@ -61,7 +64,7 @@ protected:
 	Collider* collidersnow = nullptr;
 
 	// Original spawn position. Stored for movement calculations
-	iPoint spawnPos;
+	fPoint spawnPos;
 };
 
 #endif // __ENEMY_H__
