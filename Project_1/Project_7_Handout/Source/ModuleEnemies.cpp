@@ -140,7 +140,6 @@ void ModuleEnemies::HandleEnemiesDespawn()
 				delete enemies[i];
 				enemies[i] = nullptr;
 				kills++;
-				LOG("%d", kills)
 			}
 		}
 	}

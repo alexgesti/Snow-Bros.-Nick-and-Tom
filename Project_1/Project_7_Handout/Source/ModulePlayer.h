@@ -68,6 +68,7 @@ public:
 	bool godmode = false;
 	bool gravity = true;
 	bool idle = false;
+	bool boulder = false;
 	float timerj = 45;
 	float timers = 10;
 	float high = 0;

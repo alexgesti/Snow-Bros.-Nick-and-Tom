@@ -191,43 +191,45 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-		{
-			shot = true;
-			timers = 0;
-			if (vista == true)
+		if (boulder == false) {
+			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-				App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(laserFx);
-			}
-			else
-			{
-				App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
-				App->audio->PlayFx(laserFx);
-			}
-		}
-		timers += 1;
-		if (shot == true)
-		{
-			if (vista == true)
-			{
-				if (currentAnimation != &shotLAnim)
+				shot = true;
+				timers = 0;
+				if (vista == true)
 				{
-					shotLAnim.Reset();
-					currentAnimation = &shotLAnim;
+					App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+					App->audio->PlayFx(laserFx);
+				}
+				else
+				{
+					App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+					App->audio->PlayFx(laserFx);
 				}
 			}
-			else
+			timers += 1;
+			if (shot == true)
 			{
-				if (currentAnimation != &shotRAnim)
+				if (vista == true)
 				{
-					shotRAnim.Reset();
-					currentAnimation = &shotRAnim;
+					if (currentAnimation != &shotLAnim)
+					{
+						shotLAnim.Reset();
+						currentAnimation = &shotLAnim;
+					}
 				}
-			}
-			if (timers >= 5)
-			{
-				shot = false;
+				else
+				{
+					if (currentAnimation != &shotRAnim)
+					{
+						shotRAnim.Reset();
+						currentAnimation = &shotRAnim;
+					}
+				}
+				if (timers >= 5)
+				{
+					shot = false;
+				}
 			}
 		}
 	}
@@ -377,6 +379,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			gravity = true;
 		}
 		speedx = 1;
+		boulder = false;
 	}
 
 	if (c1 == colliderf && c2->type == Collider::Type::WALL)

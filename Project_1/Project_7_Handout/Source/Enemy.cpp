@@ -8,6 +8,7 @@
 #include "ModuleTextures.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleInput.h"
 
 Enemy::Enemy(float x, float y) : position(x, y)
 {
@@ -143,8 +144,19 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			push = true;
 		}
 
+		if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false)
+		{
+			App->player->gravity = false;
+		}
+
 		if (InitialD == true) {
 			if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
+				/*if (App->player->boulder == true) {	//Fix
+					LOG("Jump")
+					App->player->timerj = 0;
+					App->player->high = position.y;
+					App->player->jump = true;
+				}*/
 				dead = true;
 			}
 
@@ -153,11 +165,9 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 					App->player->position.x = position.x;
 					App->player->position.y = position.y;
 					App->player->colliderp->SetPos(600, 600);
+					App->player->boulder = true;
 				}
 			}
-			/*if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false) {
-				App->player->speedy = 0;
-			}*/
 		}
 	}
 }
