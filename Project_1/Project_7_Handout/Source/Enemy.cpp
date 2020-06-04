@@ -32,6 +32,11 @@ const Collider* Enemy::GetCollider() const
 	return cfs;
 }
 
+const Collider* Enemy::SendCollider() const 
+{
+	return balldash;
+}
+
 void Enemy::Update()
 {
 	if (currentAnim != nullptr)
@@ -115,54 +120,42 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		hit = true;
 	}
 
-	if (InitialD == true) {
-		if (c1 == balldash && c2->type == Collider::Type::FLOOR) {
-			gravity = false;
-		}
-		if (c1 == balldash && c2->type == Collider::Type::AIR) {
-			LOG("air")
-			gravity = true;
-			push = false;
-		}
-		if (c1 == balldash && c2->type == Collider::Type::WALL) {
-			LOG("Wall")			//borrar
-				hitwallR = true;
-		}
-		if (c1 == balldash && c2->type == Collider::Type::WALL2) {
-			LOG("Wall")			//borrar
-				hitwallL = true;
-		}
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR) {
+		gravity = false;
+	}
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR) {
+		gravity = true;
+		push = false;
+	}
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL) {
+		hitwallR = true;
+	}
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL2) {
+		hitwallL = true;
+	}
 
-		if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
+	if (cout < 8) {
+		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {
 			dead = true;
 		}
+	}
 
-		/*if (c1 == cfs && InitialD == true && c2->type == Collider::Type::FEET) { //fix
-	if (App->player->jump == false) {
-		App->player->position.x = position.x;
-		App->player->position.y = position.y;
-		App->player->colliderf->SetPos(600, 600);
-	}
-}*/
-	}
-	else {
-		if (c1 == cfs && c2->type == Collider::Type::FLOOR) {
-			gravity = false;
-		}
-		if (c1 == cfs && c2->type == Collider::Type::AIR) {
-			gravity = true;
-			push = false;
-		}
-		if (c1 == cfs && c2->type == Collider::Type::WALL) {
-			hitwallR = true;
-		}
-		if (c1 == cfs && c2->type == Collider::Type::WALL2) {
-			hitwallL = true;
+	if (cout >= 8) {
+		if (c1 == cfs && c2->type == Collider::Type::PLAYER) {
+			push = true;
 		}
 
-		if (cout >= 8) {
-			if (c1 == cfs && c2->type == Collider::Type::PLAYER) {
-				push = true;
+		if (InitialD == true) {
+			if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
+				dead = true;
+			}
+
+			if (c1 == balldash && c2->type == Collider::Type::FEET) {
+				if (App->player->jump == false) {
+					App->player->position.x = position.x;
+					App->player->position.y = position.y;
+					App->player->colliderf->SetPos(600, 600);
+				}
 			}
 		}
 	}
