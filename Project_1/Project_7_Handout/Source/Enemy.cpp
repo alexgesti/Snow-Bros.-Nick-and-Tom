@@ -18,6 +18,7 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 141, 703, 26, 31 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
+	balldash = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL);
 }
 
 Enemy::~Enemy()
@@ -36,16 +37,29 @@ void Enemy::Update()
 	if (currentAnim != nullptr)
 		currentAnim->Update();
 
-	if (cfs != nullptr && candelete == false) {
+	//Admin. Collider
+	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x + 3, position.y + 1);
-		collider->SetPos(position.x, position.y);
+		balldash->SetPos(-600, -600);
+		if (cout <= 0) {
+			collider->SetPos(position.x, position.y);
+		}
+	}
+	if (cout > 0) {
+		collider->SetPos(-600, -600);
+		if (InitialD == true) {
+			cfs->SetPos(-300, -300);
+			balldash->SetPos(position.x + 3, position.y + 1);
+		}
 	}
 
+	//Hit
 	if (hit == true) {
 		cout++;
 		hit = false;
 	}
 
+	//CountDown
 	if (InitialD == false) {
 		if (cout > 0) {
 			countdown++;
@@ -56,15 +70,14 @@ void Enemy::Update()
 		}
 	}
 
-	if (cout > 0) {
-		collider->SetPos(-600, -600);
-	}
-
+	//Enemy Dead
 	if (dead == true) {
+		LOG("die")
 		candelete = true;
 		App->audio->PlayFx(destroyedFx);
 		cfs->SetPos(-600, -600);
 		collider->SetPos(-600, -600);
+		balldash->SetPos(-600, -600);
 		dead = false;
 	}
 }
@@ -102,34 +115,54 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		hit = true;
 	}
 
-	if (c1 == cfs && c2->type == Collider::Type::FLOOR) {
-		gravity = false;
-	}
-	if (c1 == cfs && c2->type == Collider::Type::AIR) {
-		gravity = true;
-		push = false;
-	}
-	if (c1 == cfs && c2->type == Collider::Type::WALL) {
-		hitwallR = true;
-	}
-	if (c1 == cfs && c2->type == Collider::Type::WALL2) {
-		hitwallL = true;
-	}
-
-	if (cout >= 8) {
-		if (c1 == cfs && c2->type == Collider::Type::PLAYER) {
-			push = true;
+	if (InitialD == true) {
+		if (c1 == balldash && c2->type == Collider::Type::FLOOR) {
+			gravity = false;
+		}
+		if (c1 == balldash && c2->type == Collider::Type::AIR) {
+			LOG("air")
+			gravity = true;
+			push = false;
+		}
+		if (c1 == balldash && c2->type == Collider::Type::WALL) {
+			LOG("Wall")			//borrar
+				hitwallR = true;
+		}
+		if (c1 == balldash && c2->type == Collider::Type::WALL2) {
+			LOG("Wall")			//borrar
+				hitwallL = true;
 		}
 
-		if (c1 == cfs && InitialD == true && candelete == false && c2->type == Collider::Type::DELSNOW) {
+		if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
 			dead = true;
 		}
 
-		if (c1 == cfs && InitialD == true && c2->type == Collider::Type::FEET) { //fix
-			if (App->player->jump == false) {
-				App->player->position.x = position.x;
-				App->player->position.y = position.y;
-				App->player->colliderf->SetPos(600, 600);
+		/*if (c1 == cfs && InitialD == true && c2->type == Collider::Type::FEET) { //fix
+	if (App->player->jump == false) {
+		App->player->position.x = position.x;
+		App->player->position.y = position.y;
+		App->player->colliderf->SetPos(600, 600);
+	}
+}*/
+	}
+	else {
+		if (c1 == cfs && c2->type == Collider::Type::FLOOR) {
+			gravity = false;
+		}
+		if (c1 == cfs && c2->type == Collider::Type::AIR) {
+			gravity = true;
+			push = false;
+		}
+		if (c1 == cfs && c2->type == Collider::Type::WALL) {
+			hitwallR = true;
+		}
+		if (c1 == cfs && c2->type == Collider::Type::WALL2) {
+			hitwallL = true;
+		}
+
+		if (cout >= 8) {
+			if (c1 == cfs && c2->type == Collider::Type::PLAYER) {
+				push = true;
 			}
 		}
 	}

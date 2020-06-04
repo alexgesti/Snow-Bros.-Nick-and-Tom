@@ -149,10 +149,7 @@ void Enemy_RedDemon::Update()
 				}
 			}
 
-			if (push == true && App->player->shot == true && App->player->vista == false) {
-				InitialD = true;
-			}
-			else if (push == true && App->player->shot == true && App->player->vista == true) {
+			if (push == true && App->player->shot == true) {
 				InitialD = true;
 			}
 		}

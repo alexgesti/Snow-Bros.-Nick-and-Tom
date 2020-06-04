@@ -59,11 +59,12 @@ public:
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
-
 	Animation snow;
+
 	// The enemy's collider
 	Collider* collider = nullptr;
 	Collider* cfs = nullptr;
+	Collider* balldash = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;

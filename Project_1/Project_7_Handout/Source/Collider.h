@@ -20,6 +20,7 @@ struct Collider
 		AIR,
 		FISICSNOW,
 		DELSNOW,
+		SNOWBALL,
 
 		MAX
 	};
