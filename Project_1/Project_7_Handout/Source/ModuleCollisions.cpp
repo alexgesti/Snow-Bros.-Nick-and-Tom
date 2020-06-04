@@ -45,7 +45,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::FEET] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::DELSNOW] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::SNOWBALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::SNOWBALL] = false;
 
 	matrix[Collider::Type::FEET][Collider::Type::WALL] = true;
 	matrix[Collider::Type::FEET][Collider::Type::WALL2] = true;
@@ -57,7 +57,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FEET][Collider::Type::FEET] = false;
 	matrix[Collider::Type::FEET][Collider::Type::FISICSNOW] = false;
 	matrix[Collider::Type::FEET][Collider::Type::DELSNOW] = false;
-	matrix[Collider::Type::FEET][Collider::Type::SNOWBALL] = false;
+	matrix[Collider::Type::FEET][Collider::Type::SNOWBALL] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL2] = true;
@@ -133,12 +133,12 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::SNOWBALL][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::WALL2] = true;
-	matrix[Collider::Type::SNOWBALL][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::SNOWBALL][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::FLOOR] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::AIR] = true;
-	matrix[Collider::Type::SNOWBALL][Collider::Type::FEET] = false;
+	matrix[Collider::Type::SNOWBALL][Collider::Type::FEET] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::DELSNOW] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::SNOWBALL] = true;
@@ -237,6 +237,9 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
+		case Collider::Type::FEET: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
 		case Collider::Type::ENEMY: // black
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
 			break;
@@ -247,6 +250,9 @@ void ModuleCollisions::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		case Collider::Type::FISICSNOW: // black
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
+			break;
+		case Collider::Type::SNOWBALL: // black
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
 			break;
 		case Collider::Type::DELSNOW: // cyan

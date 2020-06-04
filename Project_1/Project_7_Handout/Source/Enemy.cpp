@@ -82,7 +82,7 @@ void Enemy::Update()
 		App->audio->PlayFx(destroyedFx);
 		cfs->SetPos(-600, -600);
 		collider->SetPos(-600, -600);
-		balldash->SetPos(-600, -600);
+		//balldash->SetPos(-600, -600);
 		dead = false;
 	}
 }
@@ -110,7 +110,6 @@ void Enemy::Draw()
 		snow.GetSelectedFrame(4);
 	}
 	else if (InitialD == true) {
-		//snow.GetSelectedFrame(0);
 	}
 }
 
@@ -135,7 +134,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	if (cout < 8) {
-		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {
+		if (c1 == cfs && candelete == false && c2->type == Collider::Type::SNOWBALL) {
 			dead = true;
 		}
 	}
@@ -154,7 +153,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 				if (App->player->jump == false) {
 					App->player->position.x = position.x;
 					App->player->position.y = position.y;
-					App->player->colliderf->SetPos(600, 600);
+					App->player->colliderp->SetPos(600, 600);
 				}
 			}
 		}

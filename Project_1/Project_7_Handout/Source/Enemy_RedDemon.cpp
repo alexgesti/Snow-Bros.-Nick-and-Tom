@@ -140,11 +140,11 @@ void Enemy_RedDemon::Update()
 			}
 			else {
 				if (push == true && App->player->vista == true) {
-					position.x = spawnPos.x + position.x - App->player->speedx;
+					position.x = spawnPos.x + position.x - 1;
 					vistard = true;
 				}
 				if (push == true && App->player->vista == false) {
-					position.x = spawnPos.x + position.x + App->player->speedx;
+					position.x = spawnPos.x + position.x + 1;
 					vistard = false;
 				}
 			}
@@ -156,10 +156,10 @@ void Enemy_RedDemon::Update()
 
 		else if (InitialD == true) {
 			if (vistard == false) {
-				position.x = spawnPos.x + position.x + (App->player->speedx * 2);
+				position.x = spawnPos.x + position.x + (1 * 2);
 			}
 			if (vistard == true) {
-				position.x = spawnPos.x + position.x - (App->player->speedx * 2);
+				position.x = spawnPos.x + position.x - (1 * 2);
 			}
 
 			if (hitwallL == true) {

@@ -1,4 +1,84 @@
-﻿  ModuleEnemies.cpp
+﻿  Application.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Enemy.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(47,42): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(47,26): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(50,41): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(50,29): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(57,48): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(57,32): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(93,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(93,38): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(94,62): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(94,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(154,40): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,40): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+  Enemy_RedDemon.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ModuleEnemies.cpp
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -6,4 +86,22 @@ C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Hand
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(100,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(157,49): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
 C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(157,41): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  ModuleParticles.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ModulePlayer.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModulePlayer.cpp(157,20): warning C4244: '=': conversion from 'TYPE' to 'float', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  ModuleScene.cpp
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(57,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(66,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   Project_7_Handout.vcxproj -> C:\Users\raulc\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Debug\Project_7_Handout.exe
