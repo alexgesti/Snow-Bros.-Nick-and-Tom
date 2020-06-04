@@ -18,7 +18,7 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 141, 703, 26, 31 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
-	balldash = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL);
+	balldash = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 }
 
 Enemy::~Enemy()
