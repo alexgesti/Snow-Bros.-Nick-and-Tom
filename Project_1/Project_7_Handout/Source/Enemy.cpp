@@ -77,12 +77,11 @@ void Enemy::Update()
 
 	//Enemy Dead
 	if (dead == true) {
-		LOG("die")
 		candelete = true;
 		App->audio->PlayFx(destroyedFx);
 		cfs->SetPos(-600, -600);
 		collider->SetPos(-600, -600);
-		//balldash->SetPos(-600, -600);
+		balldash->SetPos(-600, -600);
 		dead = false;
 	}
 }
@@ -156,6 +155,9 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 					App->player->colliderp->SetPos(600, 600);
 				}
 			}
+			/*if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false) {
+				App->player->speedy = 0;
+			}*/
 		}
 	}
 }

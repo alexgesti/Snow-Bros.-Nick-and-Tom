@@ -55,7 +55,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FEET][Collider::Type::FLOOR] = true;
 	matrix[Collider::Type::FEET][Collider::Type::AIR] = true;
 	matrix[Collider::Type::FEET][Collider::Type::FEET] = false;
-	matrix[Collider::Type::FEET][Collider::Type::FISICSNOW] = false;
+	matrix[Collider::Type::FEET][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::FEET][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FEET][Collider::Type::SNOWBALL] = true;
 
@@ -114,7 +114,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FISICSNOW][Collider::Type::PLAYER_SHOT] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FLOOR] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::AIR] = true;
-	matrix[Collider::Type::FISICSNOW][Collider::Type::FEET] = false;
+	matrix[Collider::Type::FISICSNOW][Collider::Type::FEET] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::SNOWBALL] = true;

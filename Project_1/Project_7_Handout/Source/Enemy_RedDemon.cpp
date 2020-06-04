@@ -137,14 +137,16 @@ void Enemy_RedDemon::Update()
 
 		if (InitialD == false) {
 			if ((hitwallL == true && App->player->vista == true) || (hitwallR == true && App->player->vista == false)) {
+				hitwallL = false;
+				hitwallR = false;
 			}
 			else {
 				if (push == true && App->player->vista == true) {
-					position.x = spawnPos.x + position.x - 1;
+					position.x = spawnPos.x + position.x - 1;		//Misma velocidad que el player
 					vistard = true;
 				}
 				if (push == true && App->player->vista == false) {
-					position.x = spawnPos.x + position.x + 1;
+					position.x = spawnPos.x + position.x + 1;		//Misma velocidad que el player
 					vistard = false;
 				}
 			}

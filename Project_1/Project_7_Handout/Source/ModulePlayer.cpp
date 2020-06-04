@@ -96,7 +96,7 @@ bool ModulePlayer::Start()
 	position.y = 221;
 
 	colliderf = App->collisions->AddCollider({ position.x, position.y, 15, 3 }, Collider::Type::FEET, this);
-	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 27 }, Collider::Type::PLAYER, this);
+	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 25 }, Collider::Type::PLAYER, this);
 
 	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
 
