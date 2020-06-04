@@ -139,6 +139,8 @@ void ModuleEnemies::HandleEnemiesDespawn()
 
 				delete enemies[i];
 				enemies[i] = nullptr;
+				kills++;
+				LOG("%d", kills)
 			}
 		}
 	}
@@ -174,7 +176,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c1, c2);//Notify the enemy of a collision
 
 			if (enemies[i]->candelete == true && enemies[i]->once) {
-				kills++;
 				enemies[i]->once = false;
 				break;
 			}
