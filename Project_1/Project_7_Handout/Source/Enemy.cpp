@@ -13,13 +13,13 @@
 Enemy::Enemy(float x, float y) : position(x, y)
 {
 	snow.PushBack({ 592, 816, 1, 1 });
-	snow.PushBack({ 16, 717, 20, 17 });
-	snow.PushBack({ 44, 710, 23, 24 });
-	snow.PushBack({ 75, 708, 25, 26 });
-	snow.PushBack({ 141, 703, 26, 31 });
+	snow.PushBack({ 14, 703, 22, 31 });
+	snow.PushBack({ 43, 703, 24, 31 });
+	snow.PushBack({ 75, 703, 25, 31 });
+	snow.PushBack({ 142, 703, 25, 31 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
-	balldash = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
+	balldash = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 }
 
 Enemy::~Enemy()
@@ -45,7 +45,7 @@ void Enemy::Update()
 
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
-		cfs->SetPos(position.x + 3, position.y + 1);
+		cfs->SetPos(position.x + 4, position.y + 1);
 		balldash->SetPos(-600, -600);
 		if (cout <= 0) {
 			collider->SetPos(position.x, position.y);
@@ -55,7 +55,7 @@ void Enemy::Update()
 		collider->SetPos(-600, -600);
 		if (InitialD == true) {
 			cfs->SetPos(-300, -300);
-			balldash->SetPos(position.x + 3, position.y + 1);
+			balldash->SetPos(position.x + 4, position.y + 1);
 		}
 	}
 
@@ -91,7 +91,7 @@ void Enemy::Draw()
 {
 	if (currentAnim != nullptr) {
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(App->enemies->SnowT, position.x, position.y, &(snow.GetCurrentFrame()));
+		App->render->Blit(App->enemies->SnowT, position.x + 2, position.y - 4, &(snow.GetCurrentFrame()));
 	}
 
 	if (cout <= 0) {
@@ -144,9 +144,18 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			push = true;
 		}
 
-		if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false)
-		{
-			App->player->gravity = false;
+		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {
+			colision = true;
+			InitialD = true;
+		}
+
+		if (c1 == balldash && c2->type == Collider::Type::FEET) {
+			if (App->player->jump == false) {
+				App->player->position.x = position.x;
+				App->player->position.y = position.y;
+				App->player->colliderp->SetPos(600, 600);
+				App->player->boulder = true;
+			}
 		}
 
 		if (InitialD == true) {
@@ -166,6 +175,15 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 					App->player->position.y = position.y;
 					App->player->colliderp->SetPos(600, 600);
 					App->player->boulder = true;
+				}
+			}
+
+			if (c1 == balldash && c2->type == Collider::Type::FISICSNOW && colision == true) {
+				if (vistard == true) {
+					vistard = false;
+				}
+				else if (vistard == false) {
+					vistard = true;
 				}
 			}
 		}

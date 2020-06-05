@@ -41,7 +41,7 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	cfs = App->collisions->AddCollider({ 0, 0, 21, 25 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	cfs = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()

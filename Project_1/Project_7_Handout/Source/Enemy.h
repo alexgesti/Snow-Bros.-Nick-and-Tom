@@ -45,6 +45,7 @@ public:
 	int random = rand() % 2;
 	float cout = 0;
 	bool vistard = false;
+	bool colision = false;
 
 	bool candelete = false;
 	bool dead = false;

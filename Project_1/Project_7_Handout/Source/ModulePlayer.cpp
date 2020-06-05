@@ -99,6 +99,7 @@ bool ModulePlayer::Start()
 	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 25 }, Collider::Type::PLAYER, this);
 
 	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
+	jump = false;
 
 	return ret;
 }
@@ -361,7 +362,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(0, App->particles->pdead, position.x, position.y, Collider::Type::NONE, 9);
 
 		App->audio->PlayFx(deathFx);
-
 
 		death = true;
 		destroyed = true;
