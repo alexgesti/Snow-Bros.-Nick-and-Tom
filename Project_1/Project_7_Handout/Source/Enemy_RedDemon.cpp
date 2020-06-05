@@ -136,18 +136,33 @@ void Enemy_RedDemon::Update()
 		}
 
 		if (InitialD == false) {
-			if ((hitwallL == true && App->player->vista == true) || (hitwallR == true && App->player->vista == false)) {
+			if (hitwallL == true && vistard == true) {
 				hitwallL = false;
+				vistard = false;
+			}
+			else if (hitwallR == true && vistard == false) {
 				hitwallR = false;
+				vistard = true;
 			}
 			else {
-				if (push == true && App->player->vista == true) {
-					position.x = spawnPos.x + position.x - 1;		//Misma velocidad que el player
-					vistard = true;
+				if (push == true) {
+					if (App->player->vista == true) {
+						position.x = spawnPos.x + position.x - 1;		//Misma velocidad que el player
+						vistard = true;
+					}
+					if (App->player->vista == false) {
+						position.x = spawnPos.x + position.x + 1;		//Misma velocidad que el player
+						vistard = false;
+					}
 				}
-				if (push == true && App->player->vista == false) {
-					position.x = spawnPos.x + position.x + 1;		//Misma velocidad que el player
-					vistard = false;
+				if (up == true) {
+					if (vistard == true) {
+						position.x = spawnPos.x + position.x - 2;
+					}
+					if (vistard == false) {
+						position.x = spawnPos.x + position.x + 2;
+					}
+					up = false;
 				}
 			}
 
@@ -158,10 +173,10 @@ void Enemy_RedDemon::Update()
 
 		else if (InitialD == true) {
 			if (vistard == false) {
-				position.x = spawnPos.x + position.x + (1 * 2);
+				position.x = spawnPos.x + position.x + 2;
 			}
 			if (vistard == true) {
-				position.x = spawnPos.x + position.x - (1 * 2);
+				position.x = spawnPos.x + position.x - 2;
 			}
 
 			if (hitwallL == true) {

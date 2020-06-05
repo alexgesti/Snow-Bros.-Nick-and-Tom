@@ -45,7 +45,6 @@ public:
 	int random = rand() % 2;
 	float cout = 0;
 	bool vistard = false;
-	bool colision = false;
 
 	bool candelete = false;
 	bool dead = false;
@@ -55,7 +54,7 @@ public:
 	bool hit = false;
 	bool once = true;
 	bool push = false;
-	bool rolling = false;
+	bool up = false;
 	bool InitialD = false;
 
 protected:

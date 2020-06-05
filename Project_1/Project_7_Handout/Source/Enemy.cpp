@@ -140,50 +140,44 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	if (cout >= 8) {
-		if (c1 == cfs && c2->type == Collider::Type::PLAYER) {
+		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == false && up == false) {
 			push = true;
+			if (hitwallL == true) {
+				if (App->player->vista == true) {
+					App->player->speedx = 0;
+				}
+			}
+			if (hitwallR == true) {
+				if (App->player->vista == false) {
+					App->player->speedx = 0;
+				}
+			}
 		}
 
-		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {
-			colision = true;
+		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == true) { 
+			up = true;
+		}
+
+		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {	//Seguir trabajando
 			InitialD = true;
 		}
 
-		if (c1 == balldash && c2->type == Collider::Type::FEET) {
-			if (App->player->jump == false) {
-				App->player->position.x = position.x;
-				App->player->position.y = position.y;
-				App->player->colliderp->SetPos(600, 600);
-				App->player->boulder = true;
-			}
+		if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false)
+		{
+			App->player->gravity = false;
 		}
 
 		if (InitialD == true) {
 			if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
-				/*if (App->player->boulder == true) {	//Fix
-					LOG("Jump")
-					App->player->timerj = 0;
-					App->player->high = position.y;
-					App->player->jump = true;
-				}*/
 				dead = true;
 			}
 
 			if (c1 == balldash && c2->type == Collider::Type::FEET) {
 				if (App->player->jump == false) {
 					App->player->position.x = position.x;
-					App->player->position.y = position.y;
+					App->player->position.y = position.y-1;
 					App->player->colliderp->SetPos(600, 600);
 					App->player->boulder = true;
-				}
-			}
-
-			if (c1 == balldash && c2->type == Collider::Type::FISICSNOW && colision == true) {
-				if (vistard == true) {
-					vistard = false;
-				}
-				else if (vistard == false) {
-					vistard = true;
 				}
 			}
 		}
