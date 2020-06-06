@@ -41,11 +41,13 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	cfs = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
+	position.x = spawnPos.x + position.x + speed;
+
 	if (cout <= 0) {
 		random--;
 		if (random <= 0) {
@@ -58,7 +60,8 @@ void Enemy_RedDemon::Update()
 			random = (rand() % 4 + 1) * 100;
 		}
 		if (gravity == true) {
-			position.y += 1;
+			speed = 0;
+			position.y = spawnPos.y + position.y + 1;
 			if (vistard == true) {
 				if (currentAnim != &downLAnim)
 				{
@@ -75,7 +78,7 @@ void Enemy_RedDemon::Update()
 			}
 		}
 		else if (vistard == true) {
-			position.x = spawnPos.x + position.x - 0.5f;
+			speed = (-0.5f);
 			if (currentAnim != &walkLAnim)
 			{
 				walkLAnim.Reset();
@@ -83,7 +86,7 @@ void Enemy_RedDemon::Update()
 			}
 		}
 		else if(vistard == false){
-			position.x = spawnPos.x + position.x + 0.5f;
+			speed = 0.5f;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();
@@ -104,6 +107,7 @@ void Enemy_RedDemon::Update()
 	}
 
 	else if (cout > 0 && cout < 8) {
+		speed = 0;
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + 1;
 		}
@@ -125,6 +129,7 @@ void Enemy_RedDemon::Update()
 	}
 
 	else if (cout >= 8) {
+		speed = 0;
 		if (currentAnim != &nothing)
 		{
 			nothing.Reset();
@@ -136,47 +141,51 @@ void Enemy_RedDemon::Update()
 		}
 
 		if (InitialD == false) {
-			if (hitwallL == true && vistard == true) {
-				hitwallL = false;
+			if (hitwallL == true) {
+				push = false;
+				if (vistard == true) {
+					speed = 0;
+				}
 				vistard = false;
+				hitwallL = false;
 			}
-			else if (hitwallR == true && vistard == false) {
-				hitwallR = false;
+			else if (hitwallR == true) {
+				push = false;
+				if (vistard == false) {
+					speed = 0;
+				}
 				vistard = true;
+				hitwallR = false;
 			}
 			else {
 				if (push == true) {
 					if (App->player->vista == true) {
-						position.x = spawnPos.x + position.x - 1;		//Misma velocidad que el player
+						speed = (-1);		//Misma velocidad que el player
 						vistard = true;
 					}
 					if (App->player->vista == false) {
-						position.x = spawnPos.x + position.x + 1;		//Misma velocidad que el player
+						speed = 1;		//Misma velocidad que el player
 						vistard = false;
 					}
 				}
-				if (up == true) {
-					if (vistard == true) {
-						position.x = spawnPos.x + position.x - 2;
-					}
-					if (vistard == false) {
-						position.x = spawnPos.x + position.x + 2;
-					}
-					up = false;
-				}
 			}
-
-			if (push == true && App->player->shot == true) {
-				InitialD = true;
+			if (up == true) {
+				if (vistard == true) {
+					speed = (-2);
+				}
+				if (vistard == false) {
+					speed = 2;
+				}
+				up = false;
 			}
 		}
 
 		else if (InitialD == true) {
 			if (vistard == false) {
-				position.x = spawnPos.x + position.x + 2;
+				speed = 2;
 			}
 			if (vistard == true) {
-				position.x = spawnPos.x + position.x - 2;
+				speed = (-2);
 			}
 
 			if (hitwallL == true) {

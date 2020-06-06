@@ -17,10 +17,6 @@ public:
 	// Destructor
 	virtual ~Enemy();
 
-	// Returns the enemy's collider
-	const Collider* GetCollider() const;
-	const Collider* SendCollider() const;
-
 	// Called from inhering enemies' Udpate
 	// Updates animation and collider position
 	virtual void Update();
@@ -44,6 +40,7 @@ public:
 	int countdown = 0;
 	int random = rand() % 2;
 	float cout = 0;
+	float speed = 0;
 	bool vistard = false;
 
 	bool candelete = false;
@@ -66,6 +63,8 @@ protected:
 	Collider* collider = nullptr;
 	Collider* cfs = nullptr;
 	Collider* balldash = nullptr;
+	Collider* wall1 = nullptr;
+	Collider* wall2 = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;

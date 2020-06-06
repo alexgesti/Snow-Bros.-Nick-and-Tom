@@ -19,23 +19,15 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 142, 703, 25, 31 });
 
 	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
-	balldash = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
+	balldash = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
+	wall1 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL, (Module*)App->enemies);
+	wall2 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL2, (Module*)App->enemies);
 }
 
 Enemy::~Enemy()
 {
 	/*if (collider != nullptr)
 		collider->pendingToDelete = true;*/
-}
-
-const Collider* Enemy::GetCollider() const
-{
-	return cfs;
-}
-
-const Collider* Enemy::SendCollider() const 
-{
-	return balldash;
 }
 
 void Enemy::Update()
@@ -47,8 +39,12 @@ void Enemy::Update()
 	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x + 4, position.y + 1);
 		balldash->SetPos(-600, -600);
-		if (cout <= 0) {
-			collider->SetPos(position.x, position.y);
+		if (cout < 8) {
+			wall1->SetPos(-400, -400);
+			wall2->SetPos(-400, -400);
+			if (cout <= 0) {
+				collider->SetPos(position.x, position.y);
+			}
 		}
 	}
 	if (cout > 0) {
@@ -56,6 +52,13 @@ void Enemy::Update()
 		if (InitialD == true) {
 			cfs->SetPos(-300, -300);
 			balldash->SetPos(position.x + 4, position.y + 1);
+		}
+	}
+	if (InitialD == true){
+		countdown++;
+		if (countdown >= 5) {
+			wall1->SetPos(-400, -400);
+			wall2->SetPos(-400, -400);
 		}
 	}
 
@@ -80,7 +83,7 @@ void Enemy::Update()
 	if (dead == true) {
 		candelete = true;
 		App->audio->PlayFx(destroyedFx);
-		cfs->SetPos(-600, -600);
+		cfs->SetPos(-300, -300);
 		collider->SetPos(-600, -600);
 		balldash->SetPos(-600, -600);
 		dead = false;
@@ -152,13 +155,25 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 					App->player->speedx = 0;
 				}
 			}
+			if (App->player->shot == true) {
+				InitialD = true;
+			}
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == true) { 
 			up = true;
 		}
 
-		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {	//Seguir trabajando
+		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
+			wall1->SetPos(position.x + 4, position.y + 3);
+			wall2->SetPos(position.x + 24, position.y + 3);
+			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {			//Mirar
+				vistard = false;
+			}
+			else if (c1 == wall2 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
+				vistard = true;
+			}
+			countdown = 0;
 			InitialD = true;
 		}
 
