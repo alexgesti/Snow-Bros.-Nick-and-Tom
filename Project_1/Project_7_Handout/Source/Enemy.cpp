@@ -18,7 +18,6 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 75, 703, 25, 31 });
 	snow.PushBack({ 142, 703, 25, 31 });
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
 	balldash = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 	wall1 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL, (Module*)App->enemies);
 	wall2 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL2, (Module*)App->enemies);
@@ -167,7 +166,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
 			wall1->SetPos(position.x + 4, position.y + 3);
 			wall2->SetPos(position.x + 24, position.y + 3);
-			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {			//Mirar
+			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {	
 				vistard = false;
 			}
 			else if (c1 == wall2 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
