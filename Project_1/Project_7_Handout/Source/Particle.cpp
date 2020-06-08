@@ -63,6 +63,12 @@ bool Particle::Update()
 				}
 			}
 		}
+		if (activate == 3) {
+			position.x -= speedx;
+		}
+		if (activate == 4) {
+			position.x += speedx;
+		}
 		if (activate == 0){
 			position.x += speedx;
 			position.y += speedy;

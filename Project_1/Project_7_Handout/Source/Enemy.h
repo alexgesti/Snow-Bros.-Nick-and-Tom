@@ -51,7 +51,7 @@ public:
 	bool hit = false;
 	bool once = true;
 	bool push = false;
-	bool kick = false;
+	bool rebote = false;
 	bool up = false;
 	bool InitialD = false;
 

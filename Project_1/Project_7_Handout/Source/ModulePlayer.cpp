@@ -97,7 +97,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rolling.PushBack({16, 378, 22, 21});
 	rolling.PushBack({ 46, 373, 20, 25 });
 	rolling.loop = true;
-	rolling.speed = 0.3f;
+	rolling.speed = 0.1f;
 
 	pushingR.PushBack({ 16, 185, 20, 28});
 	pushingR.PushBack({ 44, 186, 21, 27 });
@@ -206,7 +206,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 
-			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && kick == false)
 			{
 				shot = true;
 				timers = 0;
@@ -324,12 +324,12 @@ update_status ModulePlayer::Update()
 		{
 			if (vista == true)
 			{
-				App->particles->AddParticle(0, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(3, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 			else
 			{
-				App->particles->AddParticle(0, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+				App->particles->AddParticle(4, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
 				App->audio->PlayFx(laserFx);
 			}
 		}
@@ -338,13 +338,45 @@ update_status ModulePlayer::Update()
 		colliderp->SetPos(600, 600);
 	}
 
-	/*if (boulder == true) {				//Does not work
+	if (boulder == true) {
 		if (currentAnimation != &rolling)
 		{
 			rolling.Reset();
 			currentAnimation = &rolling;
 		}
-	}*/
+	}
+	if (push == true) {
+		if (vista == true) {
+			if (currentAnimation != &pushingL)
+			{
+				pushingL.Reset();
+				currentAnimation = &pushingL;
+			}
+		}
+		else {
+			if (currentAnimation != &pushingR)
+			{
+				pushingR.Reset();
+				currentAnimation = &pushingR;
+			}
+		}
+	}
+	if (kick == true) {
+		if (vista == true) {
+			if (currentAnimation != &kickingL)
+			{
+				kickingL.Reset();
+				currentAnimation = &kickingL;
+			}
+		}
+		else {
+			if (currentAnimation != &kickingR)
+			{
+				kickingR.Reset();
+				currentAnimation = &kickingR;
+			}
+		}
+	}
 
 	// If no  movement detected or default floor, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
@@ -450,6 +482,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		speedx = 1;
 		boulder = false;
+		push = false;
+		kick = false;
 	}
 
 	if (c1 == colliderf && c2->type == Collider::Type::WALL)

@@ -23,14 +23,14 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snowballW.PushBack({ 266, 704, 25, 30 });
 	snowballW.PushBack({ 299, 704, 26, 30 });
 	snowballW.loop = true;
-	snowballW.speed = 0.5f;
+	snowballW.speed = 0.2f;
 
 	snowballB.PushBack({ 357, 704, 25, 30 });
 	snowballB.PushBack({ 390, 704, 26, 30 });
 	snowballB.PushBack({ 424, 703, 25, 31 });
 	snowballB.PushBack({ 457, 704, 26, 30 });
 	snowballB.loop = true;
-	snowballB.speed = 0.5f;
+	snowballB.speed = 0.2f;
 
 	balldash = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 	wall1 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL, (Module*)App->enemies);
@@ -115,18 +115,18 @@ void Enemy::Update()
 			snowAnim->GetSelectedFrame(4);
 		}
 	}
-	else if (kick == true) {			//Does not work
-		if (snowAnim != &snowballB)
-		{
-			snowballB.Reset();
-			snowAnim = &snowballB;
-		}
-	}
-	else if (push == true || InitialD == true) {	//Does not work
+	if ((push == true || InitialD == true) && rebote == false) {
 		if (snowAnim != &snowballW)
 		{
 			snowballW.Reset();
 			snowAnim = &snowballW;
+		}
+	}
+	if (rebote == true) {
+		if (snowAnim != &snowballB)
+		{
+			snowballB.Reset();
+			snowAnim = &snowballB;
 		}
 	}
 
@@ -193,6 +193,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (App->player->shot == true) {
 				InitialD = true;
+				App->player->kick = true;
 			}
 		}
 
@@ -211,7 +212,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			}
 			countdown = 0;
 			InitialD = true;
-			App->player->kick = true;
+			rebote = true;
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false)
