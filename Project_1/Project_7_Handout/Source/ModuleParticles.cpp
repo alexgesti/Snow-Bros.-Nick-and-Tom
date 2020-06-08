@@ -26,26 +26,6 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Nick&Tom.png");
 
-	// muerte
-	pdead.anim.PushBack({16, 531, 30, 29});
-	pdead.anim.PushBack({54, 528, 29, 32});
-	pdead.anim.PushBack({91, 531, 30, 29});
-	pdead.anim.PushBack({ 54, 528, 29, 32 });
-	pdead.anim.PushBack({ 91, 531, 30, 29 });
-	pdead.anim.PushBack({ 54, 528, 29, 32 });
-	pdead.anim.PushBack({ 91, 531, 30, 29 });
-	pdead.anim.PushBack({ 54, 528, 29, 32 });
-	pdead.anim.PushBack({ 91, 531, 30, 29 });
-	pdead.anim.PushBack({ 54, 528, 29, 32 });
-	pdead.anim.PushBack({ 91, 531, 30, 29 });
-	pdead.anim.PushBack({ 129, 535, 28, 25 });
-	pdead.anim.PushBack({ 165, 539, 30, 22 });
-	pdead.anim.PushBack({ 203, 544, 32, 16 });
-	pdead.anim.PushBack({ 243, 547, 32, 13 });
-	pdead.anim.PushBack({ 283, 552, 32, 8 });
-	pdead.anim.loop = false;
-	pdead.anim.speed = 0.3f;
-
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
 	laserx.speedx = 4;

@@ -18,6 +18,20 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 75, 703, 25, 31 });
 	snow.PushBack({ 142, 703, 25, 31 });
 
+	snowballW.PushBack({ 199, 703, 25, 31 });
+	snowballW.PushBack({ 232, 704, 26, 30 });
+	snowballW.PushBack({ 266, 704, 25, 30 });
+	snowballW.PushBack({ 299, 704, 26, 30 });
+	snowballW.loop = true;
+	snowballW.speed = 0.5f;
+
+	snowballB.PushBack({ 357, 704, 25, 30 });
+	snowballB.PushBack({ 390, 704, 26, 30 });
+	snowballB.PushBack({ 424, 703, 25, 31 });
+	snowballB.PushBack({ 457, 704, 26, 30 });
+	snowballB.loop = true;
+	snowballB.speed = 0.5f;
+
 	balldash = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::SNOWBALL, (Module*)App->enemies);
 	wall1 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL, (Module*)App->enemies);
 	wall2 = App->collisions->AddCollider({ 0, 0, 2, 21 }, Collider::Type::WALL2, (Module*)App->enemies);
@@ -78,6 +92,44 @@ void Enemy::Update()
 		}
 	}
 
+	//Animation
+	if (push == false || InitialD == false) {
+		if (snowAnim != &snow)
+		{
+			snow.Reset();
+			snowAnim = &snow;
+		}
+		if (cout <= 0) {
+			snowAnim->GetSelectedFrame(0);
+		}
+		else if (cout >= 1 && cout < 4) {
+			snowAnim->GetSelectedFrame(1);
+		}
+		else if (cout >= 4 && cout < 6) {
+			snowAnim->GetSelectedFrame(2);
+		}
+		else if (cout >= 6 && cout < 8) {
+			snowAnim->GetSelectedFrame(3);
+		}
+		else if (cout >= 8) {
+			snowAnim->GetSelectedFrame(4);
+		}
+	}
+	else if (kick == true) {			//Does not work
+		if (snowAnim != &snowballB)
+		{
+			snowballB.Reset();
+			snowAnim = &snowballB;
+		}
+	}
+	else if (push == true || InitialD == true) {	//Does not work
+		if (snowAnim != &snowballW)
+		{
+			snowballW.Reset();
+			snowAnim = &snowballW;
+		}
+	}
+
 	//Enemy Dead
 	if (dead == true) {
 		candelete = true;
@@ -93,25 +145,9 @@ void Enemy::Draw()
 {
 	if (currentAnim != nullptr) {
 		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-		App->render->Blit(App->enemies->SnowT, position.x + 2, position.y - 4, &(snow.GetCurrentFrame()));
 	}
-
-	if (cout <= 0) {
-		snow.GetSelectedFrame(0);
-	}
-	else if (cout >= 1 && cout < 4) {
-		snow.GetSelectedFrame(1);
-	}
-	else if (cout >= 4 && cout < 6) {
-		snow.GetSelectedFrame(2);
-	}
-	else if (cout >= 6 && cout < 8) {
-		snow.GetSelectedFrame(3);
-	}
-	else if (cout >= 8) {
-		snow.GetSelectedFrame(4);
-	}
-	else if (InitialD == true) {
+	if (snowAnim != nullptr) {
+		App->render->Blit(App->enemies->SnowT, position.x + 2, position.y - 4, &(snowAnim->GetCurrentFrame()));
 	}
 }
 
@@ -144,6 +180,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	if (cout >= 8) {
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == false && up == false) {
 			push = true;
+			App->player->push = true;
 			if (hitwallL == true) {
 				if (App->player->vista == true) {
 					App->player->speedx = 0;
@@ -174,6 +211,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			}
 			countdown = 0;
 			InitialD = true;
+			App->player->kick = true;
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::FEET && App->player->jump == false)
@@ -188,8 +226,8 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 
 			if (c1 == balldash && c2->type == Collider::Type::FEET) {
 				if (App->player->jump == false) {
-					App->player->position.x = position.x;
-					App->player->position.y = position.y-1;
+					App->player->position.x = position.x + 2;
+					App->player->position.y = position.y - 1;
 					App->player->colliderp->SetPos(600, 600);
 					App->player->boulder = true;
 				}

@@ -59,6 +59,11 @@ public:
 	Animation shotRAnim;
 	Animation shotLAnim;
 	Animation pdead;
+	Animation rolling;
+	Animation pushingR;
+	Animation pushingL;
+	Animation kickingR;
+	Animation kickingL;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	bool death = false;
@@ -69,6 +74,8 @@ public:
 	bool gravity = true;
 	bool idle = false;
 	bool boulder = false;
+	bool push = false;
+	bool kick = false;
 	float timerj = 45;
 	float timers = 10;
 	float high = 0;

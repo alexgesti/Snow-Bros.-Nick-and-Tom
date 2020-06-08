@@ -51,13 +51,17 @@ public:
 	bool hit = false;
 	bool once = true;
 	bool push = false;
+	bool kick = false;
 	bool up = false;
 	bool InitialD = false;
 
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
+	Animation* snowAnim = nullptr;
 	Animation snow;
+	Animation snowballW;
+	Animation snowballB;
 
 	// The enemy's collider
 	Collider* collider = nullptr;
