@@ -32,6 +32,16 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 	Rdead.PushBack({ 147, 38, 28, 30 });
 	Rdead.speed = 0.1f;
 
+	JumpL.PushBack({ 112, 73, 27, 25 });
+	JumpL.PushBack({ 50, 69, 23, 30 });
+	JumpL.speed = 0.1f;
+	JumpL.loop = false;
+	
+	JumpR.PushBack({ 147, 73, 27, 25 });
+	JumpR.PushBack({ 213, 69, 23, 30 });
+	JumpR.speed = 0.1f;
+	JumpR.loop = false;
+
 	nothing.PushBack({ 0, 0, 0, 0 });
 
 	if (random == 0) {
@@ -47,7 +57,7 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 
 void Enemy_RedDemon::Update()
 {
-	position.x = spawnPos.x + position.x + speed;
+	position.x = spawnPos.x + position.x + speedx;
 
 	if (cout <= 0) {
 		random--;
@@ -61,8 +71,8 @@ void Enemy_RedDemon::Update()
 			random = (rand() % 4 + 1) * 100;
 		}
 		if (gravity == true) {
-			speed = 0;
-			position.y = spawnPos.y + position.y + 1;
+			speedx = 0;
+			position.y = spawnPos.y + position.y + speedy;
 			if (vistard == true) {
 				if (currentAnim != &downLAnim)
 				{
@@ -79,7 +89,7 @@ void Enemy_RedDemon::Update()
 			}
 		}
 		else if (vistard == true) {
-			speed = (-0.5f);
+			speedx = (-0.5f);
 			if (currentAnim != &walkLAnim)
 			{
 				walkLAnim.Reset();
@@ -87,7 +97,7 @@ void Enemy_RedDemon::Update()
 			}
 		}
 		else if(vistard == false){
-			speed = 0.5f;
+			speedx = 0.5f;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();
@@ -105,12 +115,42 @@ void Enemy_RedDemon::Update()
 			random = (rand() % 4 + 1) * 100;
 			hitwallR = false;
 		}
+
+		jumpt--;
+		if (jumpt <= 0) {
+			jump = true;
+			speedx = 0;
+			alt = position.y;
+			jumpt = (rand() % 9 + 6) * 100;
+		}
+
+		if (jump == true) {
+			if (position.y > alt - 38) {
+				position.y = spawnPos.y + position.y - speedy;
+				if (vistard == true) {
+					if (currentAnim != &JumpL)
+					{
+						currentAnim = &JumpL;
+					}
+				}
+				else {
+					if (currentAnim != &JumpR)
+					{
+						currentAnim = &JumpR;
+					}
+				}
+			}
+			if (position.y <= alt - 38){
+				jump = false;
+				gravity = true;
+			}
+		}
 	}
 
 	else if (cout > 0 && cout < 8) {
-		speed = 0;
+		speedx = 0;
 		if (gravity == true) {
-			position.y = spawnPos.y + position.y + 1;
+			position.y = spawnPos.y + position.y + speedy;
 		}
 		
 		if (vistard == true) {
@@ -130,7 +170,7 @@ void Enemy_RedDemon::Update()
 	}
 
 	else if (cout >= 8) {
-		speed = 0;
+		speedx = 0;
 		if (currentAnim != &nothing)
 		{
 			nothing.Reset();
@@ -138,14 +178,14 @@ void Enemy_RedDemon::Update()
 		}
 
 		if (gravity == true) {
-			position.y = spawnPos.y + position.y + 2;
+			position.y = spawnPos.y + position.y + (speedy*2);
 		}
 
 		if (InitialD == false) {
 			if (hitwallL == true) {
 				push = false;
 				if (vistard == true) {
-					speed = 0;
+					speedx = 0;
 				}
 				vistard = false;
 				hitwallL = false;
@@ -153,7 +193,7 @@ void Enemy_RedDemon::Update()
 			else if (hitwallR == true) {
 				push = false;
 				if (vistard == false) {
-					speed = 0;
+					speedx = 0;
 				}
 				vistard = true;
 				hitwallR = false;
@@ -161,21 +201,21 @@ void Enemy_RedDemon::Update()
 			else {
 				if (push == true) {
 					if (App->player->vista == true) {
-						speed = (-1);		//Misma velocidad que el player
+						speedx = (-1);		//Misma velocidad que el player
 						vistard = true;
 					}
 					if (App->player->vista == false) {
-						speed = 1;		//Misma velocidad que el player
+						speedx = 1;		//Misma velocidad que el player
 						vistard = false;
 					}
 				}
 			}
 			if (up == true) {
 				if (vistard == true) {
-					speed = (-2);
+					speedx = (-2);
 				}
 				if (vistard == false) {
-					speed = 2;
+					speedx = 2;
 				}
 				up = false;
 			}
@@ -183,10 +223,10 @@ void Enemy_RedDemon::Update()
 
 		else if (InitialD == true) {
 			if (vistard == false) {
-				speed = 2;
+				speedx = 2;
 			}
 			if (vistard == true) {
-				speed = (-2);
+				speedx = (-2);
 			}
 
 			if (hitwallL == true) {

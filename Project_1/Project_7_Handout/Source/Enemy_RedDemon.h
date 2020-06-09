@@ -18,14 +18,16 @@ public:
 private:
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
-	Animation walkRAnim;
 	Animation walkLAnim;
+	Animation walkRAnim;
 	Animation downRAnim;
 	Animation downLAnim;
 	Animation turnRAnim;
 	Animation turnLAnim;
 	Animation Ldead;
 	Animation Rdead;
+	Animation JumpL;
+	Animation JumpR;
 	Animation nothing;
 };
 

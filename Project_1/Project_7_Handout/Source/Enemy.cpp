@@ -142,7 +142,6 @@ void Enemy::Update()
 	//Enemy Dead
 	if (dead == true) {
 		candelete = true;
-		App->audio->PlayFx(destroyedFx);
 		cfs->SetPos(-300, -300);
 		collider->SetPos(-600, -600);
 		balldash->SetPos(-600, -600);
@@ -169,20 +168,27 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR) {
 		gravity = false;
 	}
-	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR) {
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR && jump == false) {
 		gravity = true;
 		push = false;
 	}
 	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL) {
 		hitwallR = true;
+		if (c1 == balldash && c2->type == Collider::Type::WALL) {
+			App->audio->PlayFx(App->enemies->choqueFx);
+		}
 	}
 	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL2) {
 		hitwallL = true;
+		if (c1 == balldash && c2->type == Collider::Type::WALL2) {
+			App->audio->PlayFx(App->enemies->choqueFx);
+		}
 	}
 
 	if (cout < 8) {
-		if (c1 == cfs && candelete == false && c2->type == Collider::Type::SNOWBALL) {
+		if (c1 == cfs && candelete == false && c2->type == Collider::Type::SNOWBALL && c2->type != Collider::Type::DELSNOW) {
 			dead = true;
+			App->audio->PlayFx(App->enemies->enemyDestroyedFx);
 		}
 	}
 
@@ -202,7 +208,6 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (App->player->shot == true) {
 				InitialD = true;
-				App->player->kick = true;
 			}
 		}
 
@@ -232,6 +237,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		if (InitialD == true) {
 			if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
 				dead = true;
+				App->audio->PlayFx(App->enemies->snowDestroyedFx);
 			}
 
 			if (c1 == balldash && c2->type == Collider::Type::FEET) {

@@ -31,6 +31,9 @@ bool ModuleEnemies::Start()
 	Redemon = App->textures->Load("Assets/demonio.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
+	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
+	choqueFx = App->audio->LoadFx("Assets/rebotar.wav");
+	pydFx = App->audio->LoadFx("Assets/patada y rebote.wav");
 
 	kills = 0;
 
@@ -159,8 +162,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				enemies[i]->texture = Redemon;
 				break;
 			}
-			
-			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
 	}

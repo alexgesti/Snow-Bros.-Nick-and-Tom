@@ -117,15 +117,15 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	kickingR.PushBack({ 183, 186, 16, 27 });
 	kickingR.PushBack({ 209, 184, 25, 29 });
 	kickingR.PushBack({ 242, 184, 25, 29 });
-	kickingR.loop = true;
-	kickingR.speed = 0.1f;
+	kickingR.loop = false;
+	kickingR.speed = 0.5f;
 
 	kickingL.PushBack({ 426, 231, 22, 28 });
 	kickingL.PushBack({ 400, 232, 18, 27 });
 	kickingL.PushBack({ 367, 230, 25, 29 });
 	kickingL.PushBack({ 334, 230, 25, 29 });
-	kickingL.loop = true;
-	kickingL.speed = 0.1f;
+	kickingL.loop = false;
+	kickingL.speed = 0.5f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -206,39 +206,60 @@ update_status ModulePlayer::Update()
 				}
 			}
 
-			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && kick == false)
+			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
 				shot = true;
 				timers = 0;
-				if (vista == true)
-				{
-					App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(laserFx);
-				}
-				else
-				{
-					App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
-					App->audio->PlayFx(laserFx);
+				if (push == false) {
+					if (vista == true)
+					{
+						App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+						App->audio->PlayFx(laserFx);
+					}
+					else
+					{
+						App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+						App->audio->PlayFx(laserFx);
+					}
 				}
 			}
 			timers += 1;
 			if (shot == true)
 			{
-				if (vista == true)
-				{
-					if (currentAnimation != &shotLAnim)
+				if (push == false) {
+					if (vista == true)
 					{
-						shotLAnim.Reset();
-						currentAnimation = &shotLAnim;
+						if (currentAnimation != &shotLAnim)
+						{
+							shotLAnim.Reset();
+							currentAnimation = &shotLAnim;
+						}
+					}
+					else
+					{
+						if (currentAnimation != &shotRAnim)
+						{
+							shotRAnim.Reset();
+							currentAnimation = &shotRAnim;
+						}
 					}
 				}
-				else
-				{
-					if (currentAnimation != &shotRAnim)
-					{
-						shotRAnim.Reset();
-						currentAnimation = &shotRAnim;
+				if (push == true) {
+					if (vista == true) {
+						if (currentAnimation != &kickingL)
+						{
+							kickingL.Reset();
+							currentAnimation = &kickingL;
+						}
 					}
+					else {
+						if (currentAnimation != &kickingR)
+						{
+							kickingR.Reset();
+							currentAnimation = &kickingR;
+						}
+					}
+					App->audio->PlayFx(App->enemies->pydFx);
 				}
 				if (timers >= 5)
 				{
@@ -361,22 +382,6 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (kick == true && destroyed == false) {
-		if (vista == true) {
-			if (currentAnimation != &kickingL)
-			{
-				kickingL.Reset();
-				currentAnimation = &kickingL;
-			}
-		}
-		else {
-			if (currentAnimation != &kickingR)
-			{
-				kickingR.Reset();
-				currentAnimation = &kickingR;
-			}
-		}
-	}
 
 	// If no  movement detected or default floor, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
@@ -483,7 +488,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		speedx = 1;
 		boulder = false;
 		push = false;
-		kick = false;
 	}
 
 	if (c1 == colliderf && c2->type == Collider::Type::WALL)

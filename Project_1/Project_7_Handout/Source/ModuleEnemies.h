@@ -64,6 +64,12 @@ public:
 	SDL_Texture* Redemon = nullptr;
 	SDL_Texture* SnowT = nullptr;
 
+	// The audio fx for destroying an enemy
+	int enemyDestroyedFx = 0;
+	int snowDestroyedFx = 0;
+	int choqueFx = 0;
+	int pydFx = 0;
+
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
@@ -75,8 +81,6 @@ private:
 	// All spawned enemies in the scene
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
-	// The audio fx for destroying an enemy
-	int enemyDestroyedFx = 0;
 	int kills = 0;
 };
 

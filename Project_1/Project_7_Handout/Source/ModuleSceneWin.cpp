@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
 #include "ModuleParticles.h"
+#include "ModuleScene.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -55,7 +56,10 @@ update_status ModuleSceneWin::Update()
 
 	if (count == 1 * 60) LetsGo.Update();
 
-	if (count == 4 * 60) App->change->Changing(this, (Module*)App->sceneIntro, 60);
+	if (count == 4 * 60) {
+		App->sceneLevel_1->camscene++;
+		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

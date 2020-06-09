@@ -75,7 +75,6 @@ public:
 	bool idle = false;
 	bool boulder = false;
 	bool push = false;
-	bool kick = false;
 	float timerj = 50;
 	float timers = 10;
 	float high = 0;
