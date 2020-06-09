@@ -23,7 +23,7 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snowballW.PushBack({ 266, 704, 25, 30 });
 	snowballW.PushBack({ 299, 704, 26, 30 });
 	snowballW.loop = true;
-	snowballW.speed = 0.2f;
+	snowballW.speed = 0.1f;
 
 	snowballB.PushBack({ 357, 704, 25, 30 });
 	snowballB.PushBack({ 390, 704, 26, 30 });
@@ -45,9 +45,6 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	if (currentAnim != nullptr)
-		currentAnim->Update();
-
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x + 4, position.y + 1);
@@ -93,39 +90,51 @@ void Enemy::Update()
 	}
 
 	//Animation
+	if (currentAnim != nullptr)
+		currentAnim->Update();
+	if (snowAnim != nullptr)
+		snowAnim->Update();
+
 	if (push == false || InitialD == false) {
 		if (snowAnim != &snow)
 		{
-			snow.Reset();
 			snowAnim = &snow;
 		}
 		if (cout <= 0) {
-			snowAnim->GetSelectedFrame(0);
+			snow.GetSelectedFrame(0);
 		}
 		else if (cout >= 1 && cout < 4) {
-			snowAnim->GetSelectedFrame(1);
+			snow.GetSelectedFrame(1);
 		}
 		else if (cout >= 4 && cout < 6) {
-			snowAnim->GetSelectedFrame(2);
+			snow.GetSelectedFrame(2);
 		}
 		else if (cout >= 6 && cout < 8) {
-			snowAnim->GetSelectedFrame(3);
+			snow.GetSelectedFrame(3);
 		}
 		else if (cout >= 8) {
-			snowAnim->GetSelectedFrame(4);
+			snow.GetSelectedFrame(4);
 		}
 	}
-	if ((push == true || InitialD == true) && rebote == false) {
+
+	if (push == true) {
 		if (snowAnim != &snowballW)
 		{
-			snowballW.Reset();
 			snowAnim = &snowballW;
 		}
 	}
+
+	if (InitialD == true && rebote == false) {
+		snowballW.speed = 0.2f;
+		if (snowAnim != &snowballW)
+		{
+			snowAnim = &snowballW;
+		}
+	}
+
 	if (rebote == true) {
 		if (snowAnim != &snowballB)
 		{
-			snowballB.Reset();
 			snowAnim = &snowballB;
 		}
 	}
@@ -227,7 +236,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 
 			if (c1 == balldash && c2->type == Collider::Type::FEET) {
 				if (App->player->jump == false) {
-					App->player->position.x = position.x + 2;
+					App->player->position.x = position.x + 4;
 					App->player->position.y = position.y - 1;
 					App->player->colliderp->SetPos(600, 600);
 					App->player->boulder = true;

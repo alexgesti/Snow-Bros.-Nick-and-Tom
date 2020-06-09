@@ -97,7 +97,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rolling.PushBack({16, 378, 22, 21});
 	rolling.PushBack({ 46, 373, 20, 25 });
 	rolling.loop = true;
-	rolling.speed = 0.1f;
+	rolling.speed = 0.2f;
 
 	pushingR.PushBack({ 16, 185, 20, 28});
 	pushingR.PushBack({ 44, 186, 21, 27 });
@@ -187,7 +187,7 @@ update_status ModulePlayer::Update()
 			{
 				position.x -= speedx;
 				vista = true;
-				if (currentAnimation != &LAnim && shot == false && timerj >= 45 && gravity == false)
+				if (currentAnimation != &LAnim && shot == false && timerj >= 45 && gravity == false && push == false)
 				{
 					LAnim.Reset();
 					currentAnimation = &LAnim;
@@ -199,7 +199,7 @@ update_status ModulePlayer::Update()
 			{
 				position.x += speedx;
 				vista = false;
-				if (currentAnimation != &RAnim && shot == false && timerj >= 45 && gravity == false)
+				if (currentAnimation != &RAnim && shot == false && timerj >= 45 && gravity == false && push == false)
 				{
 					RAnim.Reset();
 					currentAnimation = &RAnim;
@@ -345,7 +345,7 @@ update_status ModulePlayer::Update()
 			currentAnimation = &rolling;
 		}
 	}
-	if (push == true) {
+	if (push == true && destroyed == false) {
 		if (vista == true) {
 			if (currentAnimation != &pushingL)
 			{
@@ -361,7 +361,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	if (kick == true) {
+	if (kick == true && destroyed == false) {
 		if (vista == true) {
 			if (currentAnimation != &kickingL)
 			{
