@@ -149,7 +149,7 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 221;
 
-	colliderf = App->collisions->AddCollider({ position.x, position.y, 17, 3 }, Collider::Type::FEET, this);
+	colliderf = App->collisions->AddCollider({ position.x, position.y, 16, 3 }, Collider::Type::FEET, this);
 	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 25 }, Collider::Type::PLAYER, this);
 
 	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
@@ -362,7 +362,7 @@ update_status ModulePlayer::Update()
 	if (boulder == true) {
 		if (currentAnimation != &rolling)
 		{
-			rolling.Reset();
+			//rolling.Reset();
 			currentAnimation = &rolling;
 		}
 	}
@@ -421,7 +421,7 @@ update_status ModulePlayer::Update()
 		currentAnimation = &idleLAnim;
 
 	if (godmode == false) {
-		colliderf->SetPos(position.x + 2, position.y + 24);
+		colliderf->SetPos(position.x + 3, position.y + 24);
 		colliderp->SetPos(position.x, position.y);
 	}
 

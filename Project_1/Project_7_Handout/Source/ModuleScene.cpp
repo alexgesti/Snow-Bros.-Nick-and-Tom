@@ -94,11 +94,11 @@ bool ModuleScene::Start()
 		App->collisions->AddCollider({ 348, 225, 5, 20 }, Collider::Type::DELSNOW);
 
 		// Enemies ---
-		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 100, 50);
-		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 230, 50);
-		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 70, 106);
-		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 250, 106);
-		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 90, 143);
+		App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, 100, 50);
+		App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, 230, 50);
+		App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, 70, 106);
+		App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, 250, 106);
+		App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, 90, 143);
 	}
 	else if (camscene == 1) {
 

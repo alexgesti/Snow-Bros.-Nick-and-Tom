@@ -12,11 +12,11 @@
 
 Enemy::Enemy(float x, float y) : position(x, y)
 {
-	snow.PushBack({ 592, 816, 1, 1 });
-	snow.PushBack({ 14, 703, 22, 31 });
-	snow.PushBack({ 43, 703, 24, 31 });
-	snow.PushBack({ 75, 703, 25, 31 });
-	snow.PushBack({ 142, 703, 25, 31 });
+	snow.PushBack({ 1, 1, 1, 1 });
+	snow.PushBack({ 14, 701, 22, 33 });
+	snow.PushBack({ 43, 701, 24, 33 });
+	snow.PushBack({ 75, 701, 25, 33 });
+	snow.PushBack({ 142, 701, 25, 33 });
 
 	snowballW.PushBack({ 199, 703, 25, 31 });
 	snowballW.PushBack({ 232, 704, 26, 30 });
@@ -45,33 +45,6 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	//Admin. Collider
-	if (cfs != nullptr && candelete == false && InitialD == false) {
-		cfs->SetPos(position.x + 4, position.y + 1);
-		balldash->SetPos(-600, -600);
-		if (cout < 8) {
-			wall1->SetPos(-400, -400);
-			wall2->SetPos(-400, -400);
-			if (cout <= 0) {
-				collider->SetPos(position.x, position.y);
-			}
-		}
-	}
-	if (cout > 0) {
-		collider->SetPos(-600, -600);
-		if (InitialD == true) {
-			cfs->SetPos(-300, -300);
-			balldash->SetPos(position.x + 4, position.y + 1);
-		}
-	}
-	if (InitialD == true){
-		countdown++;
-		if (countdown >= 5) {
-			wall1->SetPos(-400, -400);
-			wall2->SetPos(-400, -400);
-		}
-	}
-
 	//Hit
 	if (hit == true) {
 		cout++;
@@ -165,7 +138,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		hit = true;
 	}
 
-	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR) {
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR && fall == false) {
 		gravity = false;
 	}
 	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR && jump == false) {
@@ -243,7 +216,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			if (c1 == balldash && c2->type == Collider::Type::FEET) {
 				if (App->player->jump == false) {
 					App->player->position.x = position.x + 4;
-					App->player->position.y = position.y - 1;
+					App->player->position.y = position.y;
 					App->player->colliderp->SetPos(600, 600);
 					App->player->boulder = true;
 				}

@@ -20,10 +20,6 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 
 	downLAnim.PushBack({ 80, 69, 26 , 32 });
 
-	turnRAnim.PushBack({ 236, 2, 27, 27 });
-
-	turnLAnim.PushBack({ 8, 2, 27 , 27 });
-
 	Ldead.PushBack({ 15, 41, 28, 26 });
 	Ldead.PushBack({ 47, 39, 28, 30 });
 	Ldead.speed = 0.1f;
@@ -51,12 +47,39 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 27 }, Collider::Type::ENEMY);
+	collider = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::ENEMY);
 	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
 {
+	//Admin. Collider
+	if (cfs != nullptr && candelete == false && InitialD == false) {
+		cfs->SetPos(position.x + 4, position.y + 3);
+		balldash->SetPos(-600, -600);
+		if (cout < 8) {
+			wall1->SetPos(-400, -400);
+			wall2->SetPos(-400, -400);
+			if (cout <= 0) {
+				collider->SetPos(position.x + 4, position.y + 2);
+			}
+		}
+	}
+	if (cout > 0) {
+		collider->SetPos(-600, -600);
+		if (InitialD == true) {
+			cfs->SetPos(-300, -300);
+			balldash->SetPos(position.x + 4, position.y + 3);
+		}
+	}
+	if (InitialD == true) {
+		countdown++;
+		if (countdown >= 5) {
+			wall1->SetPos(-400, -400);
+			wall2->SetPos(-400, -400);
+		}
+	}
+
 	position.x = spawnPos.x + position.x + speedx;
 
 	if (cout <= 0) {
@@ -116,16 +139,20 @@ void Enemy_RedDemon::Update()
 			hitwallR = false;
 		}
 
-		jumpt--;
-		if (jumpt <= 0) {
-			jump = true;
-			speedx = 0;
-			alt = position.y;
-			jumpt = (rand() % 9 + 6) * 100;
+		if (jump == false && gravity == false) {
+			jumpt--;
+			if (jumpt <= 0) {
+				jump = true;
+				gravity = false;
+				alt = position.y;
+				jumpt = (rand() % 4 + 6) * 100;
+			}
 		}
 
 		if (jump == true) {
-			if (position.y > alt - 38) {
+			if (position.y > alt - 40) {
+				speedx = 0;
+				//fall = true
 				position.y = spawnPos.y + position.y - speedy;
 				if (vistard == true) {
 					if (currentAnim != &JumpL)
@@ -140,14 +167,16 @@ void Enemy_RedDemon::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 38){
-				jump = false;
+			if (position.y <= alt - 40){
 				gravity = true;
+				jump = false;
 			}
 		}
 	}
 
 	else if (cout > 0 && cout < 8) {
+		jump = false;
+		fall = false;
 		speedx = 0;
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + speedy;

@@ -38,7 +38,6 @@ public:
 	int countdown = 0;
 	float alt = 0;
 	int random = rand() % 2;
-	int jumpt = (rand() % 9 + 6) * 100;
 	float cout = 0;
 	float speedx = 0;
 	float speedy = 1;
@@ -56,6 +55,7 @@ public:
 	bool up = false;
 	bool InitialD = false;
 	bool jump = false;
+	bool fall = false;
 
 protected:
 	// A ptr to the current animation

@@ -11,6 +11,7 @@
 
 #include "Enemy.h"
 #include "Enemy_RedDemon.h"
+#include "Enemy_YellowMonkey.h"
 
 #define SPAWN_MARGIN 50
 
@@ -29,6 +30,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	Redemon = App->textures->Load("Assets/demonio.png");
+	YellMonky = App->textures->Load("Assets/monono.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
@@ -161,7 +163,12 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				enemies[i] = new Enemy_RedDemon(info.x, info.y);
 				enemies[i]->texture = Redemon;
 				break;
+			case ENEMY_TYPE::YELLOWMONKEY:
+				enemies[i] = new Enemy_YellowMonkey(info.x, info.y);
+				enemies[i]->texture = YellMonky;
+				break;
 			}
+
 			break;
 		}
 	}

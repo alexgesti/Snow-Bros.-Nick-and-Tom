@@ -15,6 +15,8 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
+	int jumpt = (rand() % 4 + 6) * 100;
+
 private:
 	// This enemy has one sprite and one frame
 	// We are keeping it an animation for consistency with other enemies
@@ -22,8 +24,6 @@ private:
 	Animation walkRAnim;
 	Animation downRAnim;
 	Animation downLAnim;
-	Animation turnRAnim;
-	Animation turnLAnim;
 	Animation Ldead;
 	Animation Rdead;
 	Animation JumpL;
