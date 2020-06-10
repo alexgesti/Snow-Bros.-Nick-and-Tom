@@ -153,7 +153,6 @@ void Enemy_YellowMonkey::Update()
 			if (position.y > alt - 40) {
 				speedx = 0;
 				position.y = spawnPos.y + position.y - speedy;
-				//fall = true;
 				if (vistard == true) {
 					if (currentAnim != &JumpL)
 					{
@@ -171,16 +170,11 @@ void Enemy_YellowMonkey::Update()
 				gravity = true;
 				jump = false;
 			}
-			/*if (gravity == true && position.y > alt - 38) {
-				LOG( "Caigo" );
-				fall = false;
-			}*/
 		}
 	}
 
 	else if (cout > 0 && cout < 8) {
 		jump = false;
-		fall = false;
 		speedx = 0;
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + speedy;

@@ -138,7 +138,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		hit = true;
 	}
 
-	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR && fall == false) {
+	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR) {
 		gravity = false;
 	}
 	if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR && jump == false) {
