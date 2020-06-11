@@ -148,7 +148,6 @@ void Enemy_YellowMonkey::Update()
 				jumpt = (rand() % 4 + 1) * 100;
 			}
 		}
-
 		if (jump == true) {
 			if (position.y > alt - 40) {
 				speedx = 0;

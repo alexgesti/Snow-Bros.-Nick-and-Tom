@@ -59,13 +59,13 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FEET][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FEET][Collider::Type::SNOWBALL] = true;
 
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL2] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::WALL2] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_SHOT] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::FLOOR] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::AIR] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::FLOOR] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::AIR] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::FEET] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::FISICSNOW] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::DELSNOW] = false;

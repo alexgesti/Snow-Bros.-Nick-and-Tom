@@ -10,12 +10,12 @@ Enemy_SpitFire::Enemy_SpitFire(float x, float y) : Enemy(x, y)
 	walkRAnim.PushBack({ 198, 3, 18, 26 });
 	walkRAnim.PushBack({ 165, 2, 19, 27 });
 	walkRAnim.PushBack({ 133, 2, 19, 27 });
-	walkRAnim.speed = 0.05f;
+	walkRAnim.speed = 0.1f;
 
 	walkLAnim.PushBack({ 40, 3, 18, 26 });
 	walkLAnim.PushBack({ 72, 2, 19, 27 });
 	walkLAnim.PushBack({ 104, 2, 19, 27 });
-	walkLAnim.speed = 0.05f;
+	walkLAnim.speed = 0.1f;
 
 	downRAnim.PushBack({ 225, 225, 30 , 30 });
 
@@ -40,7 +40,7 @@ Enemy_SpitFire::Enemy_SpitFire(float x, float y) : Enemy(x, y)
 	JumpR.loop = false;
 
 	shootR.PushBack({ 232, 34, 17, 27 });
-	
+
 	shootL.PushBack({ 7, 34, 17, 27 });
 
 	nothing.PushBack({ 0, 0, 0, 0 });
@@ -89,7 +89,7 @@ void Enemy_SpitFire::Update()
 
 	if (cout <= 0) {
 		random--;
-		if (random <= 0) {
+		if (random <= 0 && shoot == false) {
 			if (vistard == false) {
 				vistard = true;
 			}
@@ -117,7 +117,7 @@ void Enemy_SpitFire::Update()
 			}
 		}
 		else if (vistard == true && shoot == false) {
-			speedx = (-0.25f);
+			speedx = (-0.3f);
 			if (currentAnim != &walkLAnim)
 			{
 				walkLAnim.Reset();
@@ -125,7 +125,7 @@ void Enemy_SpitFire::Update()
 			}
 		}
 		else if(vistard == false && shoot == false){
-			speedx = 0.25f;
+			speedx = 0.3f;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();
@@ -170,28 +170,47 @@ void Enemy_SpitFire::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 40) {
+			if (position.y <= alt - 40){
 				gravity = true;
 				jump = false;
 			}
 		}
 
-		if (shoot == false && jump == false) {
+		if (jump == false && gravity == false && shoot == false) {
 			shoott--;
 			if (shoott <= 0) {
-				speedx = 0;
 				shoot = true;
+				speedx = 0;
+				shootcd = 40;			//Particle lifetime
 				shoott = (rand() % 4 + 1) * 100;
 			}
 		}
 		if (shoot == true) {
+			shootcd--;
 			if (vistard == true) {
-				App->particles->AddParticle(5, App->particles->fireL, position.x - 3, position.y + 8, Collider::Type::ENEMY);
+				if (currentAnim != &shootL)
+				{
+					currentAnim = &shootL;
+				}
+				if(shootonce == false){
+					App->particles->AddParticle(5, App->particles->fireL, position.x - 5, position.y + 4, Collider::Type::ENEMY);
+					shootonce = true;
+				}
 			}
 			else {
-				App->particles->AddParticle(6, App->particles->fireR, position.x - 3, position.y + 8, Collider::Type::ENEMY);
+				if (currentAnim != &shootR)
+				{
+					currentAnim = &shootR;
+				}
+				if (shootonce == false) {
+					App->particles->AddParticle(6, App->particles->fireR, position.x + 10, position.y + 4, Collider::Type::ENEMY);
+					shootonce = true;
+				}
 			}
-			shoot = false;
+			if (shootcd <= 0) {
+				shoot = false;
+				shootonce = false;
+			}
 		}
 	}
 

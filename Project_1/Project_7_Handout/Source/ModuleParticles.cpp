@@ -25,7 +25,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Nick&Tom.png");
-	fire = App->textures->Load("Assets/fuego.png");
+	fire = App->textures->Load("Assets/FIRE.png");
 
 	laserx.anim.PushBack({ 16, 141, 7, 11 });
 	laserx.anim.PushBack({ 31, 141, 7, 11 });
@@ -41,32 +41,32 @@ bool ModuleParticles::Start()
 	lasery.lifetime = 180;
 	lasery.anim.speed = 0.2f;
 
-	fireL.anim.PushBack({ 93, 211, 21, 14 });
-	fireL.anim.PushBack({ 85, 159, 29, 21 });
-	fireL.anim.PushBack({ 76, 108, 38, 25 });
-	fireL.anim.PushBack({ 67, 57, 47, 30 });
-	fireL.anim.PushBack({ 65, 10, 47, 29 });
-	fireL.anim.PushBack({ 24, 201, 32, 39 });
-	fireL.anim.PushBack({ 24, 151, 24, 41 });
-	fireL.anim.PushBack({ 27, 102, 23, 40 });
-	fireL.anim.PushBack({ 27, 55, 21, 35 });
-	fireL.speedx = 4;
+	fireL.anim.PushBack({ 47, 105, 10, 7 });
+	fireL.anim.PushBack({ 43, 79, 29, 21 });
+	fireL.anim.PushBack({ 38, 54, 19, 12 });
+	fireL.anim.PushBack({ 34, 28, 22, 15 });
+	fireL.anim.PushBack({ 33, 5, 22, 14 });
+	fireL.anim.PushBack({ 12, 100, 16, 20 });
+	fireL.anim.PushBack({ 12, 75, 12, 21 });
+	fireL.anim.PushBack({ 14, 51, 11, 20 });
+	fireL.anim.PushBack({ 14, 27, 10, 18 });
+	fireL.speedx = 2;
 	fireL.speedy = 0;
-	fireL.lifetime = 25;
+	fireL.lifetime = 40;
 	fireL.anim.speed = 0.2f;
 
-	fireL.anim.PushBack({ 139, 211, 21, 14 });
-	fireL.anim.PushBack({ 139, 159, 29, 21 });
-	fireL.anim.PushBack({ 139, 108, 38, 25 });
-	fireL.anim.PushBack({ 139, 57, 47, 30 });
-	fireL.anim.PushBack({ 141, 10, 47, 29 });
-	fireL.anim.PushBack({ 197, 201, 32, 39 });
-	fireL.anim.PushBack({ 205, 151, 24, 41 });
-	fireL.anim.PushBack({ 203, 102, 23, 40 });
-	fireL.anim.PushBack({ 199, 55, 21, 35 });
-	fireR.speedx = 4;
+	fireR.anim.PushBack({ 72, 105, 12, 7 });
+	fireR.anim.PushBack({ 72, 79, 31, 21 });
+	fireR.anim.PushBack({ 72, 54, 21, 12 });
+	fireR.anim.PushBack({ 72, 28, 23, 15 });
+	fireR.anim.PushBack({ 72, 5, 22, 14 });
+	fireR.anim.PushBack({ 99, 100, 16, 20 });
+	fireR.anim.PushBack({ 99, 75, 12, 21 });
+	fireR.anim.PushBack({ 99, 51, 11, 20 });
+	fireR.anim.PushBack({ 99, 27, 10, 18 });
+	fireR.speedx = 2;
 	fireR.speedy = 0;
-	fireR.lifetime = 25;
+	fireR.lifetime = 40;
 	fireR.anim.speed = 0.2f;
 
 	return true;

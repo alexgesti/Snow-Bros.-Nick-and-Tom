@@ -148,7 +148,6 @@ void Enemy_RedDemon::Update()
 				jumpt = (rand() % 4 + 6) * 100;
 			}
 		}
-
 		if (jump == true) {
 			if (position.y > alt - 40) {
 				speedx = 0;

@@ -17,7 +17,9 @@ public:
 
 	int jumpt = (rand() % 4 + 11) * 100;
 	int shoott = (rand() % 4 + 1) * 100;
+	int shootcd = 0;
 	bool shoot = false;
+	bool shootonce = false;
 
 private:
 	// This enemy has one sprite and one frame
@@ -35,4 +37,4 @@ private:
 	Animation nothing;
 };
 
-#endif // __ENEMY_SPITFIRE_H__
+#endif // __ENEMY_RedDemon_H__
