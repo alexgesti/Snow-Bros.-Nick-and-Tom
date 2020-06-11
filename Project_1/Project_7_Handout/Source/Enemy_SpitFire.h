@@ -15,7 +15,9 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
-	int jumpt = (rand() % 4 + 1) * 100;
+	int jumpt = (rand() % 4 + 11) * 100;
+	int shoott = (rand() % 4 + 1) * 100;
+	bool shoot = false;
 
 private:
 	// This enemy has one sprite and one frame
@@ -28,6 +30,8 @@ private:
 	Animation Rdead;
 	Animation JumpL;
 	Animation JumpR;
+	Animation shootL;
+	Animation shootR;
 	Animation nothing;
 };
 

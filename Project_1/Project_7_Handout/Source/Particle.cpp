@@ -63,10 +63,10 @@ bool Particle::Update()
 				}
 			}
 		}
-		if (activate == 3) {
+		if (activate == 3 || activate == 5) {
 			position.x -= speedx;
 		}
-		if (activate == 4) {
+		if (activate == 4 || activate == 6) {
 			position.x += speedx;
 		}
 		if (activate == 0){

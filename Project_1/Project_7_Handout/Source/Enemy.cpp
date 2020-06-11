@@ -18,17 +18,17 @@ Enemy::Enemy(float x, float y) : position(x, y)
 	snow.PushBack({ 75, 701, 25, 33 });
 	snow.PushBack({ 142, 701, 25, 33 });
 
-	snowballW.PushBack({ 199, 703, 25, 31 });
-	snowballW.PushBack({ 232, 704, 26, 30 });
-	snowballW.PushBack({ 266, 704, 25, 30 });
-	snowballW.PushBack({ 299, 704, 26, 30 });
+	snowballW.PushBack({ 199, 701, 25, 33 });
+	snowballW.PushBack({ 232, 701, 26, 33 });
+	snowballW.PushBack({ 266, 701, 25, 33 });
+	snowballW.PushBack({ 299, 701, 26, 33 });
 	snowballW.loop = true;
 	snowballW.speed = 0.1f;
 
-	snowballB.PushBack({ 357, 704, 25, 30 });
-	snowballB.PushBack({ 390, 704, 26, 30 });
-	snowballB.PushBack({ 424, 703, 25, 31 });
-	snowballB.PushBack({ 457, 704, 26, 30 });
+	snowballB.PushBack({ 357, 701, 25, 33 });
+	snowballB.PushBack({ 390, 701, 26, 33 });
+	snowballB.PushBack({ 424, 701, 25, 33 });
+	snowballB.PushBack({ 457, 701, 26, 33 });
 	snowballB.loop = true;
 	snowballB.speed = 0.2f;
 

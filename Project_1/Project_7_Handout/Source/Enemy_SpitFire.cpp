@@ -3,40 +3,45 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 Enemy_SpitFire::Enemy_SpitFire(float x, float y) : Enemy(x, y)
 {
-	walkRAnim.PushBack({ 328, 0, 35, 32 });
-	walkRAnim.PushBack({ 433, 2, 33, 30 });
-	walkRAnim.PushBack({ 382, 3, 31, 29 });
-	walkRAnim.speed = 0.2f;
+	walkRAnim.PushBack({ 198, 3, 18, 26 });
+	walkRAnim.PushBack({ 165, 2, 19, 27 });
+	walkRAnim.PushBack({ 133, 2, 19, 27 });
+	walkRAnim.speed = 0.05f;
 
 	walkLAnim.PushBack({ 40, 3, 18, 26 });
 	walkLAnim.PushBack({ 72, 2, 19, 27 });
 	walkLAnim.PushBack({ 104, 2, 19, 27 });
-	walkLAnim.speed = 0.2f;
+	walkLAnim.speed = 0.05f;
 
-	downRAnim.PushBack({ 484, 156, 35 , 36 });
+	downRAnim.PushBack({ 225, 225, 30 , 30 });
 
-	downLAnim.PushBack({ 3, 156, 35 , 36 });
+	downLAnim.PushBack({ 1, 225, 30 , 30 });
 
-	Ldead.PushBack({ 213, 5, 32, 28 });
-	Ldead.PushBack({ 6, 57, 32, 28 });
+	Ldead.PushBack({ 1, 69, 28, 25 });
+	Ldead.PushBack({ 36, 72, 25, 21 });
 	Ldead.speed = 0.1f;
 
-	Rdead.PushBack({ 277, 5, 32, 28 });
-	Rdead.PushBack({ 484, 57, 32, 28 });
+	Rdead.PushBack({ 227, 69, 28, 25 });
+	Rdead.PushBack({ 195, 72, 25, 21 });
 	Rdead.speed = 0.1f;
 
-	JumpL.PushBack({ 57, 162, 29, 26 });
-	JumpL.PushBack({ 111, 52, 24, 36 });
+	JumpL.PushBack({ 34, 230, 28, 23 });
+	JumpL.PushBack({ 38, 96, 22, 31 });
 	JumpL.speed = 0.1f;
 	JumpL.loop = false;
 
-	JumpR.PushBack({ 436, 162, 29, 26 });
-	JumpR.PushBack({ 387, 52, 24, 36 });
+	JumpR.PushBack({ 194, 230, 28, 23 });
+	JumpR.PushBack({ 196, 96, 22, 31 });
 	JumpR.speed = 0.1f;
 	JumpR.loop = false;
+
+	shootR.PushBack({ 232, 34, 17, 27 });
+	
+	shootL.PushBack({ 7, 34, 17, 27 });
 
 	nothing.PushBack({ 0, 0, 0, 0 });
 
@@ -47,21 +52,21 @@ Enemy_SpitFire::Enemy_SpitFire(float x, float y) : Enemy(x, y)
 		vistard = false;
 	}
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 25 }, Collider::Type::ENEMY);
-	cfs = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 19, 24 }, Collider::Type::ENEMY);
+	cfs = App->collisions->AddCollider({ 0, 0, 19, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
 void Enemy_SpitFire::Update()
 {
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
-		cfs->SetPos(position.x + 2, position.y + 5);
+		cfs->SetPos(position.x, position.y + 2);
 		balldash->SetPos(-600, -600);
 		if (cout < 8) {
 			wall1->SetPos(-400, -400);
 			wall2->SetPos(-400, -400);
 			if (cout <= 0) {
-				collider->SetPos(position.x + 2, position.y + 4);
+				collider->SetPos(position.x, position.y + 2);
 			}
 		}
 	}
@@ -69,7 +74,7 @@ void Enemy_SpitFire::Update()
 		collider->SetPos(-600, -600);
 		if (InitialD == true) {
 			cfs->SetPos(-300, -300);
-			balldash->SetPos(position.x + 4, position.y + 5);
+			balldash->SetPos(position.x + 2, position.y + 2);
 		}
 	}
 	if (InitialD == true) {
@@ -111,16 +116,16 @@ void Enemy_SpitFire::Update()
 				}
 			}
 		}
-		else if (vistard == true) {
-			speedx = (-1);
+		else if (vistard == true && shoot == false) {
+			speedx = (-0.25f);
 			if (currentAnim != &walkLAnim)
 			{
 				walkLAnim.Reset();
 				currentAnim = &walkLAnim;
 			}
 		}
-		else if(vistard == false){
-			speedx = 1;
+		else if(vistard == false && shoot == false){
+			speedx = 0.25f;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();
@@ -139,16 +144,15 @@ void Enemy_SpitFire::Update()
 			hitwallR = false;
 		}
 
-		if (jump == false && gravity == false) {
+		if (jump == false && gravity == false && shoot == false) {
 			jumpt--;
 			if (jumpt <= 0) {
 				jump = true;
 				gravity = false;
 				alt = position.y;
-				jumpt = (rand() % 4 + 1) * 100;
+				jumpt = (rand() % 4 + 11) * 100;
 			}
 		}
-
 		if (jump == true) {
 			if (position.y > alt - 40) {
 				speedx = 0;
@@ -166,10 +170,28 @@ void Enemy_SpitFire::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 40){
+			if (position.y <= alt - 40) {
 				gravity = true;
 				jump = false;
 			}
+		}
+
+		if (shoot == false && jump == false) {
+			shoott--;
+			if (shoott <= 0) {
+				speedx = 0;
+				shoot = true;
+				shoott = (rand() % 4 + 1) * 100;
+			}
+		}
+		if (shoot == true) {
+			if (vistard == true) {
+				App->particles->AddParticle(5, App->particles->fireL, position.x - 3, position.y + 8, Collider::Type::ENEMY);
+			}
+			else {
+				App->particles->AddParticle(6, App->particles->fireR, position.x - 3, position.y + 8, Collider::Type::ENEMY);
+			}
+			shoot = false;
 		}
 	}
 
