@@ -13,6 +13,8 @@ enum class ENEMY_TYPE
 	REDDEMON,
 	YELLOWMONKEY,
 	SPITFIRE,
+	BOSS,
+	MINIBOSS,
 };
 
 struct EnemySpawnpoint
@@ -66,6 +68,7 @@ public:
 	SDL_Texture* Redemon = nullptr;
 	SDL_Texture* YellMonky = nullptr;
 	SDL_Texture* SF = nullptr;
+	SDL_Texture* bos = nullptr;
 	SDL_Texture* SnowT = nullptr;
 
 	// The audio fx for destroying an enemy

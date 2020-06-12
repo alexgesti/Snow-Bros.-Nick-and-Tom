@@ -330,7 +330,6 @@ update_status ModulePlayer::Update()
 				{
 					jump = false;
 					gravity = true;
-					high = 0;
 				}
 			}
 		}
@@ -470,12 +469,15 @@ update_status ModulePlayer::Update()
 				position.y = 221;
 				destroyed = false;
 				death = false;
+				inmortality = 150;
 			}
 			else if (lives <= 0) {
 				App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->screenGameOver, 60);
 			}
 		}
 	}
+
+	inmortality--;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -490,7 +492,7 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY)
+	if (c1 == colliderp && destroyed == false && c2->type == Collider::Type::ENEMY && inmortality <= 0)
 	{
 		if (currentAnimation != &pdead)
 		{

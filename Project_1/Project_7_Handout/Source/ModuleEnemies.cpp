@@ -13,6 +13,8 @@
 #include "Enemy_RedDemon.h"
 #include "Enemy_YellowMonkey.h"
 #include "Enemy_SpitFire.h"
+#include "Enemy_Boss.h"
+#include "Enemy_MiniBoss.h"
 
 #define SPAWN_MARGIN 50
 
@@ -34,6 +36,7 @@ bool ModuleEnemies::Start()
 	YellMonky = App->textures->Load("Assets/monono.png");
 	SF = App->textures->Load("Assets/Rana.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
+	bos = App->textures->Load("Assets/boss_1.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
 	choqueFx = App->audio->LoadFx("Assets/rebotar.wav");
@@ -172,6 +175,14 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case ENEMY_TYPE::SPITFIRE:
 				enemies[i] = new Enemy_SpitFire(info.x, info.y);
 				enemies[i]->texture = SF;
+				break;
+			case ENEMY_TYPE::BOSS:
+				enemies[i] = new Enemy_Boss(info.x, info.y);
+				enemies[i]->texture = bos;
+				break;
+			case ENEMY_TYPE::MINIBOSS:
+				enemies[i] = new Enemy_Boss(info.x, info.y);
+				enemies[i]->texture = bos;
 				break;
 			}
 

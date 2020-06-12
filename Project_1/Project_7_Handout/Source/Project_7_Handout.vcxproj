@@ -78,6 +78,8 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Boss.h" />
+    <ClInclude Include="Enemy_MiniBoss.h" />
     <ClInclude Include="Enemy_RedDemon.h" />
     <ClInclude Include="Enemy_SpitFire.h" />
     <ClInclude Include="Enemy_YellowMonkey.h" />
@@ -107,6 +109,8 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Boss.cpp" />
+    <ClCompile Include="Enemy_MiniBoss.cpp" />
     <ClCompile Include="Enemy_RedDemon.cpp" />
     <ClCompile Include="Enemy_SpitFire.cpp" />
     <ClCompile Include="Enemy_YellowMonkey.cpp" />

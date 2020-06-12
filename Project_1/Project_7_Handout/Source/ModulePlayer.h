@@ -93,6 +93,7 @@ public:
 
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	int destroyedCountdown = 120;
+	int inmortality = 150;
 
 	// Sound effects indices
 	uint laserFx = 0;
