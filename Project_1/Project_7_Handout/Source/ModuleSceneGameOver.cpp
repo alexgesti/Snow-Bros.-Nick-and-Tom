@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleChangeScene.h"
 #include "ModuleInput.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -129,6 +130,8 @@ update_status ModuleSceneGameOver::PostUpdate()
 		App->render->Blit(Texture, SCREEN_WIDTH / 1.8f, (SCREEN_HEIGHT / 1.75f) + 1, &(E_3.GetCurrentFrame()));
 		App->render->Blit(Texture, SCREEN_WIDTH / 1.42f, SCREEN_HEIGHT / 1.75f, &(E_4.GetCurrentFrame()));
 	}
+
+	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 
 	return update_status::UPDATE_CONTINUE;
 }

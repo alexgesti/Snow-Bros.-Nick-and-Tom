@@ -79,6 +79,8 @@ public:
 	float timers = 10;
 	float high = 0;
 	float count = 0;
+	float counter_can_use_shoot = 0;
+	float counter_can_use_jump = 0;
 
 	int lives = 3;
 

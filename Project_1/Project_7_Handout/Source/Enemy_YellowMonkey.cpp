@@ -119,7 +119,7 @@ void Enemy_YellowMonkey::Update()
 				currentAnim = &walkLAnim;
 			}
 		}
-		else if(vistard == false){
+		else if (vistard == false) {
 			speedx = 1;
 			if (currentAnim != &walkRAnim)
 			{
@@ -165,7 +165,7 @@ void Enemy_YellowMonkey::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 40){
+			if (position.y <= alt - 40) {
 				gravity = true;
 				jump = false;
 			}
@@ -178,7 +178,7 @@ void Enemy_YellowMonkey::Update()
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + speedy;
 		}
-		
+
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
@@ -204,7 +204,7 @@ void Enemy_YellowMonkey::Update()
 		}
 
 		if (gravity == true) {
-			position.y = spawnPos.y + position.y + (speedy*2);
+			position.y = spawnPos.y + position.y + (speedy * 2);
 		}
 
 		if (InitialD == false) {

@@ -32,8 +32,6 @@ bool ModuleRender::Init()
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
 
-	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
-
 	if (renderer == nullptr)
 	{
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -84,26 +82,23 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 {
 	bool ret = true;
 
-	SDL_Rect rect {
-		(int)(-camera.x * speed) + x * SCREEN_SIZE,
-		(int)(-camera.y * speed) + y * SCREEN_SIZE,
-		0, 0 };
-	
+	SDL_Rect dstRect{ x * SCREEN_SIZE, y * SCREEN_SIZE, 0, 0 };
+
 	if (section != nullptr)
 	{
-		rect.w = section->w;
-		rect.h = section->h;
+		dstRect.w = section->w;
+		dstRect.h = section->h;
 	}
 	else
 	{
 		//Collect the texture size into rect.w and rect.h variables
-		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+		SDL_QueryTexture(texture, nullptr, nullptr, &dstRect.w, &dstRect.h);
 	}
 
-	rect.w *= SCREEN_SIZE;
-	rect.h *= SCREEN_SIZE;
+	dstRect.w *= SCREEN_SIZE;
+	dstRect.h *= SCREEN_SIZE;
 
-	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
+	if (SDL_RenderCopy(renderer, texture, section, &dstRect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;

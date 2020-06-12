@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -36,7 +37,9 @@ bool ModuleScreenFirst::Start()
 
 update_status ModuleScreenFirst::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) App->change->Changing(this, (Module*)App->sceneIntro, 60);
+	GamePad& pad = App->input->pads[0];
+
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.start || pad.b) App->change->Changing(this, (Module*)App->sceneIntro, 60);
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -49,6 +52,7 @@ update_status ModuleScreenFirst::PostUpdate()
 
 	App->render->Blit(Texture, 0, 0, &(Logo.GetCurrentFrame()));
 
+	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 
 	return update_status::UPDATE_CONTINUE;
 }

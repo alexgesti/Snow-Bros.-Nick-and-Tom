@@ -77,7 +77,7 @@ bool Particle::Update()
 			position.x += speedx;
 			position.y += speedy;
 		}
-		if (activate == 0){
+		if (activate == 0) {
 			position.x += speedx;
 			position.y += speedy;
 		}

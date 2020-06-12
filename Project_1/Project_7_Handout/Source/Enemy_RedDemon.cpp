@@ -32,7 +32,7 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 	JumpL.PushBack({ 50, 69, 23, 30 });
 	JumpL.speed = 0.1f;
 	JumpL.loop = false;
-	
+
 	JumpR.PushBack({ 147, 73, 27, 25 });
 	JumpR.PushBack({ 213, 69, 23, 30 });
 	JumpR.speed = 0.1f;
@@ -119,7 +119,7 @@ void Enemy_RedDemon::Update()
 				currentAnim = &walkLAnim;
 			}
 		}
-		else if(vistard == false){
+		else if (vistard == false) {
 			speedx = 0.5f;
 			if (currentAnim != &walkRAnim)
 			{
@@ -165,7 +165,7 @@ void Enemy_RedDemon::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 40){
+			if (position.y <= alt - 40) {
 				gravity = true;
 				jump = false;
 			}
@@ -178,7 +178,7 @@ void Enemy_RedDemon::Update()
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + speedy;
 		}
-		
+
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
@@ -204,7 +204,7 @@ void Enemy_RedDemon::Update()
 		}
 
 		if (gravity == true) {
-			position.y = spawnPos.y + position.y + (speedy*2);
+			position.y = spawnPos.y + position.y + (speedy * 2);
 		}
 
 		if (InitialD == false) {

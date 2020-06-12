@@ -189,14 +189,14 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
-		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == true) { 
+		if (c1 == cfs && c2->type == Collider::Type::PLAYER && App->player->jump == true) {
 			up = true;
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
 			wall1->SetPos(position.x + 4, position.y + 3);
 			wall2->SetPos(position.x + 24, position.y + 3);
-			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {	
+			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
 				vistard = false;
 			}
 			else if (c1 == wall2 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {

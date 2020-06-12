@@ -160,6 +160,8 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+	GamePad& pad = App->input->pads[0];
+
 	if (death == false) {
 		//Gravedad
 		if (gravity == true && jump == false)
@@ -183,7 +185,8 @@ update_status ModulePlayer::Update()
 
 		if (boulder == false) {
 			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
-				&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+				&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE ||
+				pad.l_x < 0)
 			{
 				position.x -= speedx;
 				vista = true;
@@ -195,7 +198,8 @@ update_status ModulePlayer::Update()
 			}
 
 			if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-				&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+				&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE ||
+				pad.l_x > 0)
 			{
 				position.x += speedx;
 				vista = false;
@@ -206,24 +210,35 @@ update_status ModulePlayer::Update()
 				}
 			}
 
-			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)
 			{
-				shot = true;
-				timers = 0;
-				if (push == false) {
-					if (vista == true)
-					{
-						App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
-						App->audio->PlayFx(laserFx);
-					}
-					else
-					{
-						App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
-						App->audio->PlayFx(laserFx);
+				if (counter_can_use_shoot == 0)
+				{
+					shot = true;
+					timers = 0;
+					counter_can_use_shoot = 5;
+					if (push == false) {
+						if (vista == true)
+						{
+							App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
+							App->audio->PlayFx(laserFx);
+						}
+						else
+						{
+							App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
+							App->audio->PlayFx(laserFx);
+						}
 					}
 				}
 			}
-			timers += 1;
+			timers++;
+			if (counter_can_use_shoot != 0)
+			{
+				if (pad.a) counter_can_use_shoot = 5;
+				pad.a = false;
+
+				counter_can_use_shoot--;
+			}
 			if (shot == true)
 			{
 				if (push == false) {
@@ -269,17 +284,28 @@ update_status ModulePlayer::Update()
 		}
 
 		if (timerj >= 45 && gravity == false) {
-			if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+			if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || pad.b)
 			{
-				timerj = 0;
-				high = position.y;
-				jump = true;
+				if (counter_can_use_jump == 0)
+				{
+					timerj = 0;
+					counter_can_use_jump = 5;
+					high = position.y;
+					jump = true;
 
-				//  Asignar W al sonido del jump
-				App->audio->PlayFx(jumpFx);
+					//  Asignar W al sonido del jump
+					App->audio->PlayFx(jumpFx);
+				}
 			}
 		}
 		timerj += 1;
+		if (counter_can_use_jump != 0)
+		{
+			if (pad.b) counter_can_use_jump = 5;
+			pad.b = false;
+
+			counter_can_use_jump--;
+		}
 		if (jump == true)
 		{
 			if (position.y > high - 40)
@@ -323,25 +349,25 @@ update_status ModulePlayer::Update()
 
 	if (godmode == true) {
 		currentAnimation = &idleRAnim;
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0)
 		{
 			position.x -= speedx;
 			vista = true;
 		}
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.l_x > 0)
 		{
 			position.x += speedx;
 			vista = false;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
 		{
 			position.y -= speedy;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
 		{
 			position.y += speedy;
 		}
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a)
 		{
 			if (vista == true)
 			{
@@ -383,9 +409,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	// If no  movement detected or default floor, set the current animation back to idle
+	// If no movement detected or default floor, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& pad.l_x == 0
 		&& vista == false
 		&& shot == false
 		&& jump == false
@@ -393,7 +420,8 @@ update_status ModulePlayer::Update()
 		&& destroyed == false
 		&& boulder == false
 		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
-		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT 
+		&& pad.l_x == 0
 		&& vista == false
 		&& shot == false
 		&& jump == false
@@ -404,6 +432,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& pad.l_x == 0
 		&& vista == true
 		&& shot == false
 		&& jump == false
@@ -412,6 +441,7 @@ update_status ModulePlayer::Update()
 		&& boulder == false
 		|| App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+		&& pad.l_x == 0
 		&& vista == true
 		&& shot == false
 		&& jump == false

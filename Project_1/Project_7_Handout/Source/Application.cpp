@@ -16,6 +16,7 @@
 #include "ModuleSceneGameOver.h"
 #include "ModuleSceneWin.h"
 #include "ModuleScreenFirst.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
@@ -27,8 +28,8 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] = sceneFirst = new ModuleScreenFirst(true); //Fisrt scene starts enabled
-	modules[5] = sceneIntro = new ModuleSceneIntro(false); //Intro scene starts disabled
+	modules[4] = sceneFirst = new ModuleScreenFirst(false); //Fisrt scene starts enabled
+	modules[5] = sceneIntro = new ModuleSceneIntro(true); //Intro scene starts disabled
 	modules[6] = sceneLevel_1 = new ModuleScene(false);		//Gameplay scene starts disabled
 	modules[7] = sceneWin = new ModuleSceneWin(false); //Win scene starts disabled
 	modules[8] = screenGameOver = new ModuleSceneGameOver(false); //Game Over scene starts disabled
@@ -40,6 +41,8 @@ Application::Application()
 
 	modules[13] = render = new ModuleRender(true);
 	modules[14] = change = new ModuleChangeScene(true);
+
+	modules[15] = fonts = new ModuleFonts(true);
 }
 
 Application::~Application()

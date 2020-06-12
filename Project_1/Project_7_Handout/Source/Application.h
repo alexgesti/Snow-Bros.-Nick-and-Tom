@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 15
+#define NUM_MODULES 16
 
 class Module;
 class ModuleWindow;
@@ -21,6 +21,7 @@ class ModuleChangeScene;
 class ModuleSceneGameOver;
 class ModuleSceneWin;
 class ModuleScreenFirst;
+class ModuleFonts;
 
 class Application
 {
@@ -67,6 +68,8 @@ public:
 
 	ModuleRender* render = nullptr;
 	ModuleChangeScene* change = nullptr;
+
+	ModuleFonts* fonts = nullptr;
 };
 
 // Global var made extern for Application ---

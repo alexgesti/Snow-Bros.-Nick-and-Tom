@@ -124,7 +124,7 @@ void Enemy_SpitFire::Update()
 				currentAnim = &walkLAnim;
 			}
 		}
-		else if(vistard == false && shoot == false){
+		else if (vistard == false && shoot == false) {
 			speedx = 0.3f;
 			if (currentAnim != &walkRAnim)
 			{
@@ -170,7 +170,7 @@ void Enemy_SpitFire::Update()
 					}
 				}
 			}
-			if (position.y <= alt - 40){
+			if (position.y <= alt - 40) {
 				gravity = true;
 				jump = false;
 			}
@@ -192,7 +192,7 @@ void Enemy_SpitFire::Update()
 				{
 					currentAnim = &shootL;
 				}
-				if(shootonce == false){
+				if (shootonce == false) {
 					App->particles->AddParticle(5, App->particles->fireL, position.x - 5, position.y + 4, Collider::Type::ENEMY);
 					shootonce = true;
 				}
@@ -220,7 +220,7 @@ void Enemy_SpitFire::Update()
 		if (gravity == true) {
 			position.y = spawnPos.y + position.y + speedy;
 		}
-		
+
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
@@ -246,7 +246,7 @@ void Enemy_SpitFire::Update()
 		}
 
 		if (gravity == true) {
-			position.y = spawnPos.y + position.y + (speedy*2);
+			position.y = spawnPos.y + position.y + (speedy * 2);
 		}
 
 		if (InitialD == false) {

@@ -30,6 +30,8 @@ public:
 	void Reset()
 	{
 		currentFrame = 0;
+
+		FinishedAlready = false;
 	}
 	
 	bool HasFinished()

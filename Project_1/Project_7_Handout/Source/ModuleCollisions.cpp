@@ -8,7 +8,7 @@
 
 ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
 
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
@@ -153,9 +153,9 @@ ModuleCollisions::~ModuleCollisions()
 update_status ModuleCollisions::PreUpdate()
 {
 	// Remove all colliders scheduled for deletion
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] != nullptr && colliders[i]->pendingToDelete == true)
+		if (colliders[i] != nullptr && colliders[i]->pendingToDelete == true)
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
@@ -165,29 +165,29 @@ update_status ModuleCollisions::PreUpdate()
 	Collider* c1;
 	Collider* c2;
 
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		// skip empty colliders
-		if(colliders[i] == nullptr)
+		if (colliders[i] == nullptr)
 			continue;
 
 		c1 = colliders[i];
 
 		// avoid checking collisions already checked
-		for(uint k = i+1; k < MAX_COLLIDERS; ++k)
+		for (uint k = i + 1; k < MAX_COLLIDERS; ++k)
 		{
 			// skip empty colliders
-			if(colliders[k] == nullptr)
+			if (colliders[k] == nullptr)
 				continue;
 
 			c2 = colliders[k];
 
-			if(c1->Intersects(c2->rect))
+			if (c1->Intersects(c2->rect))
 			{
-				if(matrix[c1->type][c2->type] && c1->listener) 
+				if (matrix[c1->type][c2->type] && c1->listener)
 					c1->listener->OnCollision(c1, c2);
-				
-				if(matrix[c2->type][c1->type] && c2->listener) 
+
+				if (matrix[c2->type][c1->type] && c2->listener)
 					c2->listener->OnCollision(c2, c1);
 			}
 		}
@@ -215,12 +215,12 @@ update_status ModuleCollisions::PostUpdate()
 void ModuleCollisions::DebugDraw()
 {
 	Uint8 alpha = 80;
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] == nullptr)
+		if (colliders[i] == nullptr)
 			continue;
-		
-		switch(colliders[i]->type)
+
+		switch (colliders[i]->type)
 		{
 		case Collider::Type::NONE: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
@@ -267,9 +267,9 @@ bool ModuleCollisions::CleanUp()
 {
 	LOG("Freeing all colliders");
 
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] != nullptr)
+		if (colliders[i] != nullptr)
 		{
 			delete colliders[i];
 			colliders[i] = nullptr;
@@ -283,9 +283,9 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 {
 	Collider* ret = nullptr;
 
-	for(uint i = 0; i < MAX_COLLIDERS; ++i)
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
-		if(colliders[i] == nullptr)
+		if (colliders[i] == nullptr)
 		{
 			ret = colliders[i] = new Collider(rect, type, listener);
 			break;
