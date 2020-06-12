@@ -10,6 +10,7 @@
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
 
+#include "SDL/include/SDL_mouse.h"
 #include "SDL/include/SDL_scancode.h"
 
 ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
@@ -152,6 +153,57 @@ update_status ModuleScene::Update()
 
 	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN) {
 		return update_status::UPDATE_STOP;
+	}
+
+	if (App->input->keys[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 0;
+	}
+	if (App->input->keys[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 1;
+	}
+	if (App->input->keys[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 2;
+	}
+	if (App->input->keys[SDL_SCANCODE_KP_3] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 3;
+	}
+	if (App->input->keys[SDL_SCANCODE_KP_4] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 4;
+	}
+	if (App->input->keys[SDL_SCANCODE_KP_5] == KEY_STATE::KEY_DOWN)
+	{
+		enemy = 5;
+	}
+
+	check = false;
+	if (SDL_GetMouseState(&xm, &ym) && SDL_BUTTON(SDL_BUTTON_LEFT)) {
+		check = true;
+	}
+	if (SDL_GetMouseState(&xm, &ym) && SDL_BUTTON(SDL_BUTTON_LEFT) && once == false) {
+		if (enemy == 1) {
+			App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, xm, ym);
+		}
+		if (enemy == 2) {
+			App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, xm, ym);
+		}
+		if (enemy == 3) {
+			App->enemies->AddEnemy(ENEMY_TYPE::SPITFIRE, xm, ym);
+		}
+		if (enemy == 4) {
+			App->enemies->AddEnemy(ENEMY_TYPE::BOSS, xm, ym);
+		}
+		if (enemy == 5) {
+			App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, xm, ym);
+		}
+		once = true;
+	}
+	if (check == false) {
+		once = false;
 	}
 
 	return update_status::UPDATE_CONTINUE;

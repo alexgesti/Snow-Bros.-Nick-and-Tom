@@ -37,6 +37,7 @@ bool ModuleEnemies::Start()
 	SF = App->textures->Load("Assets/Rana.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
 	bos = App->textures->Load("Assets/boss_1.png");
+	mbos = App->textures->Load("Assets/miniboss_1.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
 	choqueFx = App->audio->LoadFx("Assets/rebotar.wav");
@@ -181,8 +182,8 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				enemies[i]->texture = bos;
 				break;
 			case ENEMY_TYPE::MINIBOSS:
-				enemies[i] = new Enemy_Boss(info.x, info.y);
-				enemies[i]->texture = bos;
+				enemies[i] = new Enemy_MiniBoss(info.x, info.y);
+				enemies[i]->texture = mbos;
 				break;
 			}
 

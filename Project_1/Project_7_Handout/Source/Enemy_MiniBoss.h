@@ -4,12 +4,12 @@
 #include "Enemy.h"
 #include "p2Point.h"
 
-class MiniBoss : public Enemy
+class Enemy_MiniBoss : public Enemy
 {
 public:
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
-	MiniBoss(float x, float y);
+	Enemy_MiniBoss(float x, float y);
 
 	// The enemy is going to follow the different steps in the path
 	// Position will be updated depending on the speed defined at each step

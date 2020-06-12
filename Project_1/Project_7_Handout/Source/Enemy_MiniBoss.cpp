@@ -4,7 +4,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
 
-MiniBoss::MiniBoss(float x, float y) : Enemy(x, y)
+Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 {
 	walkRAnim.PushBack({ 147, 6, 29, 28 });
 	walkRAnim.PushBack({ 178, 6, 30, 28 });
@@ -28,7 +28,7 @@ MiniBoss::MiniBoss(float x, float y) : Enemy(x, y)
 	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 }
 
-void MiniBoss::Update()
+void Enemy_MiniBoss::Update()
 {
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {

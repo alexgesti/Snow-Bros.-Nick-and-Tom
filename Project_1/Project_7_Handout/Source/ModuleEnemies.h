@@ -69,6 +69,7 @@ public:
 	SDL_Texture* YellMonky = nullptr;
 	SDL_Texture* SF = nullptr;
 	SDL_Texture* bos = nullptr;
+	SDL_Texture* mbos = nullptr;
 	SDL_Texture* SnowT = nullptr;
 
 	// The audio fx for destroying an enemy
