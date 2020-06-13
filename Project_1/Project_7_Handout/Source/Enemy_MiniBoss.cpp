@@ -6,19 +6,17 @@
 
 Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 {
-	walkRAnim.PushBack({ 147, 6, 29, 28 });
-	walkRAnim.PushBack({ 178, 6, 30, 28 });
-	walkRAnim.PushBack({ 211, 7, 29, 27 });
-	walkRAnim.speed = 0.1f;
+	walkRAnim.PushBack({ 10, 10, 35, 37 });
+	walkRAnim.PushBack({ 58, 8, 35, 38 });
+	walkRAnim.speed = 0.2f;
 
-	walkLAnim.PushBack({ 111, 6, 29, 28 });
-	walkLAnim.PushBack({ 79, 6, 30, 28 });
-	walkLAnim.PushBack({ 47, 7, 29, 27 });
-	walkLAnim.speed = 0.1f;
+	walkLAnim.PushBack({ 292, 55, 35, 37 });
+	walkLAnim.PushBack({ 244, 53, 35, 38 });
+	walkLAnim.speed = 0.2f;
 
 	downRAnim.PushBack({ 180, 69, 26 ,32 });
 
-	downLAnim.PushBack({ 80, 69, 26 , 32 });
+	downLAnim.PushBack({ 10, 61, 24 , 28 });
 
 	nothing.PushBack({ 0, 0, 0, 0 });
 
@@ -26,6 +24,8 @@ Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::ENEMY);
 	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+
+	miniboss = true;
 }
 
 void Enemy_MiniBoss::Update()
@@ -79,7 +79,7 @@ void Enemy_MiniBoss::Update()
 			}
 		}
 		else if (vistard == true) {
-			speedx = (-0.5f);
+			speedx = (-2);
 			if (currentAnim != &walkLAnim)
 			{
 				walkLAnim.Reset();
@@ -87,7 +87,7 @@ void Enemy_MiniBoss::Update()
 			}
 		}
 		else if (vistard == false) {
-			speedx = 0.5f;
+			speedx = 2;
 			if (currentAnim != &walkRAnim)
 			{
 				walkRAnim.Reset();

@@ -77,6 +77,9 @@ public:
 	int snowDestroyedFx = 0;
 	int choqueFx = 0;
 	int pydFx = 0;
+	int roarbossFx = 0;
+	int spitbossFx = 0;
+	bool changboss = false;
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -90,6 +93,7 @@ private:
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
 	int kills = 0;
+	int en = 0;
 };
 
 #endif // __MODULE_ENEMIES_H__

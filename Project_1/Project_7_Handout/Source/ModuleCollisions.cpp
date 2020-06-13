@@ -116,7 +116,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FISICSNOW][Collider::Type::AIR] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FEET] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FISICSNOW] = true;
-	matrix[Collider::Type::FISICSNOW][Collider::Type::DELSNOW] = false;
+	matrix[Collider::Type::FISICSNOW][Collider::Type::DELSNOW] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::SNOWBALL] = true;
 
 	matrix[Collider::Type::DELSNOW][Collider::Type::WALL] = false;

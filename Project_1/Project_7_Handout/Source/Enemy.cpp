@@ -45,13 +45,13 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	//Hit
-	if (hit == true) {
-		cout++;
-		hit = false;
-	}
-
+	//Normal
 	if (boss == false) {
+		//Hit
+		if (hit == true) {
+			cout++;
+			hit = false;
+		}
 		//CountDown
 		if (InitialD == false) {
 			if (cout > 0) {
@@ -112,7 +112,6 @@ void Enemy::Update()
 				snowAnim = &snowballB;
 			}
 		}
-
 		//Enemy Dead
 		if (dead == true) {
 			candelete = true;
@@ -122,14 +121,22 @@ void Enemy::Update()
 			dead = false;
 		}
 	}
+
+	//Boss
 	if (boss == true) {
+		//Hit
+		if (hit == true) {
+			cout++;
+			hit = false;
+		}
+
 		//Animation
 		if (currentAnim != nullptr)
 			currentAnim->Update();
 
 		//Boss Dead
 		if (dead == true) {
-			candelete = true;
+			bdelete = true;
 			cfs->SetPos(-300, -300);
 			collider->SetPos(-600, -600);
 			balldash->SetPos(-600, -600);
@@ -178,6 +185,10 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			if (c1 == balldash && c2->type == Collider::Type::WALL2) {
 				App->audio->PlayFx(App->enemies->choqueFx);
 			}
+		}
+
+		if (c1 == cfs && candelete == false && c2->type == Collider::Type::DELSNOW && miniboss == true) {
+			dead = true;
 		}
 
 		if (cout < 8) {
@@ -249,10 +260,18 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 
+
 	if (boss == true) {
-		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::AIR && jump == false) {
+		if ((c1 == cfs) && c2->type == Collider::Type::AIR && jump == false) {
 			gravity = true;
-			push = false;
+		}
+		if ((c1 == cfs) && c2->type == Collider::Type::FLOOR && jump == false) {
+			speedy = 1;
+			gravity = false;
+		}
+
+		if (c1 == cfs && bdelete == false && c2->type == Collider::Type::SNOWBALL && c2->type != Collider::Type::DELSNOW) {
+			hit = true;
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER_SHOT) {

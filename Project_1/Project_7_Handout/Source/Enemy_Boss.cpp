@@ -3,32 +3,38 @@
 #include "Application.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModuleEnemies.h"
+#include "ModuleAudio.h"
 
 Enemy_Boss::Enemy_Boss(float x, float y) : Enemy(x, y)
 {
-	jumpboss.PushBack({ 0, 32, 75, 80 });
+	deadboss.PushBack({ 0, 32, 75, 80 });
 	deadboss.PushBack({ 238, 32, 93, 80 });
-	deadboss.PushBack({ 331, 65, 109, 47 });
-	deadboss.speed = 0.1f;
+	deadboss.PushBack({ 331, 32, 109, 80 });
+	deadboss.speed = 0.05f;
 	deadboss.loop = false;
 
 	iddle.PushBack({ 0, 32, 75, 80 });
+	iddle.PushBack({ 445, 32, 75, 80 });
+	iddle.PushBack({ 525, 32, 75, 80 });
+	iddle.PushBack({ 445, 32, 75, 80 });
+	iddle.PushBack({ 0, 32, 75, 80 });
+	iddle.speed = 0.1f;
 
 	jumpboss.PushBack({ 0, 32, 75, 80 });
 	jumpboss.PushBack({ 80, 16, 75, 96 });
 	jumpboss.PushBack({ 160, 0, 75, 110 });
-	jumpboss.speed = 0.1f; 
+	jumpboss.speed = 0.05f; 
 	jumpboss.loop = false;
 
-	collider = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::ENEMY);
-	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 75, 85 }, Collider::Type::ENEMY);
+	cfs = App->collisions->AddCollider({ 0, 0, 75, 80 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
 	boss = true;
-
-	//Cambiar animaciones e imagen
 }
 
 void Enemy_Boss::Update()
 {
+	LOG("Boss activated")
 	if (cfs != nullptr && candelete == false) {
 		cfs->SetPos(position.x, position.y);
 		collider->SetPos(position.x, position.y);
@@ -37,19 +43,27 @@ void Enemy_Boss::Update()
 		wall2->SetPos(-400, -400);
 	}
 
-	if (jump == false){
+	//Animation
+	if (jump == false && dead == false){
 		if (currentAnim != &iddle)
 		{
 			currentAnim = &iddle;
 		}
+		App->audio->PlayFx(App->enemies->roarbossFx);
 	}
 	if (cout >= 15) {
+		dead = true;
 		if (currentAnim != &deadboss)
 		{
 			currentAnim = &deadboss;
 		}
-		dead = true;
 	}
+
+	if (gravity == true) {
+		position.y = spawnPos.y + position.y + speedy;
+	}
+
+	//App->audio->PlayFx(App->enemies->spitbossFx);
 
 	if (jump == false && gravity == false) {
 		jumpbt--;
@@ -75,7 +89,7 @@ void Enemy_Boss::Update()
 				cambio = true;
 			}
 		}
-		if (cambio == false) {
+		if (cambio == true) {
 			if (position.y > alt - 10) {
 				position.y = spawnPos.y + position.y - speedy;
 				if (currentAnim != &jumpboss)

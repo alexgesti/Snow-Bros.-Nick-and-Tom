@@ -56,6 +56,8 @@ public:
 	bool InitialD = false;
 	bool jump = false;
 	bool boss = false;
+	bool miniboss = false;
+	bool bdelete = false;
 
 protected:
 	// A ptr to the current animation
