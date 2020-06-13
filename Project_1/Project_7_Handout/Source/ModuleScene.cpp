@@ -195,10 +195,10 @@ update_status ModuleScene::Update()
 			App->enemies->AddEnemy(ENEMY_TYPE::SPITFIRE, xm, ym);
 		}
 		if (enemy == 4) {
-			App->enemies->AddEnemy(ENEMY_TYPE::BOSS, xm, ym);
+			App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, xm, ym);
 		}
 		if (enemy == 5) {
-			App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, xm, ym);
+			App->enemies->AddEnemy(ENEMY_TYPE::BOSS, xm, ym);
 		}
 		once = true;
 	}
