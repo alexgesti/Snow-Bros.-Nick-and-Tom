@@ -58,6 +58,7 @@ public:
 	bool boss = false;
 	bool miniboss = false;
 	bool bdelete = false;
+	bool one = false;
 
 protected:
 	// A ptr to the current animation

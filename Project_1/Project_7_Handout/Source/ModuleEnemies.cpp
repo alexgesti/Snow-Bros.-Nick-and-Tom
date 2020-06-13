@@ -65,8 +65,6 @@ update_status ModuleEnemies::Update()
 		}
 	}
 
-	LOG("%d", en)
-
 	if (kills >= en && changboss == false)
 	{
 		App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->sceneWin, 60);

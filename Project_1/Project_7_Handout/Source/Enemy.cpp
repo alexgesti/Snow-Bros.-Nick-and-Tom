@@ -174,17 +174,19 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			gravity = true;
 			push = false;
 		}
-		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL) {
+		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL && vistard == false) {
 			hitwallR = true;
 			if (c1 == balldash && c2->type == Collider::Type::WALL) {
 				App->audio->PlayFx(App->enemies->choqueFx);
 			}
+			LOG("Wall1")
 		}
-		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL2) {
+		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::WALL2 && vistard == true) {
 			hitwallL = true;
 			if (c1 == balldash && c2->type == Collider::Type::WALL2) {
 				App->audio->PlayFx(App->enemies->choqueFx);
 			}
+			LOG("Wall2")
 		}
 
 		if (c1 == cfs && candelete == false && c2->type == Collider::Type::DELSNOW && miniboss == true) {
@@ -228,15 +230,20 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 				up = true;
 			}
 
-			if (c1 == cfs && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
+			if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && countdown >= 5 && vistard == true && one == false) {
+				vistard = false;
+				one = true;
+				LOG("Vista false")
+			}
+			if (c1 == wall2 && c2->type == Collider::Type::SNOWBALL && countdown >= 5 && vistard == false && one == false) {
+				vistard = true;
+				one = true;
+				LOG("Vista true")
+			}
+
+			if (c1 == cfs && c2->type == Collider::Type::SNOWBALL) {
 				wall1->SetPos(position.x + 4, position.y + 3);
 				wall2->SetPos(position.x + 24, position.y + 3);
-				if (c1 == wall1 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
-					vistard = false;
-				}
-				else if (c1 == wall2 && c2->type == Collider::Type::SNOWBALL && InitialD == false) {
-					vistard = true;
-				}
 				countdown = 0;
 				InitialD = true;
 				rebote = true;
