@@ -347,7 +347,12 @@ update_status ModulePlayer::Update()
 	}
 
 	if (godmode == true) {
-		currentAnimation = &idleRAnim;
+		if (vista == true) {
+			currentAnimation = &idleLAnim;
+		}
+		else {
+			currentAnimation = &idleRAnim;
+		}
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0)
 		{
 			position.x -= speedx;
