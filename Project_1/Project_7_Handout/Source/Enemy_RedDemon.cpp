@@ -49,6 +49,7 @@ Enemy_RedDemon::Enemy_RedDemon(float x, float y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 22, 25 }, Collider::Type::ENEMY);
 	cfs = App->collisions->AddCollider({ 0, 0, 22, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	feeten = App->collisions->AddCollider({ 0, 0, 22, 2 }, Collider::Type::FEETEN, (Module*)App->enemies);
 }
 
 void Enemy_RedDemon::Update()
@@ -56,6 +57,7 @@ void Enemy_RedDemon::Update()
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x + 4, position.y + 3);
+		feeten->SetPos(position.x, position.y + 25);
 		balldash->SetPos(-600, -600);
 		if (cout < 8) {
 			wall1->SetPos(-400, -400);
@@ -69,6 +71,7 @@ void Enemy_RedDemon::Update()
 		collider->SetPos(-600, -600);
 		if (InitialD == true) {
 			cfs->SetPos(-300, -300);
+			feeten->SetPos(-300, -300);
 			balldash->SetPos(position.x + 4, position.y + 3);
 		}
 	}

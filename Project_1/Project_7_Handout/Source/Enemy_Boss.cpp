@@ -43,13 +43,18 @@ void Enemy_Boss::Update()
 		wall2->SetPos(-400, -400);
 	}
 
+	countboss++;
+
 	//Animation
 	if (jump == false && dead == false){
 		if (currentAnim != &iddle)
 		{
 			currentAnim = &iddle;
 		}
-		App->audio->PlayFx(App->enemies->roarbossFx);
+		if (countboss >= 200) {
+			App->audio->PlayFx(App->enemies->roarbossFx);
+			countboss = 0;
+		}
 	}
 	if (cout >= 15) {
 		dead = true;
@@ -63,44 +68,112 @@ void Enemy_Boss::Update()
 		position.y = spawnPos.y + position.y + speedy;
 	}
 
-	//App->audio->PlayFx(App->enemies->spitbossFx);
-
 	if (jump == false && gravity == false) {
 		jumpbt--;
 		if (jumpbt <= 0) {
 			jump = true;
 			gravity = false;
 			alt = position.y;
-			jumpbt = (rand() % 4 + 11) * 100;
+			jumpbt = (rand() % 4 + 4) * 100;
 		}
 	}
 	if (jump == true) {
 		if (cambio == false) {
-			if (position.y > alt - 80) {
+			if (position.y > alt - 100) {
 				position.y = spawnPos.y + position.y - speedy;
 				if (currentAnim != &jumpboss)
 				{
 					currentAnim = &jumpboss;
 				}
 			}
-			if (position.y <= alt - 80) {
+			if (position.y <= alt - 100) {
 				gravity = true;
 				jump = false;
 				cambio = true;
+
+				calculatexy = (rand() % 4);
+				switch (calculatexy) {
+				case 0:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					break;
+				case 1:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
+					break;
+				case 2:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					break;
+				case 3:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					break;
+				case 4:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					break;
+				case 5:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					break;
+				case 6:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					break;
+					App->audio->PlayFx(App->enemies->spitbossFx);
+				}
 			}
 		}
 		if (cambio == true) {
-			if (position.y > alt - 10) {
-				position.y = spawnPos.y + position.y - speedy;
+			if (position.y < alt + 100) {
+				position.y = spawnPos.y + position.y + speedy;
 				if (currentAnim != &jumpboss)
 				{
 					currentAnim = &jumpboss;
 				}
 			}
-			if (position.y >= alt + 50) {
+			if (position.y >= alt + 100) {
 				gravity = true;
-				jump = false;
 				cambio = false;
+				jump = false;
+
+				calculatexy = (rand() % 4);
+				switch (calculatexy) {
+				case 0:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					break;
+				case 1:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
+					break;
+				case 2:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					break;
+				case 3:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					break;
+				case 4:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					break;
+				case 5:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					break;
+				case 6:
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					break;
+					App->audio->PlayFx(App->enemies->spitbossFx);
+				}
 			}
 		}
 	}

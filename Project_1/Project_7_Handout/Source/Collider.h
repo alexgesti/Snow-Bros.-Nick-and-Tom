@@ -21,6 +21,7 @@ struct Collider
 		FISICSNOW,
 		DELSNOW,
 		SNOWBALL,
+		FEETEN,
 
 		MAX
 	};

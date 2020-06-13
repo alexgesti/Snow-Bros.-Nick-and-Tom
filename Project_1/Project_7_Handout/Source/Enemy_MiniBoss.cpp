@@ -6,17 +6,17 @@
 
 Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 {
-	walkRAnim.PushBack({ 10, 10, 35, 37 });
-	walkRAnim.PushBack({ 58, 8, 35, 38 });
+	walkRAnim.PushBack({ 5, 5, 18, 18 });
+	walkRAnim.PushBack({ 29, 4, 17, 19 });
 	walkRAnim.speed = 0.2f;
 
-	walkLAnim.PushBack({ 292, 55, 35, 37 });
-	walkLAnim.PushBack({ 244, 53, 35, 38 });
+	walkLAnim.PushBack({ 142, 27, 18, 19 });
+	walkLAnim.PushBack({ 122, 26, 18, 19 });
 	walkLAnim.speed = 0.2f;
 
-	downRAnim.PushBack({ 180, 69, 26 ,32 });
+	downRAnim.PushBack({ 152, 8, 12 ,14 });
 
-	downLAnim.PushBack({ 10, 61, 24 , 28 });
+	downLAnim.PushBack({ 5, 30, 12 , 14 });
 
 	nothing.PushBack({ 0, 0, 0, 0 });
 

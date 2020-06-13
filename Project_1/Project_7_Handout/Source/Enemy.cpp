@@ -162,10 +162,14 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			hit = true;
 		}
 
-		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR) {
-			if (gravity == true && position.y <= 79 && position.y >= 65 && position.x >= 70 && position.x <= 245) {
+		if ((c1 == balldash || c1 == feeten) && c2->type == Collider::Type::FLOOR && miniboss == false) {
+			if (jump == false) {
+				speedy = 1;
+				gravity = false;
 			}
-			else if (jump == false) {
+		}
+		if ((c1 == cfs || c1 == balldash) && c2->type == Collider::Type::FLOOR && miniboss == true) {
+			if (jump == false) {
 				speedy = 1;
 				gravity = false;
 			}

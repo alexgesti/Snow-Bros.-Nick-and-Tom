@@ -54,6 +54,7 @@ Enemy_SpitFire::Enemy_SpitFire(float x, float y) : Enemy(x, y)
 
 	collider = App->collisions->AddCollider({ 0, 0, 19, 24 }, Collider::Type::ENEMY);
 	cfs = App->collisions->AddCollider({ 0, 0, 19, 24 }, Collider::Type::FISICSNOW, (Module*)App->enemies);
+	feeten = App->collisions->AddCollider({ 0, 0, 19, 2 }, Collider::Type::FEETEN, (Module*)App->enemies);
 }
 
 void Enemy_SpitFire::Update()
@@ -61,6 +62,7 @@ void Enemy_SpitFire::Update()
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x, position.y + 2);
+		feeten->SetPos(position.x, position.y + 25);
 		balldash->SetPos(-600, -600);
 		if (cout < 8) {
 			wall1->SetPos(-400, -400);
@@ -74,6 +76,7 @@ void Enemy_SpitFire::Update()
 		collider->SetPos(-600, -600);
 		if (InitialD == true) {
 			cfs->SetPos(-300, -300);
+			feeten->SetPos(-300, -300);
 			balldash->SetPos(position.x + 2, position.y + 2);
 		}
 	}

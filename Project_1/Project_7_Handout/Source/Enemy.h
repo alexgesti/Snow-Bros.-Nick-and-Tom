@@ -59,6 +59,7 @@ public:
 	bool miniboss = false;
 	bool bdelete = false;
 	bool one = false;
+	bool deactivate = false;
 
 protected:
 	// A ptr to the current animation
@@ -74,6 +75,7 @@ protected:
 	Collider* balldash = nullptr;
 	Collider* wall1 = nullptr;
 	Collider* wall2 = nullptr;
+	Collider* feeten = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	fPoint spawnPos;
