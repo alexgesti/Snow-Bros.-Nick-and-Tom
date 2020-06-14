@@ -1,1 +1,68 @@
-﻿  Project_7_Handout.vcxproj -> D:\cosas de clase\Github\PROJECT_1\Project_1\Release\Project_7_Handout.exe
+﻿  Enemy.cpp
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(156,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(156,38): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(159,69): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(159,53): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(252,46): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(252,30): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(253,47): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(253,30): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(268,44): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(269,41): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=float
+          ]
+          and
+          [
+              TYPE=int
+          ]
+  Generating code
+  1 of 217 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project_7_Handout.vcxproj -> D:\cosas de clase\Github\PROJECT_1\Snow-Bros.-Nick-and-Tom\Project_1\Release\Project_7_Handout.exe

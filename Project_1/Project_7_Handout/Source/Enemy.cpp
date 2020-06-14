@@ -204,6 +204,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 		if (cout < 8) {
 			if (c1 == cfs && candelete == false && c2->type == Collider::Type::SNOWBALL && c2->type != Collider::Type::DELSNOW) {
 				dead = true;
+				App->points->score += 250;
 				App->audio->PlayFx(App->enemies->enemyDestroyedFx);
 			}
 		}
@@ -258,6 +259,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			if (InitialD == true) {
 				if (c1 == balldash && candelete == false && c2->type == Collider::Type::DELSNOW) {
 					dead = true;
+					App->points->score += 500;
 					App->audio->PlayFx(App->enemies->snowDestroyedFx);
 				}
 
@@ -289,7 +291,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER_SHOT) {
 			hit = true;
-			App->points->score += 100;
+			App->points->score += 1000;
 		}
 	}
 }

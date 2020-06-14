@@ -673,6 +673,7 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnloadFx(explosionFx);
 	App->audio->UnloadFx(jumpFx);
 	App->audio->UnloadFx(deathFx);
+	App->audio->UnloadFx(appearFx);
 	App->collisions->RemoveCollider(colliderf);
 	App->collisions->RemoveCollider(colliderp);
 
