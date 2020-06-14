@@ -57,7 +57,7 @@ void Enemy_YellowMonkey::Update()
 	//Admin. Collider
 	if (cfs != nullptr && candelete == false && InitialD == false) {
 		cfs->SetPos(position.x + 2, position.y + 5);
-		feeten->SetPos(position.x, position.y + 25);
+		feeten->SetPos(position.x, position.y + 28);
 		balldash->SetPos(-600, -600);
 		if (cout < 8) {
 			wall1->SetPos(-400, -400);
