@@ -143,6 +143,7 @@ bool ModulePlayer::Start()
 	currentAnimation = &idleRAnim;
 
 	laserFx = App->audio->LoadFx("Assets/shot.wav");
+	laserFx2 = App->audio->LoadFx("Assets/shot2.wav");
 	jumpFx = App->audio->LoadFx("Assets/jump.wav");
 	deathFx = App->audio->LoadFx("Assets/death.wav");
 
@@ -221,12 +222,24 @@ update_status ModulePlayer::Update()
 						if (vista == true)
 						{
 							App->particles->AddParticle(2, App->particles->lasery, position.x - 3, position.y + 8, Collider::Type::PLAYER_SHOT);
-							App->audio->PlayFx(laserFx);
+							ranm = (rand() % 2);
+							if (ranm == 1) {
+								App->audio->PlayFx(laserFx2);
+							}
+							else {
+								App->audio->PlayFx(laserFx);
+							}
 						}
 						else
 						{
 							App->particles->AddParticle(1, App->particles->laserx, position.x + 15, position.y + 8, Collider::Type::PLAYER_SHOT);
-							App->audio->PlayFx(laserFx);
+							ranm = (rand() % 2);
+							if (ranm == 1) {
+								App->audio->PlayFx(laserFx2);
+							}
+							else {
+								App->audio->PlayFx(laserFx);
+							}
 						}
 					}
 				}

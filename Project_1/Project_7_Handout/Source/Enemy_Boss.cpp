@@ -92,7 +92,7 @@ void Enemy_Boss::Update()
 				cambio = true;
 
 				App->audio->PlayFx(App->enemies->spitbossFx);
-				calculatexy = (rand() % 4);
+				calculatexy = (rand() % 6);
 				switch (calculatexy) {
 				case 0:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);

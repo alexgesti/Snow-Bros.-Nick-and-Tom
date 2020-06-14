@@ -33,8 +33,6 @@ bool ModuleScene::Start()
 {
 	LOG("Loading background assets");
 
-	camscene = 9;
-
 	bool ret = true;
 	if (camscene == 0) {
 		bgTexture = App->textures->Load("Assets/lvl1.png");
@@ -55,7 +53,7 @@ bool ModuleScene::Start()
 		//bgTexture = App->textures->Load("Assets/lvl1.png");
 	}
 	else if (camscene == 6) {
-		//bgTexture = App->textures->Load("Assets/lvl1.png");
+		bgTexture = App->textures->Load("Assets/lvl7.png");
 	}
 	else if (camscene == 7) {
 		//bgTexture = App->textures->Load("Assets/lvl1.png");
@@ -121,7 +119,47 @@ bool ModuleScene::Start()
 
 	}
 	else if (camscene == 6) {
+		App->collisions->AddCollider({ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }, Collider::Type::AIR);	//EL AIRE
 
+		App->collisions->AddCollider({ 0, 247, 352, 18 }, Collider::Type::FLOOR);			//EL SUELO
+		App->collisions->AddCollider({ 64, 209, 90, 2 }, Collider::Type::FLOOR);			//1 IZQUIERDA
+		App->collisions->AddCollider({ 200, 209, 90, 2 }, Collider::Type::FLOOR);			//1 DERECHA
+		App->collisions->AddCollider({ 0, 190, 65, 2 }, Collider::Type::FLOOR);				//2 IZQUIERDA
+		App->collisions->AddCollider({ 288, 190, 90, 2 }, Collider::Type::FLOOR);			//2 DERECHA
+		App->collisions->AddCollider({ 130, 171, 67, 2 }, Collider::Type::FLOOR);			//3
+		App->collisions->AddCollider({ 85, 152, 45, 2 }, Collider::Type::FLOOR);			//4 IZQUIERDA
+		App->collisions->AddCollider({ 284, 152, 80, 2 }, Collider::Type::FLOOR);			//4 DERECHA
+		App->collisions->AddCollider({ 45, 133, 41, 2 }, Collider::Type::FLOOR);			//5 IZQUIERDA
+		App->collisions->AddCollider({ 178, 133, 107, 2 }, Collider::Type::FLOOR);			//5 DERECHA
+		App->collisions->AddCollider({ 68, 95, 87, 2 }, Collider::Type::FLOOR);				//6 IZQUIERDA
+		App->collisions->AddCollider({ 266, 95, 106, 2 }, Collider::Type::FLOOR);			//6 DERECHA
+		App->collisions->AddCollider({ 155, 76, 67, 2 }, Collider::Type::FLOOR);			//7
+		App->collisions->AddCollider({ 0, 57, 109, 2 }, Collider::Type::FLOOR);				//8 IZQUIERDA
+		App->collisions->AddCollider({ 222, 57, 86, 2 }, Collider::Type::FLOOR);			//8 DERECHA
+
+		//Collider de los lados
+		App->collisions->AddCollider({ 0, 0, 8, 275 }, Collider::Type::WALL2);				//MURO IZQ
+		App->collisions->AddCollider({ 345, 0, 8, 275 }, Collider::Type::WALL);				//MURO DER
+
+		App->collisions->AddCollider({ 61, 191, 4, 20 }, Collider::Type::WALL2);			//MURO IZQ 1
+		App->collisions->AddCollider({ 126, 153, 4, 20 }, Collider::Type::WALL2);			//MURO IZQ 2
+		App->collisions->AddCollider({ 82, 134, 4, 20 }, Collider::Type::WALL2);			//MURO IZQ 3
+		App->collisions->AddCollider({ 281, 134, 4, 20 }, Collider::Type::WALL2);			//MURO IZQ 4
+		App->collisions->AddCollider({ 288, 191, 4, 20 }, Collider::Type::WALL);			//MURO DER 1
+		App->collisions->AddCollider({ 155, 77, 4, 20 }, Collider::Type::WALL);				//MURO DER 2
+		App->collisions->AddCollider({ 222, 58, 4, 20 }, Collider::Type::WALL);				//MURO DER 3
+
+		//Deletear la SnowBall
+		App->collisions->AddCollider({ 0, 225, 10, 20 }, Collider::Type::DELSNOW);
+		App->collisions->AddCollider({ 343, 225, 10, 20 }, Collider::Type::DELSNOW);
+
+		// Enemies ---
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 50, 31);
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 225, 31);
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 50, 107);
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 300, 164);
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 90, 183);
+		App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, 220, 183);
 	}
 	else if (camscene == 7) {
 

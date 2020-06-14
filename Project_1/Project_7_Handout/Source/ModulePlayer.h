@@ -66,6 +66,7 @@ public:
 	Animation kickingL;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
+	int ranm = 0;
 	bool death = false;
 	bool jump = false;
 	bool vista = false;
@@ -97,6 +98,7 @@ public:
 
 	// Sound effects indices
 	uint laserFx = 0;
+	uint laserFx2 = 0;
 	uint explosionFx = 0;
 	// añadí estas dos variables para el sonido
 	uint jumpFx = 0;
