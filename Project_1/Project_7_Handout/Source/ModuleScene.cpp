@@ -34,6 +34,12 @@ bool ModuleScene::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	
+	App->points->insert.speed=0;
+	App->points->insert.Reset();
+	App->points->coin.speed=0;
+	App->points->coin.Reset();
+
 	if (camscene == 0) {
 		bgTexture = App->textures->Load("Assets/lvl1.png");
 	}

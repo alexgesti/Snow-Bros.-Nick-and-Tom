@@ -202,6 +202,10 @@ bool ModuleSceneIntro::Start()
 	Jumped = false;
 	EnemyAproaching = false;
 
+	App->points->score = 0;
+	App->points->insert.speed = 0.05f;
+	App->points->coin.speed = 0.05f;
+
 	return ret;
 }
 
@@ -212,6 +216,8 @@ update_status ModuleSceneIntro::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && coins >= 1 ||
 		pad.start && coins >= 1)
 	{
+		
+
 		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
 		if (CanStart == false) App->audio->PlayMusic("Assets/start.wav", 0);
 		CanStart = true;
