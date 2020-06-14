@@ -22,7 +22,7 @@ ModulePoints::ModulePoints(bool isEnabled) : Module(isEnabled)
 	coin.loop = true;
 	insert.speed = 0.05f;
 	coin.speed = 0.05f;
-	
+
 }
 
 ModulePoints::~ModulePoints()
@@ -41,22 +41,22 @@ bool ModulePoints::Start()
 }
 update_status ModulePoints::Update()
 {
-	
+
 	if (score > scoreTotal)  scoreTotal = score;
-	
+
 	insert.Update();
 	coin.Update();
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 void ModulePoints::returnPoints()
 {
-	
+
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
 	sprintf_s(scoreText2, 10, "%7d", scoreTotal);
-	App->render->Blit(texture,4,5, &(player1.GetCurrentFrame()));
+	App->render->Blit(texture, 4, 5, &(player1.GetCurrentFrame()));
 	App->fonts->BlitText(30, 5, scoreFont, scoreText);
 	App->render->Blit(texture, 125, 5, &(HI.GetCurrentFrame()));
 	App->fonts->BlitText(150, 5, scoreFont, scoreText2);

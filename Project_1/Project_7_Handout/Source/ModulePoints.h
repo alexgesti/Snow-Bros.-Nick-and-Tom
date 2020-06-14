@@ -23,7 +23,7 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 	char scoreText2[10] = { "\0" };
-	
+
 
 	SDL_Texture* texture = nullptr;
 	Animation* currentAnimation = nullptr;

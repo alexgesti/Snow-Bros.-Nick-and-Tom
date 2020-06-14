@@ -22,7 +22,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::WALL][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::WALL][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::WALL][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::WALL2][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL2][Collider::Type::WALL2] = false;
@@ -35,7 +34,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL2][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::WALL2][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::WALL2][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::WALL2][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL2] = true;
@@ -48,7 +46,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::SNOWBALL] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::FEET][Collider::Type::WALL] = true;
 	matrix[Collider::Type::FEET][Collider::Type::WALL2] = true;
@@ -61,7 +58,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FEET][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::FEET][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FEET][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::FEET][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL2] = false;
@@ -74,7 +70,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::FISICSNOW] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::SNOWBALL] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::WALL2] = true;
@@ -87,7 +82,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::SNOWBALL] = false;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::FLOOR][Collider::Type::WALL] = false;
 	matrix[Collider::Type::FLOOR][Collider::Type::WALL2] = false;
@@ -100,7 +94,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FLOOR][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::FLOOR][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FLOOR][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::FLOOR][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::AIR][Collider::Type::WALL] = false;
 	matrix[Collider::Type::AIR][Collider::Type::WALL2] = false;
@@ -113,7 +106,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::AIR][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::AIR][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::AIR][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::AIR][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::FISICSNOW][Collider::Type::WALL] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::WALL2] = true;
@@ -124,9 +116,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FISICSNOW][Collider::Type::AIR] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FEET] = true;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::FISICSNOW] = true;
-	matrix[Collider::Type::FISICSNOW][Collider::Type::DELSNOW] = true;
+	matrix[Collider::Type::FISICSNOW][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::FISICSNOW][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::FISICSNOW][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::DELSNOW][Collider::Type::WALL] = false;
 	matrix[Collider::Type::DELSNOW][Collider::Type::WALL2] = false;
@@ -139,7 +130,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::DELSNOW][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::DELSNOW][Collider::Type::DELSNOW] = false;
 	matrix[Collider::Type::DELSNOW][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::DELSNOW][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::SNOWBALL][Collider::Type::WALL] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::WALL2] = true;
@@ -152,7 +142,6 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::SNOWBALL][Collider::Type::FISICSNOW] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::DELSNOW] = true;
 	matrix[Collider::Type::SNOWBALL][Collider::Type::SNOWBALL] = true;
-	matrix[Collider::Type::SNOWBALL][Collider::Type::FEETEN] = false;
 
 	matrix[Collider::Type::FEETEN][Collider::Type::WALL] = false;
 	matrix[Collider::Type::FEETEN][Collider::Type::WALL2] = false;
@@ -273,8 +262,8 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::FLOOR: // red
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
-		case Collider::Type::FISICSNOW: // black
-			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
+		case Collider::Type::FISICSNOW: // white
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
 		case Collider::Type::SNOWBALL: // black
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);

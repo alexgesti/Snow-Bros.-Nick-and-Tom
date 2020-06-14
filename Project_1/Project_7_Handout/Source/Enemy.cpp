@@ -53,6 +53,7 @@ void Enemy::Update()
 			cout++;
 			hit = false;
 		}
+
 		//CountDown
 		if (InitialD == false) {
 			if (cout > 0) {
@@ -63,6 +64,7 @@ void Enemy::Update()
 				}
 			}
 		}
+
 
 		//Animation
 		if (currentAnim != nullptr)
@@ -113,6 +115,7 @@ void Enemy::Update()
 				snowAnim = &snowballB;
 			}
 		}
+
 		//Enemy Dead
 		if (dead == true) {
 			candelete = true;

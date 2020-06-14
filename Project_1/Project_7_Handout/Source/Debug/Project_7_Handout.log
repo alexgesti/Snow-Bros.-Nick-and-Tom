@@ -1,137 +1,15 @@
-﻿  Application.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Enemy.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,50): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,50): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,50): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,50): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,50): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,38): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,38): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,38): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,38): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(152,38): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,69): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,69): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,69): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,69): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,69): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,53): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,53): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,53): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,53): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(155,53): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,46): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,46): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,46): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,46): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,46): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,30): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,30): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,30): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,30): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(247,30): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,47): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,47): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,47): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,47): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,47): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,30): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,30): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,30): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,30): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(248,30): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         and
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:             TYPE=int
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(262,44): warning C4244:         ]
-  ModulePoints.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244: '=': conversion from 'TYPE' to 'TYPE', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         with
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:             TYPE=float
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         and
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         [
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:             TYPE=int
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Enemy.cpp(263,41): warning C4244:         ]
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleScene.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(254,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(254,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(257,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(257,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(260,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(260,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(263,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(263,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(266,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  ModuleSceneGameOver.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleScene.cpp(266,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(117,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(118,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(118,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(119,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(119,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(120,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(120,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(121,61): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(122,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(122,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(123,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(123,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(124,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(124,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(125,65): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(125,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(130,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(130,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(131,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(131,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(132,75): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(132,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(133,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  ModuleSceneIntro.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneGameOver.cpp(133,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(408,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(427,77): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(427,52): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(432,116): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(432,92): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(451,66): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  ModuleSceneWin.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneIntro.cpp(451,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneWin.cpp(75,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneWin.cpp(75,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneWin.cpp(76,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  ModuleScreenFirst.cpp
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\ModuleSceneWin.cpp(76,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Project_7_Handout.vcxproj -> C:\Users\paumo\Documents\GitHub\Snow-Bros.-Nick-and-Tom\Project_1\Debug\Project_7_Handout.exe
+﻿  ModuleEnemies.cpp
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(59,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(61,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\Animation.h(68,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(121,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(122,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(196,49): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(196,41): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(200,53): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(200,45): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(204,45): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(204,37): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(208,49): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+D:\cosas de clase\Github\PROJECT_1\Project_1\Project_7_Handout\Source\ModuleEnemies.cpp(208,41): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  Project_7_Handout.vcxproj -> D:\cosas de clase\Github\PROJECT_1\Project_1\Debug\Project_7_Handout.exe

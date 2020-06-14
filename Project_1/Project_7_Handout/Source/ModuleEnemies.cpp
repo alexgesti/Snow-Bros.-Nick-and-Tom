@@ -36,14 +36,12 @@ bool ModuleEnemies::Start()
 	YellMonky = App->textures->Load("Assets/monono.png");
 	SF = App->textures->Load("Assets/Rana.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
-	bos = App->textures->Load("Assets/boss_1.png");
-	mbos = App->textures->Load("Assets/miniboss.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
 	choqueFx = App->audio->LoadFx("Assets/rebotar.wav");
 	pydFx = App->audio->LoadFx("Assets/patada y rebote.wav");
-	roarbossFx = App->audio->LoadFx("Assets/roarboss.wav");;
-	spitbossFx = App->audio->LoadFx("Assets/spit.wav");;
+	roarbossFx = App->audio->LoadFx("Assets/roarboss.wav");
+	spitbossFx = App->audio->LoadFx("Assets/spit.wav");
 
 	kills = 0;
 
@@ -67,10 +65,12 @@ update_status ModuleEnemies::Update()
 
 	if (kills >= en && changboss == false)
 	{
+		en = 0;
 		App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->sceneWin, 60);
 	}
 	if (kills >= 1 && changboss == true)
 	{
+		en = 0;
 		App->change->Changing((Module*)App->sceneLevel_1, (Module*)App->sceneWin, 60);
 	}
 
@@ -130,6 +130,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, float x, float y)
 
 void ModuleEnemies::HandleEnemiesSpawn()
 {
+	LOG("Enemigos en pantalla %d", en)
 	// Iterate all the enemies queue
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -198,10 +199,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case ENEMY_TYPE::YELLOWMONKEY:
 				enemies[i] = new Enemy_YellowMonkey(info.x, info.y);
 				enemies[i]->texture = YellMonky;
-				break;
-			case ENEMY_TYPE::SPITFIRE:
-				enemies[i] = new Enemy_SpitFire(info.x, info.y);
-				enemies[i]->texture = SF;
 				break;
 			case ENEMY_TYPE::BOSS:
 				enemies[i] = new Enemy_Boss(info.x, info.y);

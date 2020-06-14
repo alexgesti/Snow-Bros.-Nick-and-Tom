@@ -14,7 +14,7 @@ enum class ENEMY_TYPE
 	YELLOWMONKEY,
 	SPITFIRE,
 	BOSS,
-	MINIBOSS,
+	MINIBOSS
 };
 
 struct EnemySpawnpoint

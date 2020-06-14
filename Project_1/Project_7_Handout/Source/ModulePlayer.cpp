@@ -153,7 +153,6 @@ bool ModulePlayer::Start()
 	colliderf = App->collisions->AddCollider({ position.x, position.y, 16, 3 }, Collider::Type::FEET, this);
 	colliderp = App->collisions->AddCollider({ position.x, position.y, 21, 25 }, Collider::Type::PLAYER, this);
 
-	lives = 3;		//Reinicia CUANDO SE CAMBIA DE ESCENA. WATCH OUT!!
 	jump = false;
 
 	return ret;
@@ -360,12 +359,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (godmode == true) {
-		if (vista == true) {
-			currentAnimation = &idleLAnim;
-		}
-		else {
-			currentAnimation = &idleRAnim;
-		}
+		currentAnimation = &idleRAnim;
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0)
 		{
 			position.x -= speedx;
@@ -376,11 +370,11 @@ update_status ModulePlayer::Update()
 			position.x += speedx;
 			vista = false;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
 		{
 			position.y -= speedy;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
 		{
 			position.y += speedy;
 		}
@@ -409,7 +403,7 @@ update_status ModulePlayer::Update()
 			currentAnimation = &rolling;
 		}
 	}
-	if (push == true && destroyed == false) {
+	if (push == true && destroyed == false && gravity == false) {
 		if (vista == true) {
 			if (currentAnimation != &pushingL)
 			{

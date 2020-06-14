@@ -123,7 +123,6 @@ update_status ModuleSceneGameOver::PostUpdate()
 	App->render->Blit(Texture, SCREEN_WIDTH / 3.1f, SCREEN_HEIGHT / 3.25f, &(Bola_1[2].GetCurrentFrame()));
 	App->render->Blit(Texture, SCREEN_WIDTH / 4.25f, SCREEN_HEIGHT / 3.25f, &(Bola_1[1].GetCurrentFrame()));
 	App->render->Blit(Texture, SCREEN_WIDTH / 6.25f, SCREEN_HEIGHT / 3.25f, &(Bola_1[0].GetCurrentFrame()));
-	App->points->returnPoints();
 
 	if (EnemieNow)
 	{

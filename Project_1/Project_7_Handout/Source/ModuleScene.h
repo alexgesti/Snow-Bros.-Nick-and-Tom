@@ -32,13 +32,17 @@ public:
 
 public:
 
+	// Cam Scene
 	int camscene = 0;
 	int xm = 0;
 	int ym = 0;
 	int enemy = 0;
 	bool once = false;
 	bool check = false;
-	
+
+	//Pause
+	//bool IsPauseActivated;
+
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* face = nullptr;

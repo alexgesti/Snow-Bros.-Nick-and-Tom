@@ -6,7 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
+#include "ModuleScene.h"
 #include "ModuleFonts.h"
+#include "ModulePlayer.h"
 #include "ModulePoints.h"
 
 #include "SDL/include/SDL_scancode.h"
@@ -202,6 +204,8 @@ bool ModuleSceneIntro::Start()
 	Jumped = false;
 	EnemyAproaching = false;
 
+	App->sceneLevel_1->camscene = 0;
+	App->player->lives = 3;
 	App->points->score = 0;
 	App->points->insert.speed = 0.05f;
 	App->points->coin.speed = 0.05f;
@@ -213,11 +217,9 @@ update_status ModuleSceneIntro::Update()
 {
 	GamePad& pad = App->input->pads[0];
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && coins >= 1 ||
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && coins >= 1 ||
 		pad.start && coins >= 1)
 	{
-		
-
 		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
 		if (CanStart == false) App->audio->PlayMusic("Assets/start.wav", 0);
 		CanStart = true;
@@ -230,7 +232,7 @@ update_status ModuleSceneIntro::Update()
 			coins++;
 			counter_put_money = 5;
 			Number.Update();
-			App->audio->PlayFx(CoinFx);
+			if (coins <= 9) App->audio->PlayFx(CoinFx);
 		}
 	}
 
@@ -403,7 +405,6 @@ update_status ModuleSceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->DrawQuad(background, 0, 0, 0, 255);
-	App->points->returnPoints();
 
 	if (Timer_Second_part < 1800) App->render->Blit(Texture, SCREEN_WIDTH / 5.5f, 25, &(Title.GetCurrentFrame()));
 	else
@@ -450,6 +451,8 @@ update_status ModuleSceneIntro::PostUpdate()
 		App->render->DrawQuad(background2, 0, 0, 0, 255);
 		App->render->Blit(Texture2, SCREEN_WIDTH / 2.3f, SCREEN_HEIGHT / 1.95f, &(StartName.GetCurrentFrame()));
 	}
+
+	App->points->returnPoints();
 
 	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 
