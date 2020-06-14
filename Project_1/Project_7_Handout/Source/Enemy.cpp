@@ -131,6 +131,10 @@ void Enemy::Update()
 			hit = false;
 		}
 
+		if (cout >= 25) {
+			dead = true;
+		}
+
 		//Animation
 		if (currentAnim != nullptr)
 			currentAnim->Update();

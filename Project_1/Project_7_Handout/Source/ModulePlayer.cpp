@@ -461,6 +461,49 @@ update_status ModulePlayer::Update()
 			}
 		}
 
+		if (App->input->keys[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 0;
+		}
+		if (App->input->keys[SDL_SCANCODE_KP_1] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 1;
+		}
+		if (App->input->keys[SDL_SCANCODE_KP_2] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 2;
+		}
+		if (App->input->keys[SDL_SCANCODE_KP_3] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 3;
+		}
+		if (App->input->keys[SDL_SCANCODE_KP_4] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 4;
+		}
+		if (App->input->keys[SDL_SCANCODE_KP_5] == KEY_STATE::KEY_DOWN)
+		{
+			enemy = 5;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN) {
+			if (enemy == 1) {
+				App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, position.x, position.y);
+			}
+			if (enemy == 2) {
+				App->enemies->AddEnemy(ENEMY_TYPE::YELLOWMONKEY, position.x, position.y);
+			}
+			if (enemy == 3) {
+				App->enemies->AddEnemy(ENEMY_TYPE::SPITFIRE, position.x, position.y);
+			}
+			if (enemy == 4) {
+				App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, position.x, position.y);
+			}
+			if (enemy == 5) {
+				App->enemies->AddEnemy(ENEMY_TYPE::BOSS, position.x, position.y);
+			}
+		}
+
 		colliderf->SetPos(600, 600);
 		colliderp->SetPos(600, 600);
 	}

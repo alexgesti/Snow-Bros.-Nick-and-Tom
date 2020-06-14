@@ -510,8 +510,8 @@ update_status ModuleScene::Update()
 		check = true;
 	}
 	if (SDL_GetMouseState(&xm, &ym) && SDL_BUTTON(SDL_BUTTON_LEFT) && once == false) {
-		xm = (xm / 3) - 11;
-		ym = (ym / 3) - 12;
+		xm = (xm / 3) -11;
+		ym = (ym / 3) -12;
 		if (enemy == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::REDDEMON, xm, ym);
 		}

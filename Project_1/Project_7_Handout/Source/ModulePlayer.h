@@ -71,6 +71,7 @@ public:
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	int ranm = 0;
+	int enemy = 0;
 	bool death = false;
 	bool jump = false;
 	bool vista = false;

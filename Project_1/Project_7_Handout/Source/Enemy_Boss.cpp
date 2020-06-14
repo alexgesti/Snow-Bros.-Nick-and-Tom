@@ -34,7 +34,6 @@ Enemy_Boss::Enemy_Boss(float x, float y) : Enemy(x, y)
 
 void Enemy_Boss::Update()
 {
-	LOG("Boss activated")
 	if (cfs != nullptr && candelete == false) {
 		cfs->SetPos(position.x, position.y);
 		collider->SetPos(position.x, position.y);
@@ -58,7 +57,6 @@ void Enemy_Boss::Update()
 		}
 	}
 	if (cout >= 25) {
-		dead = true;
 		if (currentAnim != &deadboss)
 		{
 			currentAnim = &deadboss;
@@ -69,7 +67,7 @@ void Enemy_Boss::Update()
 		position.y = spawnPos.y + position.y + speedy;
 	}
 
-	if (jump == false && gravity == false) {
+	if (jump == false && gravity == false && dead == false) {
 		jumpbt--;
 		if (jumpbt <= 0) {
 			jump = true;
@@ -78,7 +76,7 @@ void Enemy_Boss::Update()
 			jumpbt = (rand() % 4 + 3) * 100;
 		}
 	}
-	if (jump == true) {
+	if (jump == true && dead == false) {
 		if (cambio == false) {
 			if (position.y > alt - 100) {
 				position.y = spawnPos.y + position.y - speedy;
