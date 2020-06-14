@@ -36,12 +36,14 @@ bool ModuleEnemies::Start()
 	YellMonky = App->textures->Load("Assets/monono.png");
 	SF = App->textures->Load("Assets/Rana.png");
 	SnowT = App->textures->Load("Assets/Nick&Tom.png");
+	bos = App->textures->Load("Assets/boss_1.png");
+	mbos = App->textures->Load("Assets/miniboss.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/EnemyFlying.wav");
 	snowDestroyedFx = App->audio->LoadFx("Assets/snowdel.wav");
 	choqueFx = App->audio->LoadFx("Assets/rebotar.wav");
 	pydFx = App->audio->LoadFx("Assets/patada y rebote.wav");
-	roarbossFx = App->audio->LoadFx("Assets/roarboss.wav");
-	spitbossFx = App->audio->LoadFx("Assets/spit.wav");
+	roarbossFx = App->audio->LoadFx("Assets/roarboss.wav");;
+	spitbossFx = App->audio->LoadFx("Assets/spit.wav");;
 
 	kills = 0;
 
@@ -130,7 +132,6 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, float x, float y)
 
 void ModuleEnemies::HandleEnemiesSpawn()
 {
-	LOG("Enemigos en pantalla %d", en)
 	// Iterate all the enemies queue
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -140,6 +141,7 @@ void ModuleEnemies::HandleEnemiesSpawn()
 			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
 				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
+				LOG("Enemies in screen: %d", en);
 
 				SpawnEnemy(spawnQueue[i]);
 				spawnQueue[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
@@ -199,6 +201,10 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 			case ENEMY_TYPE::YELLOWMONKEY:
 				enemies[i] = new Enemy_YellowMonkey(info.x, info.y);
 				enemies[i]->texture = YellMonky;
+				break;
+			case ENEMY_TYPE::SPITFIRE:
+				enemies[i] = new Enemy_SpitFire(info.x, info.y);
+				enemies[i]->texture = SF;
 				break;
 			case ENEMY_TYPE::BOSS:
 				enemies[i] = new Enemy_Boss(info.x, info.y);

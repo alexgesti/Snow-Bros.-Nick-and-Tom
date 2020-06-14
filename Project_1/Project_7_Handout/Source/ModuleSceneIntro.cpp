@@ -10,6 +10,7 @@
 #include "ModuleFonts.h"
 #include "ModulePlayer.h"
 #include "ModulePoints.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -217,7 +218,10 @@ update_status ModuleSceneIntro::Update()
 {
 	GamePad& pad = App->input->pads[0];
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && coins >= 1 ||
+	App->player->lives = 3;
+	App->enemies->en = 0;
+
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && coins >= 1 ||
 		pad.start && coins >= 1)
 	{
 		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
@@ -232,7 +236,7 @@ update_status ModuleSceneIntro::Update()
 			coins++;
 			counter_put_money = 5;
 			Number.Update();
-			if (coins <= 9) App->audio->PlayFx(CoinFx);
+			App->audio->PlayFx(CoinFx);
 		}
 	}
 

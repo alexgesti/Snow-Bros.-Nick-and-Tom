@@ -14,7 +14,7 @@ enum class ENEMY_TYPE
 	YELLOWMONKEY,
 	SPITFIRE,
 	BOSS,
-	MINIBOSS
+	MINIBOSS,
 };
 
 struct EnemySpawnpoint
@@ -80,6 +80,7 @@ public:
 	int roarbossFx = 0;
 	int spitbossFx = 0;
 	bool changboss = false;
+	int en = 0;
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -93,7 +94,6 @@ private:
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
 	int kills = 0;
-	int en = 0;
 };
 
 #endif // __MODULE_ENEMIES_H__

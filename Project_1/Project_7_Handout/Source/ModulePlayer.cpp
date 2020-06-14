@@ -359,7 +359,12 @@ update_status ModulePlayer::Update()
 	}
 
 	if (godmode == true) {
-		currentAnimation = &idleRAnim;
+		if (vista == true) {
+			currentAnimation = &idleLAnim;
+		}
+		else {
+			currentAnimation = &idleRAnim;
+		}
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0)
 		{
 			position.x -= speedx;
@@ -370,11 +375,11 @@ update_status ModulePlayer::Update()
 			position.x += speedx;
 			vista = false;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
 		{
 			position.y -= speedy;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
 		{
 			position.y += speedy;
 		}
@@ -403,7 +408,7 @@ update_status ModulePlayer::Update()
 			currentAnimation = &rolling;
 		}
 	}
-	if (push == true && destroyed == false && gravity == false) {
+	if (push == true && destroyed == false) {
 		if (vista == true) {
 			if (currentAnimation != &pushingL)
 			{

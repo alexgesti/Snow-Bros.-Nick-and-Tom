@@ -5,7 +5,6 @@
 #include "ModulePoints.h"
 #include "ModuleFonts.h"
 #include "ModuleInput.h"
-
 #include <stdio.h>
 
 ModulePoints::ModulePoints(bool isEnabled) : Module(isEnabled)
@@ -22,13 +21,13 @@ ModulePoints::ModulePoints(bool isEnabled) : Module(isEnabled)
 	coin.loop = true;
 	insert.speed = 0.05f;
 	coin.speed = 0.05f;
-
 }
 
 ModulePoints::~ModulePoints()
 {
 
 }
+
 bool ModulePoints::Start()
 {
 	bool ret = true;
@@ -52,7 +51,6 @@ update_status ModulePoints::Update()
 
 void ModulePoints::returnPoints()
 {
-
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
 	sprintf_s(scoreText2, 10, "%7d", scoreTotal);
@@ -63,6 +61,4 @@ void ModulePoints::returnPoints()
 	App->render->Blit(texture, 245, 5, &(player2.GetCurrentFrame()));
 	App->render->Blit(texture, 280, 0, &(insert.GetCurrentFrame()));
 	App->render->Blit(texture, 280, 10, &(coin.GetCurrentFrame()));
-
-
 }
