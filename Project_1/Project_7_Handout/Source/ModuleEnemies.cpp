@@ -21,6 +21,8 @@
 
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
+	name = "enemies";
+
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
@@ -107,6 +109,17 @@ bool ModuleEnemies::CleanUp()
 	}
 
 	App->textures->Unload(Redemon);
+	App->textures->Unload(YellMonky);
+	App->textures->Unload(SF);
+	App->textures->Unload(bos);
+	App->textures->Unload(mbos);
+	App->textures->Unload(SnowT);
+	App->audio->UnloadFx(enemyDestroyedFx);
+	App->audio->UnloadFx(snowDestroyedFx);
+	App->audio->UnloadFx(choqueFx);
+	App->audio->UnloadFx(pydFx);
+	App->audio->UnloadFx(roarbossFx);
+	App->audio->UnloadFx(spitbossFx);
 
 	return true;
 }

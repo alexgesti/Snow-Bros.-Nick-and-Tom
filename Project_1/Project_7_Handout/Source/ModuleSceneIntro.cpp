@@ -16,6 +16,8 @@
 
 ModuleSceneIntro::ModuleSceneIntro(bool startEnabled) : Module(startEnabled)
 {
+	name = "Intro";
+
 	// Background
 	background = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	background2 = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
@@ -510,7 +512,14 @@ bool ModuleSceneIntro::CleanUp()
 
 	App->textures->Unload(Texture);
 	App->textures->Unload(Texture2);
-	CoinFx = NULL;
+	App->textures->Unload(TextureSnowBros);
+	App->textures->Unload(TextureDemon);
+	App->audio->UnloadFx(CoinFx);
+	App->audio->UnloadFx(ApareceFx);
+	App->audio->UnloadFx(JumpFx);
+	App->audio->UnloadFx(ShootFx);
+	App->audio->UnloadFx(ThrowFx);
+	App->audio->UnloadFx(CollFx);
 
 	return true;
 }

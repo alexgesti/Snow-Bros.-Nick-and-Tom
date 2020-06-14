@@ -18,6 +18,7 @@
 #include "ModuleScreenFirst.h"
 #include "ModuleFonts.h"
 #include "ModulePoints.h"
+#include "ModuleDebugInfo.h"
 
 Application::Application()
 {
@@ -37,14 +38,16 @@ Application::Application()
 	modules[9] = enemies = new ModuleEnemies(false);	//Enemies start disabled
 	modules[10] = player = new ModulePlayer(false);	//Player starts disabled
 	modules[11] = particles = new ModuleParticles(true);
-
 	modules[12] = collisions = new ModuleCollisions(false); //Collision starts disabled
+	
+	modules[13] = debug = new ModuleDebugInfo(true);
 
-	modules[13] = render = new ModuleRender(true);
-	modules[14] = change = new ModuleChangeScene(true);
+	modules[14] = render = new ModuleRender(true);
+	modules[15] = change = new ModuleChangeScene(true);
 
-	modules[15] = fonts = new ModuleFonts(true);
-	modules[16] = points = new ModulePoints(true);
+	modules[16] = fonts = new ModuleFonts(true);
+	modules[17] = points = new ModulePoints(true);
+	
 }
 
 Application::~Application()

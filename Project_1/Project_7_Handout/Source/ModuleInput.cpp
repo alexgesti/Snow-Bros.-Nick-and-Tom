@@ -8,6 +8,8 @@
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 {
+	name = "input";
+
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keys[i] = KEY_IDLE;
 
@@ -116,6 +118,8 @@ bool ModuleInput::CleanUp()
 		}
 		if (pads[i].controller != nullptr) SDL_GameControllerClose(pads[i].controller);
 	}
+
+	App->fonts->UnLoad(Font);
 
 	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
 	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);

@@ -12,6 +12,8 @@
 
 ModuleScreenFirst::ModuleScreenFirst(bool startEnabled) : Module(startEnabled)
 {
+	name = "First";
+
 	// Background
 	background = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 

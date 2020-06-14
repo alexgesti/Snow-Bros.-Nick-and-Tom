@@ -13,6 +13,8 @@
 
 ModuleSceneGameOver::ModuleSceneGameOver(bool startEnabled) : Module(startEnabled)
 {
+	name = "Game Over";
+
 	// Background
 	background = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
@@ -165,6 +167,9 @@ bool ModuleSceneGameOver::CleanUp()
 	Reset();
 
 	App->textures->Unload(Texture);
+	App->audio->UnloadFx(Laugh);
+
+	App->audio->PlayMusic(NULL);
 
 	return true;
 }

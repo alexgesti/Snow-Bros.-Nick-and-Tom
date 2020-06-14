@@ -34,6 +34,7 @@ Enemy_Boss::Enemy_Boss(float x, float y) : Enemy(x, y)
 
 void Enemy_Boss::Update()
 {
+	LOG("Boss activated")
 	if (cfs != nullptr && candelete == false) {
 		cfs->SetPos(position.x, position.y);
 		collider->SetPos(position.x, position.y);
@@ -57,6 +58,7 @@ void Enemy_Boss::Update()
 		}
 	}
 	if (cout >= 25) {
+		dead = true;
 		if (currentAnim != &deadboss)
 		{
 			currentAnim = &deadboss;
@@ -67,7 +69,7 @@ void Enemy_Boss::Update()
 		position.y = spawnPos.y + position.y + speedy;
 	}
 
-	if (jump == false && gravity == false && dead == false) {
+	if (jump == false && gravity == false) {
 		jumpbt--;
 		if (jumpbt <= 0) {
 			jump = true;
@@ -76,7 +78,7 @@ void Enemy_Boss::Update()
 			jumpbt = (rand() % 4 + 3) * 100;
 		}
 	}
-	if (jump == true && dead == false) {
+	if (jump == true) {
 		if (cambio == false) {
 			if (position.y > alt - 100) {
 				position.y = spawnPos.y + position.y - speedy;
@@ -94,34 +96,34 @@ void Enemy_Boss::Update()
 				calculatexy = (rand() % 6);
 				switch (calculatexy) {
 				case 0:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 164);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 88);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
 					break;
 				case 1:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 126);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 50);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 2:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 126);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 3:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 88);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 50);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 4:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 126);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 50);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 5:
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 88);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 6:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 50);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 126);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 88);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
 					break;
 				}
 			}

@@ -4,12 +4,13 @@
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
 #include "ModuleInput.h"
+#include "ModuleScene.h"
 
 #include<string.h>
 
 ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled)
 {
-
+	name = "fonts";
 }
 
 ModuleFonts::~ModuleFonts()
@@ -31,8 +32,6 @@ bool ModuleFonts::Init()
 int ModuleFonts::Load(const char* texture_path, const char* characters, uint rows)
 {
 	int id = -1;
-
-
 
 	if(texture_path == nullptr || characters == nullptr || rows == 0)
 	{
@@ -81,6 +80,9 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	font.char_w = tex_w / font.columns;
 	font.char_h = tex_h / font.rows;
 
+	++fontsCount;
+	++activeFonts; ++totalFonts;
+
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
 	return id;
@@ -92,6 +94,8 @@ void ModuleFonts::UnLoad(int font_id)
 	{
 		App->textures->Unload(fonts[font_id].texture);
 		fonts[font_id].texture = nullptr;
+		--fontsCount;
+		--activeFonts; --totalFonts;
 		LOG("Successfully Unloaded BMP font_id %d", font_id);
 	}
 }

@@ -28,6 +28,10 @@ public:
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* c1, Collider* c2);
 
+	// Called on application exit
+	// Destroys all active enemies left in the array
+	bool CleanUp();
+
 public:
 	// The current position in the world
 	fPoint position;

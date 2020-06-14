@@ -33,11 +33,14 @@ public:
 public:
 
 	int camscene = 0;
+	int Font = -1;
 	int xm = 0;
 	int ym = 0;
 	int enemy = 0;
+	float counter_Text_Disapear;
 	bool once = false;
 	bool check = false;
+	char Text[20] = { "\0" };
 	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;

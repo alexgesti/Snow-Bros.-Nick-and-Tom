@@ -12,6 +12,8 @@
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
+	name = "particles";
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		particles[i] = nullptr;
 }
@@ -86,8 +88,6 @@ bool ModuleParticles::CleanUp()
 		}
 	}
 
-	//App->textures->Unload(texture);
-
 	return true;
 }
 
@@ -100,6 +100,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			delete particles[i];
 			particles[i] = nullptr;
+			--particlesCount;
 			break;
 		}
 	}
@@ -118,6 +119,7 @@ update_status ModuleParticles::Update()
 		{
 			delete particle;
 			particles[i] = nullptr;
+			--particlesCount;
 		}
 	}
 
@@ -158,6 +160,7 @@ void ModuleParticles::AddParticle(int activate, const Particle& particle, int x,
 			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
 			p->position.y = y;
 			p->activate = activate;
+			++particlesCount;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)

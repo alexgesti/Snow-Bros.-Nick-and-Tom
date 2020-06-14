@@ -20,7 +20,7 @@ Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 
 	nothing.PushBack({ 0, 0, 0, 0 });
 
-	Ldead.PushBack({ 5, 39, 23, 25});
+	Ldead.PushBack({ 5, 39, 23, 25 });
 	Ldead.PushBack({ 38, 39, 23, 25 });
 	Ldead.speed = 0.2f;
 

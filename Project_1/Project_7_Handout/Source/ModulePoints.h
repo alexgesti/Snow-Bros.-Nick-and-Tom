@@ -16,6 +16,7 @@ public:
 	bool Start() override;
 	void returnPoints();
 	update_status Update();
+	bool CleanUp() override;
 
 	//Fonts 
 	int score = 000;

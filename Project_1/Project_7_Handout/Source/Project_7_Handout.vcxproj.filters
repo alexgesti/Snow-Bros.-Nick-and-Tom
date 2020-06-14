@@ -121,6 +121,9 @@
     <ClInclude Include="ModulePoints.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleDebugInfo.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -208,6 +211,9 @@
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModulePoints.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleDebugInfo.cpp">
       <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
   </ItemGroup>

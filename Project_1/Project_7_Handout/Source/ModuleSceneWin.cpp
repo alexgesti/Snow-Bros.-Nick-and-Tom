@@ -15,6 +15,8 @@
 
 ModuleSceneWin::ModuleSceneWin(bool startEnabled) : Module(startEnabled)
 {
+	name = "Win";
+
 	// Background
 	background = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
@@ -61,7 +63,7 @@ update_status ModuleSceneWin::Update()
 	if (count == 4 * 60) {
 		App->sceneLevel_1->camscene++;
 		if (App->sceneLevel_1->camscene == 10) {
-			App->change->Changing(this, (Module*)App->sceneIntro, 120);
+			App->change->Changing(this, (Module*)App->sceneIntro, 600);
 		}
 		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
 	}
@@ -93,6 +95,7 @@ bool ModuleSceneWin::CleanUp()
 	Reset();
 
 	App->textures->Unload(Texture);
+	App->audio->PlayMusic(NULL);
 
 	return true;
 }

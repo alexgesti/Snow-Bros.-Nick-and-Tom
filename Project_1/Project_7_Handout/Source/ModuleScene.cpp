@@ -10,12 +10,15 @@
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
 #include "ModulePoints.h"
+#include <stdio.h>
 
 #include "SDL/include/SDL_mouse.h"
 #include "SDL/include/SDL_scancode.h"
 
 ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
+	name = "Gameplay";
+
 	fase.PushBack({ 122, 28, 12, 15 });
 
 	alive.PushBack({ 25, 63, 8, 8 });
@@ -450,6 +453,11 @@ bool ModuleScene::Start()
 	App->points->insert.Reset();
 	App->points->coin.speed = 0;
 	App->points->coin.Reset();
+	
+	counter_Text_Disapear = 120;
+
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	Font = App->fonts->Load("Assets/Fonts_2.png", lookupTable, 2);
 
 	alive.GetSelectedFrame(0);
 
@@ -525,6 +533,8 @@ update_status ModuleScene::Update()
 		once = false;
 	}
 
+	counter_Text_Disapear--;
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -540,6 +550,12 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(numbers, 40, 23, &(alive.GetCurrentFrame()));
 	App->points->returnPoints();
 
+	if (counter_Text_Disapear > 0)
+	{
+		sprintf_s(Text, 10, "floor %d", camscene + 1);
+		App->fonts->BlitText(150, 140, Font, Text);
+	}
+
 	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 
 	return update_status::UPDATE_CONTINUE;
@@ -554,7 +570,8 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(face);
 	App->textures->Unload(numbers);
-	App->textures->Unload(App->player->texture);
+	App->fonts->UnLoad(Font);
+
 	App->enemies->CleanUp();
 	App->collisions->CleanUp();
 	App->audio->PlayMusic(NULL);

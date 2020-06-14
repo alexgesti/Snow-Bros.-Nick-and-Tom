@@ -15,6 +15,8 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
+	name = "player";
+
 	// idle animation - just one sprite
 	idleRAnim.PushBack({ 16, 16, 21, 27 });
 	idleLAnim.PushBack({ 283, 75, 21, 27 });
@@ -618,4 +620,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			speedx = 0;
 		}
 	}
+}
+
+bool ModulePlayer::CleanUp()
+{
+	App->textures->Unload(texture);
+	App->audio->UnloadFx(laserFx);
+	App->audio->UnloadFx(laserFx2);
+	App->audio->UnloadFx(explosionFx);
+	App->audio->UnloadFx(jumpFx);
+	App->audio->UnloadFx(deathFx);
+	App->collisions->RemoveCollider(colliderf);
+	App->collisions->RemoveCollider(colliderp);
+
+	return true;
 }

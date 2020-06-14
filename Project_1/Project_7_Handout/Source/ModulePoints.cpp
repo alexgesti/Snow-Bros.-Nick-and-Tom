@@ -62,3 +62,11 @@ void ModulePoints::returnPoints()
 	App->render->Blit(texture, 280, 0, &(insert.GetCurrentFrame()));
 	App->render->Blit(texture, 280, 10, &(coin.GetCurrentFrame()));
 }
+
+bool ModulePoints::CleanUp()
+{
+	App->textures->Unload(texture);
+	App->fonts->UnLoad(scoreFont);
+
+	return true;
+}
