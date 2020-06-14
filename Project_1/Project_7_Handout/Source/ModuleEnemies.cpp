@@ -178,7 +178,6 @@ void ModuleEnemies::HandleEnemiesDespawn()
 			{
 				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 
-				enemies[i] = nullptr;
 				kills++;
 			}
 		}

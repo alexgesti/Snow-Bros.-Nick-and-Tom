@@ -131,6 +131,10 @@ void Enemy::Update()
 			hit = false;
 		}
 
+		if (cout >= 25) {
+			dead = true;
+		}
+
 		//Animation
 		if (currentAnim != nullptr)
 			currentAnim->Update();
@@ -141,7 +145,6 @@ void Enemy::Update()
 			cfs->SetPos(-300, -300);
 			collider->SetPos(-600, -600);
 			balldash->SetPos(-600, -600);
-			dead = false;
 		}
 	}
 }
@@ -279,8 +282,9 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 			gravity = false;
 		}
 
-		if (c1 == cfs && bdelete == false && c2->type == Collider::Type::SNOWBALL && c2->type != Collider::Type::DELSNOW) {
+		if (c1 == cfs && bdelete == false && c2->type == Collider::Type::SNOWBALL && one == false && c2->type != Collider::Type::DELSNOW) {
 			hit = true;
+			one = true;
 		}
 
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER_SHOT) {

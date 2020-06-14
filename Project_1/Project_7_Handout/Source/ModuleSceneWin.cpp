@@ -60,6 +60,9 @@ update_status ModuleSceneWin::Update()
 
 	if (count == 4 * 60) {
 		App->sceneLevel_1->camscene++;
+		if (App->sceneLevel_1->camscene == 10) {
+			App->change->Changing(this, (Module*)App->sceneIntro, 120);
+		}
 		App->change->Changing(this, (Module*)App->sceneLevel_1, 60);
 	}
 

@@ -20,12 +20,12 @@ Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 
 	nothing.PushBack({ 0, 0, 0, 0 });
 
-	Ldead.PushBack({ 8, 43, 16, 19});
-	Ldead.PushBack({ 39, 42, 18, 22 });
+	Ldead.PushBack({ 5, 39, 23, 25});
+	Ldead.PushBack({ 38, 39, 23, 25 });
 	Ldead.speed = 0.2f;
 
-	Rdead.PushBack({ 200, 11, 16,19 });
-	Rdead.PushBack({ 167, 10, 18, 22 });
+	Rdead.PushBack({ 197, 7, 23, 25 });
+	Rdead.PushBack({ 166, 7, 23, 25 });
 	Rdead.speed = 0.2f;
 
 	vistard = true;
