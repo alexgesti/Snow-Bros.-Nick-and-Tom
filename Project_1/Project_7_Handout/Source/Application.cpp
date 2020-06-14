@@ -17,6 +17,7 @@
 #include "ModuleSceneWin.h"
 #include "ModuleScreenFirst.h"
 #include "ModuleFonts.h"
+#include "ModulePoints.h"
 
 Application::Application()
 {
@@ -43,6 +44,8 @@ Application::Application()
 	modules[14] = change = new ModuleChangeScene(true);
 
 	modules[15] = fonts = new ModuleFonts(true);
+
+	modules[16] = points = new ModulePoints(true);
 }
 
 Application::~Application()

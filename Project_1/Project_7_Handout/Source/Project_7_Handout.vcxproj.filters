@@ -118,6 +118,9 @@
     <ClInclude Include="Enemy_MiniBoss.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePoints.h">
+      <Filter>Source Files\Modules\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -203,6 +206,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_MiniBoss.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePoints.cpp">
+      <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
+#include "ModulePoints.h"
 
 Enemy::Enemy(float x, float y) : position(x, y)
 {
@@ -160,6 +161,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 	if (boss == false) {
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER_SHOT) {
 			hit = true;
+			App->points->score += 100;
 		}
 
 		if ((c1 == balldash || c1 == feeten) && c2->type == Collider::Type::FLOOR && miniboss == false) {
@@ -283,6 +285,7 @@ void Enemy::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1 == cfs && c2->type == Collider::Type::PLAYER_SHOT) {
 			hit = true;
+			App->points->score += 100;
 		}
 	}
 }

@@ -9,6 +9,7 @@
 #include "ModuleParticles.h"
 #include "ModuleScene.h"
 #include "ModuleFonts.h"
+#include "ModulePoints.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -73,6 +74,7 @@ update_status ModuleSceneWin::PostUpdate()
 
 	App->render->Blit(Texture, SCREEN_WIDTH / 2.975f, (SCREEN_HEIGHT / 2.25f) + 5, &(Congrat.GetCurrentFrame()));
 	App->render->Blit(Texture, SCREEN_WIDTH / 2.4f, (SCREEN_HEIGHT / 1.95f) + 5, &(LetsGo.GetCurrentFrame()));
+	App->points->returnPoints();
 
 	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 

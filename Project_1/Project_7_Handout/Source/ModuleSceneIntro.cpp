@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
 #include "ModuleFonts.h"
+#include "ModulePoints.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -396,6 +397,7 @@ update_status ModuleSceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->DrawQuad(background, 0, 0, 0, 255);
+	App->points->returnPoints();
 
 	if (Timer_Second_part < 1800) App->render->Blit(Texture, SCREEN_WIDTH / 5.5f, 25, &(Title.GetCurrentFrame()));
 	else

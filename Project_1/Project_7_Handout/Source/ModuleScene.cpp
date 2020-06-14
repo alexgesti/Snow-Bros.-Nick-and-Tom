@@ -9,6 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFonts.h"
+#include "ModulePoints.h"
 
 #include "SDL/include/SDL_mouse.h"
 #include "SDL/include/SDL_scancode.h"
@@ -239,6 +240,7 @@ update_status ModuleScene::PostUpdate()
 
 	App->render->Blit(face, 24, 20, &(fase.GetCurrentFrame()));
 	App->render->Blit(numbers, 40, 23, &(alive.GetCurrentFrame()));
+	App->points->returnPoints();
 
 	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 

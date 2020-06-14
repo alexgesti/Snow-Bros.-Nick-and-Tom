@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleChangeScene.h"
 #include "ModuleFonts.h"
+#include "ModulePoints.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -51,6 +52,8 @@ update_status ModuleScreenFirst::PostUpdate()
 	App->render->DrawQuad(background, 0, 0, 0, 255);
 
 	App->render->Blit(Texture, 0, 0, &(Logo.GetCurrentFrame()));
+
+	App->points->returnPoints();
 
 	if (App->input->debugGamepadInfo == true) App->input->DebugDrawGamepadInfo();
 
