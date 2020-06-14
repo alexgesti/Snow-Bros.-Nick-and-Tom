@@ -185,14 +185,14 @@ void Enemy_RedDemon::Update()
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
-				downLAnim.Reset();
+				Ldead.Reset();
 				currentAnim = &Ldead;
 			}
 		}
 		else {
 			if (currentAnim != &Rdead)
 			{
-				downLAnim.Reset();
+				Rdead.Reset();
 				currentAnim = &Rdead;
 			}
 		}

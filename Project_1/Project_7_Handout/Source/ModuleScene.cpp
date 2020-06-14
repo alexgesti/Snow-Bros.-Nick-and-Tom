@@ -32,6 +32,8 @@ bool ModuleScene::Start()
 {
 	LOG("Loading background assets");
 
+	camscene = 9;
+
 	bool ret = true;
 	if (camscene == 0) {
 		bgTexture = App->textures->Load("Assets/lvl1.png");

@@ -15,7 +15,7 @@ public:
 	// Position will be updated depending on the speed defined at each step
 	void Update() override;
 
-	int jumpbt = (rand() % 4 + 6) * 100;
+	int jumpbt = (rand() % 4 + 3) * 100;
 	int calculatexy = 0;
 	bool dead = false;
 	bool cambio = false;

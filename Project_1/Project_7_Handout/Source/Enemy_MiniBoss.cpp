@@ -6,19 +6,27 @@
 
 Enemy_MiniBoss::Enemy_MiniBoss(float x, float y) : Enemy(x, y)
 {
-	walkRAnim.PushBack({ 5, 5, 18, 18 });
-	walkRAnim.PushBack({ 29, 4, 17, 19 });
+	walkRAnim.PushBack({ 5, 7, 23, 25 });
+	walkRAnim.PushBack({ 38, 7, 23, 25 });
 	walkRAnim.speed = 0.2f;
 
-	walkLAnim.PushBack({ 142, 27, 18, 19 });
-	walkLAnim.PushBack({ 122, 26, 18, 19 });
+	walkLAnim.PushBack({ 196, 39, 23, 25 });
+	walkLAnim.PushBack({ 163, 39, 23, 25 });
 	walkLAnim.speed = 0.2f;
 
-	downRAnim.PushBack({ 152, 8, 12 ,14 });
+	downRAnim.PushBack({ 200, 11, 16,19 });
 
-	downLAnim.PushBack({ 5, 30, 12 , 14 });
+	downLAnim.PushBack({ 8, 43, 16, 19 });
 
 	nothing.PushBack({ 0, 0, 0, 0 });
+
+	Ldead.PushBack({ 8, 43, 16, 19});
+	Ldead.PushBack({ 39, 42, 18, 22 });
+	Ldead.speed = 0.2f;
+
+	Rdead.PushBack({ 200, 11, 16,19 });
+	Rdead.PushBack({ 167, 10, 18, 22 });
+	Rdead.speed = 0.2f;
 
 	vistard = true;
 
@@ -116,14 +124,14 @@ void Enemy_MiniBoss::Update()
 		if (vistard == true) {
 			if (currentAnim != &Ldead)
 			{
-				downLAnim.Reset();
+				Ldead.Reset();
 				currentAnim = &Ldead;
 			}
 		}
 		else {
 			if (currentAnim != &Rdead)
 			{
-				downLAnim.Reset();
+				Rdead.Reset();
 				currentAnim = &Rdead;
 			}
 		}

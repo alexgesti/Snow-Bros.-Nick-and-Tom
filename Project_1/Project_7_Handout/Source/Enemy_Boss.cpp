@@ -56,7 +56,7 @@ void Enemy_Boss::Update()
 			countboss = 0;
 		}
 	}
-	if (cout >= 15) {
+	if (cout >= 25) {
 		dead = true;
 		if (currentAnim != &deadboss)
 		{
@@ -74,7 +74,7 @@ void Enemy_Boss::Update()
 			jump = true;
 			gravity = false;
 			alt = position.y;
-			jumpbt = (rand() % 4 + 4) * 100;
+			jumpbt = (rand() % 4 + 3) * 100;
 		}
 	}
 	if (jump == true) {
@@ -91,6 +91,7 @@ void Enemy_Boss::Update()
 				jump = false;
 				cambio = true;
 
+				App->audio->PlayFx(App->enemies->spitbossFx);
 				calculatexy = (rand() % 4);
 				switch (calculatexy) {
 				case 0:
@@ -103,19 +104,19 @@ void Enemy_Boss::Update()
 					break;
 				case 2:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 3:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 4:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 5:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 6:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
@@ -123,23 +124,23 @@ void Enemy_Boss::Update()
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
 					break;
-					App->audio->PlayFx(App->enemies->spitbossFx);
 				}
 			}
 		}
 		if (cambio == true) {
-			if (position.y < alt + 100) {
+			if (position.y < alt + 90) {
 				position.y = spawnPos.y + position.y + speedy;
 				if (currentAnim != &jumpboss)
 				{
 					currentAnim = &jumpboss;
 				}
 			}
-			if (position.y >= alt + 100) {
+			if (position.y >= alt + 90) {
 				gravity = true;
 				cambio = false;
 				jump = false;
 
+				App->audio->PlayFx(App->enemies->spitbossFx);
 				calculatexy = (rand() % 4);
 				switch (calculatexy) {
 				case 0:
@@ -152,19 +153,19 @@ void Enemy_Boss::Update()
 					break;
 				case 2:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 3:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 4:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 75);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 75);
 					break;
 				case 5:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
-					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 151);
+					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
 					break;
 				case 6:
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 15, 151);
@@ -172,7 +173,6 @@ void Enemy_Boss::Update()
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 189);
 					App->enemies->AddEnemy(ENEMY_TYPE::MINIBOSS, 175, 113);
 					break;
-					App->audio->PlayFx(App->enemies->spitbossFx);
 				}
 			}
 		}
