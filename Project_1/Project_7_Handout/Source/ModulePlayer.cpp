@@ -126,6 +126,54 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	kickingL.PushBack({ 334, 230, 25, 29 });
 	kickingL.loop = false;
 	kickingL.speed = 0.5f;
+
+	appear.PushBack({ 0, 608, 48, 48 });
+	appear.PushBack({ 48, 608, 48, 48 });
+	appear.PushBack({ 96, 608, 48, 48 });
+	appear.PushBack({ 144, 608, 48, 48 });
+	appear.PushBack({ 192, 608, 48, 48 });
+	appear.PushBack({ 256, 608, 48, 48 });
+	appear.PushBack({ 320, 608, 48, 48 });
+	appear.PushBack({ 384, 608, 48, 48 });
+	appear.PushBack({ 0, 0, 0, 0 });
+	appear.PushBack({ 0, 0, 0, 0 });
+	appear.PushBack({ 0, 0, 0, 0 });
+	//Loop
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 432, 608, 48, 48 });
+	appear.PushBack({ 471, 608, 48, 48 });
+	appear.PushBack({ 512, 608, 48, 48 });
+	appear.PushBack({ 553, 608, 48, 48 });
+	appear.PushBack({ 0, 0, 0, 0 });
+	appear.loop = false;
+	appear.speed = 0.5f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -141,11 +189,13 @@ bool ModulePlayer::Start()
 
 	texture = App->textures->Load("Assets/Nick&Tom.png");
 	currentAnimation = &idleRAnim;
+	appearAnimation = &idleRAnim;
 
 	laserFx = App->audio->LoadFx("Assets/shot.wav");
 	laserFx2 = App->audio->LoadFx("Assets/shot2.wav");
 	jumpFx = App->audio->LoadFx("Assets/jump.wav");
 	deathFx = App->audio->LoadFx("Assets/death.wav");
+	appearFx = App->audio->LoadFx("Assets/Aparicion.wav");
 
 	position.x = 150;
 	position.y = 221;
@@ -161,6 +211,18 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	GamePad& pad = App->input->pads[0];
+
+	if (spawn == true) {
+		if (appearAnimation != &appear)
+		{
+			appear.Reset();
+			App->audio->PlayFx(appearFx);
+			appearAnimation = &appear;
+		}
+		if (appear.FinishedAlready == true) {
+			spawn = false;
+		}
+	}
 
 	if (death == false) {
 		//Gravedad
@@ -375,11 +437,11 @@ update_status ModulePlayer::Update()
 			position.x += speedx;
 			vista = false;
 		}
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
 		{
 			position.y -= speedy;
 		}
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y < 0)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y > 0)
 		{
 			position.y += speedy;
 		}
@@ -472,6 +534,7 @@ update_status ModulePlayer::Update()
 	}
 
 	currentAnimation->Update();
+	appearAnimation->Update();
 
 	if (destroyed)
 	{
@@ -486,6 +549,7 @@ update_status ModulePlayer::Update()
 				position.y = 221;
 				destroyed = false;
 				death = false;
+				spawn = true;
 				inmortality = 150;
 			}
 			else if (lives <= 0) {
@@ -502,7 +566,9 @@ update_status ModulePlayer::Update()
 update_status ModulePlayer::PostUpdate()
 {
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	SDL_Rect ss = appearAnimation->GetCurrentFrame();
 	App->render->Blit(texture, position.x, position.y, &rect);
+	App->render->Blit(texture, position.x - 13, position.y - 15, &ss);
 
 	return update_status::UPDATE_CONTINUE;
 }

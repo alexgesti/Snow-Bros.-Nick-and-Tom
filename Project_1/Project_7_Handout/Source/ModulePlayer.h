@@ -46,6 +46,7 @@ public:
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
+	Animation* appearAnimation = nullptr;
 
 	// A set of animations
 	Animation idleRAnim;
@@ -64,6 +65,7 @@ public:
 	Animation pushingL;
 	Animation kickingR;
 	Animation kickingL;
+	Animation appear;
 
 	// Detecta si salta y guarda la posicion inicial para despues calcular cual va a ser la altura del salto
 	int ranm = 0;
@@ -76,6 +78,7 @@ public:
 	bool idle = false;
 	bool boulder = false;
 	bool push = false;
+	bool spawn = true;
 	float timerj = 50;
 	float timers = 10;
 	float high = 0;
@@ -100,6 +103,7 @@ public:
 	uint laserFx = 0;
 	uint laserFx2 = 0;
 	uint explosionFx = 0;
+	uint appearFx = 0;
 	// añadí estas dos variables para el sonido
 	uint jumpFx = 0;
 	uint deathFx = 0;
