@@ -9,18 +9,21 @@ The story is about saving the land from King Scorch, that cursed the protagonist
 + ESCAPE: Exit
 
 ### MENU
-+ C: Insert Coin
-+ SPACE: Start
++ KEY C / B : Insert Coin
++ SPACE / START: Start
 
 ### GAMEPLAY
-+ A:  Left Movement
-+ D:  Right Movement
-+ W:  Jump
-+ SPACE:  Shoot
++ KEY A / STICK AXIS X LEFT:  Left Movement
++ KEY D / STICK AXIS X RIGHT:  Right Movement
++ KEY W / B:  Jump
++ SPACE / A:  Shoot
 
 #### DEBUG MODE
-+ F1:  Show Collision
-+ F2:  God Mode
++ KEY F1:  Show Collision
++ KEY F2:  God Mode
++ KEY F3:  Inputs Debug Mode
++ Numeric Pad:  Enemy Pick for Spawn
++ KEY P while God Mode:  Spawn Enemy
 
 ## AUTORS
 
